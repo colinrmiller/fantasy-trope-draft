@@ -1,0 +1,175 @@
+{
+    "climbers": [
+      {
+        "id": 2,
+        "firstName": "Sam",
+        "lastName": "Boulder",
+        "email": "me@me.com",
+        "userName": "sam",
+        "onSightGradeSport": "11a",
+        "topGradeSport": "11c",
+        "onSightBoulder": "V5",
+        "topGradeBoulder": "V5"
+      }
+    ],
+    "climberGear": [
+      {
+        "id": 1,
+        "climberId": 1,
+        "gearId": 1
+      }
+    ],
+    "routes": [
+      {
+        "id": 1,
+        "routeName": "Amarillo  Sunset",
+        "routeGrade": "5.11b",
+        "firstAscensionists": "Kipp Trummel",
+        "length": 50,
+        "type": "sport",
+        "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_350/v1626295008/Arete/Routes/amarillo_sunset_diyacd.jpg",
+        "description": "Amazing line. One of the best 11's in the Red. Pull through unique moves on large holds on an exposed striking wall.",
+        "cragId": 1,
+        "wallId": 1,
+        "areaId": 1,
+        "cityId": 1,
+        "stateId": 18,
+        "countyId": 1,
+        "countryId": 1
+      }
+    ],
+    "gears": [
+      {
+        "id": 1,
+        "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_200/v1626295486/Arete/Gear/quickdraw_eejn2g.png",
+        "name": "Quickdraw",
+        "description": "With a new snag-free HotForge keylock carabiner on top and our redesigned lightweight, easy-clipping classic HotWire carabiner on bottom                that’s colored for a visual climbing target, the Black Diamond HotForge Hybrid Draw combines smooth clipability with wiregate functionality. The 18 mm              Polyester Dogbone is not only durable and easy to grab, but it features our Straitjacket insert to keep the bottom carabiner in the optimal clipping                position.",
+        "price": 15.95
+      }
+    ],
+    "crags": [
+      {
+        "id": 1,
+        "name": "Red River Gorge",
+        "stateId": 18,
+        "city": "Slade",
+        "county": "Wolfe",
+        "country": "USA",
+        "zipCode": 40376
+      }
+    ],
+    "areas": [
+      {
+        "id": 2,
+        "name": "Muir Valley",
+        "cragId": 1
+      }
+    ],
+    "routeComments": [
+      {
+        "id": 1,
+        "climberId": 1,
+        "routeId": 1,
+        "comment": "This route is dope!",
+        "dateAdded": 1627061963003
+      }
+    ],
+    "routeRating": [
+      {
+        "id": 1,
+        "climberId": 1,
+        "routeId": 1,
+        "comment": "This route is dope!",
+        "dateAdded": 1627061963003
+      }
+    ],
+    "states": [
+      {
+        "State": "Alabama",
+        "Abbrev": "Ala.",
+        "Code": "AL",
+        "id": 1
+      }
+    ],
+    "wallgrades": [
+      {
+        "id": 1,
+        "grade": "5.4"
+      }
+    ],
+    "boulderGrades": [
+      {
+        "id": 1,
+        "grade": "V0"
+      }
+    ],
+    "friends": [
+      {
+        "climberId": 2,
+        "userId": 4,
+        "id": 1
+      }
+    ],
+    "ticks": [
+      {
+        "climberId": 5,
+        "routeId": 2,
+        "dateCompleted": 1627329225114,
+        "id": 1
+      }
+    ],
+    "toDoList": [
+      {
+        "climberId": 5,
+        "routeId": 2,
+        "id": 1
+      }
+    ],
+    "routeGear": [
+      {
+        "id": 1,
+        "routeId": 1,
+        "dateAdded": 1627061961003,
+        "gearId": 1
+      }
+    ],
+    "routePics": [
+      {
+        "picURL": "https://res.cloudinary.com/ddaeunjfu/image/upload/v1628530313/arete-app/lbmdnsqc7ltp7hfeiwpw.jpg",
+        "climberId": 2,
+        "routeId": 1,
+        "dateAdded": 1628530314316,
+        "id": 1
+      },
+      {
+        "picURL": "https://res.cloudinary.com/ddaeunjfu/image/upload/v1634220168/arete-app/jcuzxdayqi1sjwgmluvx.png",
+        "climberId": null,
+        "routeId": 0,
+        "dateAdded": 1634220169499,
+        "id": 2
+      }
+    ],
+    "adminTasks": [
+      {
+        "id": 1,
+        "dateSubmitted": 1628258115262,
+        "climberId": 1,
+        "isApproved": true,
+        "isDenied": false,
+        "taskCode": 101,
+        "taskObj": {
+          "routeName": "Tequlia Sunrise",
+          "firstAscensionists": "S Ayala 2013",
+          "description": "This is the bolted line on the left of this face, though due to some developer controversy, do not be surprised if no such line exists. The          bolts have disappeared and reappeared a time or two.",
+          "length": "65",
+          "type": "sport",
+          "wallGradeId": 14,
+          "cragId": 1,
+          "wallId": 1,
+          "areaId": 7,
+          "id": 4,
+          "drawsNeeded": 9
+        }
+      }
+    ]
+  }
