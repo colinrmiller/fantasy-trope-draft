@@ -1,175 +1,164 @@
 {
-    "climbers": [
-      {
-        "id": 2,
-        "firstName": "Sam",
-        "lastName": "Boulder",
-        "email": "me@me.com",
-        "userName": "sam",
-        "onSightGradeSport": "11a",
-        "topGradeSport": "11c",
-        "onSightBoulder": "V5",
-        "topGradeBoulder": "V5"
-      }
-    ],
-    "climberGear": [
-      {
-        "id": 1,
-        "climberId": 1,
-        "gearId": 1
-      }
-    ],
-    "routes": [
-      {
-        "id": 1,
-        "routeName": "Amarillo  Sunset",
-        "routeGrade": "5.11b",
-        "firstAscensionists": "Kipp Trummel",
-        "length": 50,
-        "type": "sport",
-        "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_350/v1626295008/Arete/Routes/amarillo_sunset_diyacd.jpg",
-        "description": "Amazing line. One of the best 11's in the Red. Pull through unique moves on large holds on an exposed striking wall.",
-        "cragId": 1,
-        "wallId": 1,
-        "areaId": 1,
-        "cityId": 1,
-        "stateId": 18,
-        "countyId": 1,
-        "countryId": 1
-      }
-    ],
-    "gears": [
-      {
-        "id": 1,
-        "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_200/v1626295486/Arete/Gear/quickdraw_eejn2g.png",
-        "name": "Quickdraw",
-        "description": "With a new snag-free HotForge keylock carabiner on top and our redesigned lightweight, easy-clipping classic HotWire carabiner on bottom                that’s colored for a visual climbing target, the Black Diamond HotForge Hybrid Draw combines smooth clipability with wiregate functionality. The 18 mm              Polyester Dogbone is not only durable and easy to grab, but it features our Straitjacket insert to keep the bottom carabiner in the optimal clipping                position.",
-        "price": 15.95
-      }
-    ],
-    "crags": [
-      {
-        "id": 1,
-        "name": "Red River Gorge",
-        "stateId": 18,
-        "city": "Slade",
-        "county": "Wolfe",
-        "country": "USA",
-        "zipCode": 40376
-      }
-    ],
-    "areas": [
-      {
-        "id": 2,
-        "name": "Muir Valley",
-        "cragId": 1
-      }
-    ],
-    "routeComments": [
-      {
-        "id": 1,
-        "climberId": 1,
-        "routeId": 1,
-        "comment": "This route is dope!",
-        "dateAdded": 1627061963003
-      }
-    ],
-    "routeRating": [
-      {
-        "id": 1,
-        "climberId": 1,
-        "routeId": 1,
-        "comment": "This route is dope!",
-        "dateAdded": 1627061963003
-      }
-    ],
-    "states": [
-      {
-        "State": "Alabama",
-        "Abbrev": "Ala.",
-        "Code": "AL",
-        "id": 1
-      }
-    ],
-    "wallgrades": [
-      {
-        "id": 1,
-        "grade": "5.4"
-      }
-    ],
-    "boulderGrades": [
-      {
-        "id": 1,
-        "grade": "V0"
-      }
-    ],
-    "friends": [
-      {
-        "climberId": 2,
-        "userId": 4,
-        "id": 1
-      }
-    ],
-    "ticks": [
-      {
-        "climberId": 5,
-        "routeId": 2,
-        "dateCompleted": 1627329225114,
-        "id": 1
-      }
-    ],
-    "toDoList": [
-      {
-        "climberId": 5,
-        "routeId": 2,
-        "id": 1
-      }
-    ],
-    "routeGear": [
-      {
-        "id": 1,
-        "routeId": 1,
-        "dateAdded": 1627061961003,
-        "gearId": 1
-      }
-    ],
-    "routePics": [
-      {
-        "picURL": "https://res.cloudinary.com/ddaeunjfu/image/upload/v1628530313/arete-app/lbmdnsqc7ltp7hfeiwpw.jpg",
-        "climberId": 2,
-        "routeId": 1,
-        "dateAdded": 1628530314316,
-        "id": 1
-      },
-      {
-        "picURL": "https://res.cloudinary.com/ddaeunjfu/image/upload/v1634220168/arete-app/jcuzxdayqi1sjwgmluvx.png",
-        "climberId": null,
-        "routeId": 0,
-        "dateAdded": 1634220169499,
-        "id": 2
-      }
-    ],
-    "adminTasks": [
-      {
-        "id": 1,
-        "dateSubmitted": 1628258115262,
-        "climberId": 1,
-        "isApproved": true,
-        "isDenied": false,
-        "taskCode": 101,
-        "taskObj": {
-          "routeName": "Tequlia Sunrise",
-          "firstAscensionists": "S Ayala 2013",
-          "description": "This is the bolted line on the left of this face, though due to some developer controversy, do not be surprised if no such line exists. The          bolts have disappeared and reappeared a time or two.",
-          "length": "65",
-          "type": "sport",
-          "wallGradeId": 14,
-          "cragId": 1,
-          "wallId": 1,
-          "areaId": 7,
-          "id": 4,
-          "drawsNeeded": 9
-        }
-      }
-    ]
-  }
+  "users": [{
+      "id": 1,
+      "firstName": "Colin",
+      "lastName": "Miller",
+      "email": "me@me.com",
+      "userName": "colinrmiller"
+    }, {
+      "id": 2,
+      "firstName": "Nathan",
+      "lastName": "Mcormick",
+      "email": "him@him.com",
+      "userName": "nathan"
+    },
+    {
+      "id": 3,
+      "first_name": "Nicol",
+      "last_name": "Adamsson",
+      "email": "nadamsson2@netvibes.com",
+      "userName": "nadamsson2"
+    },
+    {
+      "id": 4,
+      "first_name": "Florie",
+      "last_name": "Vile",
+      "email": "fvile3@mail.ru",
+      "userName": "fvile3"
+    },
+    {
+      "id": 5,
+      "first_name": "Mendie",
+      "last_name": "Hovey",
+      "email": "mhovey4@usnews.com",
+      "userName": "mhovey4"
+    },
+    {
+      "id": 6,
+      "first_name": "Keith",
+      "last_name": "Gerardin",
+      "email": "kgerardin5@bizjournals.com",
+      "userName": "kgerardin5"
+    }
+  ],
+  "userMovies": [{
+    "id": 1,
+    "movieId": 1,
+    "userId": 1
+  }],
+  "movies": [{
+    "id": 1,
+    "name": "Hellraiser",
+    "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_350/v1626295008/Arete/Routes/amarillo_sunset_diyacd.jpg"
+  }, {
+    "id": 2,
+    "name": "Hellraiser IV: Bloodline",
+    "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_350/v1626295008/Arete/Routes/amarillo_sunset_diyacd.jpg"
+  }, {
+    "id": 1,
+    "name": "Hellraiser III: Hell Comes To Earth",
+    "image": "https://res.cloudinary.com/ddaeunjfu/image/upload/c_scale,w_350/v1626295008/Arete/Routes/amarillo_sunset_diyacd.jpg"
+  }],
+  "usersMovieTags": [{
+    "id": 1,
+    "movieId": 1,
+    "userId": 1,
+    "tagId": 1,
+    "isStarred": -1
+  }],
+  "tags": [{
+      "id": 1,
+      "name": "GOAT",
+      "type": "rating"
+    },
+    {
+      "id": 2,
+      "name": "Coming Of Age",
+      "type": "genre"
+    },
+    {
+      "id": 3,
+      "name": "Zombie",
+      "type": "genre"
+    },
+    {
+      "id": 4,
+      "name": "Techno Horror",
+      "type": "genre"
+    },
+
+    {
+      "id": 6,
+      "name": "Catholic Horror",
+      "type": "genre"
+    },
+    {
+      "id": 7,
+      "name": "Posession",
+      "type": "genre"
+    },
+    {
+      "id": 8,
+      "name": "Giallo Horror",
+      "type": "genre"
+    },
+    {
+      "id": 9,
+      "name": "Catholic Horror",
+      "type": "genre"
+    },
+
+    {
+      "id": 11,
+      "name": "Sequel",
+      "type": "kind"
+    },
+    {
+      "id": 12,
+      "name": "So Bad, So Good",
+      "type": "rating"
+    }, {
+      "id": 5,
+      "name": "Last Girl",
+      "type": "trope"
+
+    },
+    {
+      "id": 10,
+      "name": "Dream Within a Dream",
+      "type": "trope"
+
+    },
+    {
+      "id": 100,
+      "name": "Campbell's Hero Myth",
+      "type": "trope"
+    }
+  ],
+  "friends": [{
+    "friendId": 2,
+    "userId": 1,
+    "id": 1
+  }],
+  "adminTasks": [{
+    "id": 1,
+    "dateSubmitted": 1628258115262,
+    "climberId": 1,
+    "isApproved": true,
+    "isDenied": false,
+    "taskCode": 101,
+    "taskObj": {
+      "routeName": "Tequlia Sunrise",
+      "firstAscensionists": "S Ayala 2013",
+      "description": "This is the bolted line on the left of this face, though due to some developer controversy, do not be surprised if no such line exists. The          bolts have disappeared and reappeared a time or two.",
+      "length": "65",
+      "type": "sport",
+      "wallGradeId": 14,
+      "cragId": 1,
+      "wallId": 1,
+      "areaId": 7,
+      "id": 4,
+      "drawsNeeded": 9
+    }
+  }]
+}
