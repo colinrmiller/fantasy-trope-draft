@@ -1,3 +1,6 @@
+@import url(//db.onlinewebfonts.com/c/02fb003368979ba04752e4f3b4c4cebd?family=Graphik+Web+Semibold);
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +13,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html
+
+#root {
+  background: #1c2229;
+  height: 100%;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+
+
+  color: #99aabb;
+  font-family: Graphik-Semibold-Web,sans-serif;
+  font-weight: 400;
+
+  text-decoration: none; /* no underline */
+
+}
+
+.pageContainer {
+  color: #99aabb;
+  background: #1c2229;
+  height: 1024px;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #99aabb;
 }
