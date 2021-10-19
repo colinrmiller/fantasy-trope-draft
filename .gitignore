@@ -28,3 +28,5 @@ yarn-error.log*
 
 # /src/modules/keys
 src/modules/keys.js
+
+.babelrc

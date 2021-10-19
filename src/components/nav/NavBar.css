@@ -1,0 +1,42 @@
+.navbar {
+    color: #99aabb;
+    display: flex;
+    background-color: black;
+    border-bottom: 1px solid grey;
+    
+
+    
+}
+.nav-pills {
+    display: flex;
+    width: 100%;
+}
+
+.nav-item {
+    margin: auto;
+    list-style-type: none;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+
+}
+
+.nav__logo {
+    width: 200px;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav__logo--logo {
+    position: relative;
+    top: 2px;
+    bottom: 0;
+    left: 40px;
+    font-size: 41px;
+}
+
+.logo-dark {
+    color: #203c64
+}

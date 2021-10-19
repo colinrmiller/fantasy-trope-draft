@@ -1,0 +1,67 @@
+
+.filmCard {
+    width: 98px;
+    /* height: 183px; */
+    border-radius: 5px;
+    /* background-color: blanchedalmond; */
+    /* padding: 20px; */
+    color: white;
+    font-size: 22px;
+    /* border: 1px solid white; */
+    flex: 1 1;
+    -webkit-flex: 1;
+    text-align: center;
+    min-width: 117px;
+    margin-inline: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.filmCard__img { 
+border-radius: 5px;
+    width: 100%;
+}
+
+.filmCard__interaction {
+    /* display: none; */
+    top: -55px;
+    position: relative;
+    background: rgba(200, 200, 200, 1);
+    height: 50px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: -49px;
+
+}
+
+.filmCard__interaction:hover {
+    display: block ;
+    cursor: pointer;
+
+}
+
+.filmCard__addFilm, .filmCard__deleteFilm {
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 11px;
+
+}
+
+.filmCard__addFilm > svg, .filmCard__deleteFilm > svg {
+    margin: auto;
+    margin-left: 0;
+
+}
+.filmCard__addFilm > p, .filmCard__deleteFilm > p  {
+    margin: auto;
+    font-size: 17px;
+    margin-right: 0;
+
+}
+
+
+.cardIcon--add {
+    font-size: 20px;
+}

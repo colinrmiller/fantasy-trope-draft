@@ -5,19 +5,19 @@ import { useEffect } from "react";
 
 // extra
 import { APIManager } from "../../modules/APIManager";
-export const Login = () => {
+export const LoginBypass = () => {
     const [loginUser, setLoginUser] = useState({ email: "" });
     const [existDialog, setExistDialog] = useState(false);
 
     const history = useHistory();
 
-    // TEST
-    const [movie, setMovie] = useState({});
-    const API = new APIManager();
-    useEffect(() => {
-        API.getMovie(551).then((movie) => setMovie(movie));
-    });
-    // END
+    // // TEST
+    // const [movie, setMovie] = useState({});
+    // const API = new APIManager();
+    // useEffect(() => {
+    //     API.getMovie(551).then((movie) => setMovie(movie));
+    // });
+    // // END
 
     const handleInputChange = (event) => {
         const newUser = { ...loginUser };
@@ -32,20 +32,18 @@ export const Login = () => {
             .then((user) => (user.length ? user[0] : false));
     };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-
+    const handleLogin = () => {
         existingUserCheck().then((exists) => {
-            if (exists) {
-                // The user id is saved under the key active_user in session Storage. Change below if needed!
-                sessionStorage.setItem("active_user", exists.id);
-                history.push("/");
-            } else {
-                setExistDialog(true);
-            }
+            // if (exists) {
+            // The user id is saved under the key active_user in session Storage. Change below if needed!
+            sessionStorage.setItem("active_user", 1);
+            history.push("/");
+            // } else {
+            //     setExistDialog(true);
+            // }
         });
     };
-
+    handleLogin();
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" open={existDialog}>
@@ -81,18 +79,6 @@ export const Login = () => {
             </section>
             <section className="link--register">
                 <Link to="/register">Register for an account</Link>
-            </section>
-            <section className="example_display">
-                <h2> Example API Call</h2>
-                <h3>{movie?.title}</h3>
-                <img
-                    src={
-                        "https://image.tmdb.org/t/p/original" +
-                        movie?.poster_path
-                    }
-                    style={{ height: "250px" }}
-                />
-                <p>{movie?.overview}</p>
             </section>
         </main>
     );

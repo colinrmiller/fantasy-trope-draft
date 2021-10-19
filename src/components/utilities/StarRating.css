@@ -1,0 +1,18 @@
+.starRating {
+    margin:auto;
+}
+
+.starRating__button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .starRating__button--on {
+    color: #d3bd25;
+  }
+  .starRating__button--off {
+    color: #ccc;
+  }
+  

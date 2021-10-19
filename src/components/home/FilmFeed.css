@@ -1,0 +1,36 @@
+.FilmFeed {
+    min-height: 268px;
+    margin-bottom: 61px;
+    width: 95%;
+
+}
+
+.FilmFeed__header {
+    text-transform: uppercase;
+    margin-left: 90px;
+    margin-bottom: 2px;
+
+
+}
+.FilmFeed__feed {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row;
+    /* height: 100%; */
+    position: absolute;
+    max-width: 100%;
+    overflow-x: scroll;
+    padding-block: 16px;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+    padding-inline: 30px;
+
+}
+
+.FilmFeed__feed::-webkit-scrollbar {
+    display: none;
+}
+
