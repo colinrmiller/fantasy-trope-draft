@@ -1,0 +1,63 @@
+.tagCard{
+    height: 25px;
+    background: red;
+    margin: auto;
+    padding-inline: 5px;
+    border-radius: 3px;
+    margin-inline: 5px;
+    color: black;
+    white-space: nowrap;
+    margin-block: 4px;
+    text-align: center;
+    min-width: 40px;
+}
+
+.tagCard__dropdown {
+    position: relative;
+    height: 25px;
+    /* z-index: 2; */
+    background-color: whitesmoke;
+    display: flex;
+
+}
+
+.tagCard__rating {
+    background: red;
+
+
+}
+.tagCard__genre {
+    background: rgb(0, 89, 255);
+
+
+}
+.tagCard__kind {
+    background: rgb(21, 182, 0);
+
+
+}
+.tagCard__trope {
+    background: rgb(177, 64, 158);
+
+
+}
+
+.tagCard__text {
+    z-index: 1;
+}
+
+.tagCard__plus {
+    margin: auto;
+    width: 50%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+.tagCard__minus {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.vote--active {
+    background-color: green;
+}

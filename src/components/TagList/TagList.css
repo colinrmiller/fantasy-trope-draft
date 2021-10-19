@@ -1,0 +1,25 @@
+.newTagInput__form {
+    display: flex;
+}
+
+
+#new-tag-input {    
+    width: 90px;
+}
+
+.newTagInput__submit {
+    margin: 0;
+    padding: 0;
+    height: 28px;
+
+}
+
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newTagInput__container {
+    margin: auto;
+    margin-left: 0;
+}

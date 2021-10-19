@@ -11,6 +11,14 @@ export const FilmCardLarge = ({ film }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new APIManager();
     const [inList, setInList] = useState(false);
+
+    useEffect(() => {
+        API.getUserFilm(currentUser, film.id).then((res) => {
+            if (res?.length > 0) setInList(true);
+            else setInList(false);
+        });
+    }, [film]);
+
     return (
         <div className="filmCardLarge">
             <Link to={"/film-details/" + film.id}>

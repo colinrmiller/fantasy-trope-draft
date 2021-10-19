@@ -6,6 +6,7 @@ import "./FilmDetails.css";
 import AddIcon from "@mui/icons-material/Add";
 import { StarRating } from "../utilities/StarRating";
 import { FilmCardLarge } from "../cards/FilmCardLarge";
+import { TagList } from "../TagList/TagList";
 
 export const FilmDetails = () => {
     const [film, setFilm] = useState({});
@@ -60,6 +61,9 @@ export const FilmDetails = () => {
                             {film?.overview}
                         </div>
                         <div className="content__cast"></div>
+                        <div className="content__tags">
+                            <TagList filmId={film?.id} />
+                        </div>
                     </div>
                 </div>
             </div>

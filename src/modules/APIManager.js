@@ -187,30 +187,91 @@ export class APIManager {
         ).then((res) => res.json());
     };
 
-    // /(arrayOfFilmIds) -> (arrayOfFilmObjs)
-    // fetchAllFilms = async (filmIds) => {
-    //     ;
-    //     const promiseArray = filmIds.reduce((promiseArray, filmId) => {
-    //         return promiseArray.push(this.getFilm(res));
-    //     }, []);
-    //     ;
-    //     const res = await Promise.all(promiseArray);
-    //     // const jsons = await Promise.all(res.map((r) => r.json()));
-    //     return res;
-    // };
+    getUsersFilmTags = (filmId, tagId) => {
+        return fetch(
+            `${remoteURL}/usersFilmsTags/?filmId=${filmId}&tagId=${tagId}`
+        ).then((res) => res.json());
+    };
 
-    // fetchAllFilms = async (filmIds) => {
-    //     const res = await Promise.all(
-    //         filmIds.slice(0, 1).map((filmId) => this.getFilm(filmId))
-    //     );
-    //     // const jsons = await Promise.all(res.map((r) => r.json()));
-    //     return res;
-    // };
+    getUsersFilmTagList = (filmId) => {
+        return fetch(
+            `${remoteURL}/usersFilmsTags/?filmId=${filmId}&_expand=tag`
+        ).then((res) => res.json());
+    };
 
-    //   filmIds = [
-    //     'https://yesno.wtf/api',
-    //     'https://yesno.wtf/api',
-    //     'https://yesno.wtf/api'
-    //   ]
-    //   fetchAll(filmIds)
+    getUserFilmTag = (tagId, filmId) => {
+        const currentUser = parseInt(sessionStorage.getItem("active_user"));
+        return fetch(
+            `${remoteURL}/usersFilmsTags/?tagId=${tagId}&filmId=${filmId}&userId=${currentUser}`
+        ).then((res) => res.json());
+    };
+
+    addTag = (tag) => {
+        return fetch(`${remoteURL}/tags/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(tag),
+        }).then((response) => response.json());
+    };
+
+    addFilmTag = (filmTag) => {
+        return fetch(`${remoteURL}/filmsTags/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(filmTag),
+        }).then((response) => response.json());
+    };
+
+    getFilmTag = (filmTagId) => {
+        return fetch(`${remoteURL}/filmsTags/${filmTagId}`).then((res) =>
+            res.json()
+        );
+    };
+
+    updateFilmTag = (filmTag) => {
+        return fetch(`${remoteURL}/filmsTags/${filmTag.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(filmTag),
+        }).then((response) => response.json());
+    };
+
+    updateUserTag = (userTag) => {
+        return fetch(`${remoteURL}/usersFilmsTags/${userTag.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userTag),
+        }).then((response) => response.json());
+    };
+
+    deleteUserTag = (userTag) => {
+        return fetch(`${remoteURL}/usersFilmsTags/${userTag.id}`, {
+            method: "DELETE",
+        }).then((response) => response.json());
+    };
+
+    addUserTag = (userTag) => {
+        return fetch(`${remoteURL}/usersFilmsTags/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userTag),
+        }).then((response) => response.json());
+    };
+
+    searchTag = (tag) => {
+        return fetch(
+            `${remoteURL}/tags/?name=${tag?.name}&type${tag?.type}`,
+            {}
+        ).then((response) => response.json());
+    };
 }

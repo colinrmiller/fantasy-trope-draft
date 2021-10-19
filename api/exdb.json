@@ -7038,7 +7038,7 @@
       "movieId": 1,
       "userId": 1,
       "tagId": 1,
-      "isStarred": -1
+      "rating": -1
     }
   ],
   "tags": [

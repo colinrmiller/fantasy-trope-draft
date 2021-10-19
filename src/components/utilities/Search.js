@@ -14,7 +14,6 @@ export const Search = () => {
 
     useEffect(() => {
         API.getFilmSearch(searchQuery).then((res) => {
-            debugger;
             if (res?.results) setSearchResults(res.results);
             else setSearchResults([]);
         });
