@@ -1,0 +1,43 @@
+.commentCard {
+    display: flex;
+    flex-direction: column;
+    width: 72%;
+
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 8px
+}
+
+
+.commentCard__header {
+    display: flex;
+    justify-content: space-between;
+}
+.commentCard__user {
+    margin-right: 10px;
+    /* text-transform: uppercase; */
+}
+
+.commentCard__text {
+    padding-inline: 30px;
+    margin-bottom: 15px;
+}
+
+.commentCard__interaction {
+    display: flex;
+    justify-content: end;
+    margin-inline-end: 20px;
+}
+
+.commentCard__button {
+    background-color: #c8c8c8;
+    color: black;
+    border-radius: 3px;
+    height: 20px;
+    /* width: 60px; */
+    margin-inline: 5px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    text-align: center;
+}

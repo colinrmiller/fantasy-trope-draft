@@ -1,8 +1,8 @@
 .tagCard{
-    height: 25px;
+    height: 40px;
     background: red;
     margin: auto;
-    padding-inline: 5px;
+    padding-inline: 9px;
     border-radius: 3px;
     margin-inline: 5px;
     color: black;
@@ -14,7 +14,7 @@
 
 .tagCard__dropdown {
     position: relative;
-    height: 25px;
+    height: 40px;
     /* z-index: 2; */
     background-color: whitesmoke;
     display: flex;
@@ -44,6 +44,7 @@
 
 .tagCard__text {
     z-index: 1;
+    margin-block: 8px;
 }
 
 .tagCard__plus {

@@ -2,11 +2,12 @@ import React from "react";
 import { NewTagInput } from "./NewTagInput";
 import "./TagList.css";
 import { useState, useEffect } from "react";
-import { APIManager } from "../../modules/APIManager";
+// import { APIManager } from "../../modules/APIManager";
+import { TagAPIManager } from "../../modules/TagAPIManager";
 import { TagCard } from "../cards/TagCard";
 
 export const TagList = ({ filmId }) => {
-    const API = new APIManager();
+    const API = new TagAPIManager();
     const [tagList, setTagList] = useState([]); // all filmId tags, _expand=tag
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
 
@@ -62,25 +63,27 @@ export const TagList = ({ filmId }) => {
         };
         if (input.length > 0) {
             // test for an already existing tag
-            API.searchTag(tag).then((res) => {
-                if (res?.length > 0) {
+            API.searchTag(tag).then((searchResult) => {
+                if (searchResult?.length > 0) {
                     // if the tag already exists POST userTag
                     const userTag = {
-                        tagId: res[0].id,
-                        filmId: filmId,
                         userId: currentUser,
+                        filmId: filmId,
+                        tagId: searchResult[0].id,
                         rating: 1,
+                        dateTime: Date.now(),
                     };
 
                     API.addUserTag(userTag).then(getTagList);
                 } else {
                     // if a new tag POST tag, then POST userTag
-                    API.addTag(tag).then((res) => {
+                    API.addNewTag(tag).then((res) => {
                         const userTag = {
                             userId: currentUser,
                             filmId: filmId,
                             tagId: res.id,
                             rating: 1,
+                            dateTime: Date.now(),
                         };
                         API.addUserTag(userTag).then(getTagList);
                     });
@@ -94,7 +97,6 @@ export const TagList = ({ filmId }) => {
         // if no previous rating create a new UserFilmRating
         // if previous, modify it with new rating
         return API.getUserFilmTag(tagId, filmId).then((userTag) => {
-            debugger;
             if (userTag?.length > 0) {
                 const updatedTag = { ...userTag[0] };
                 switch (rating) {
@@ -133,16 +135,8 @@ export const TagList = ({ filmId }) => {
                     <TagCard
                         key={tag.id}
                         tag={tag}
-                        // updateTag={updateTag}
-                        // handlePlus={(tagId) => {
-                        //     handleUserRating(tagId, "plus");
-                        //     // updateTag(tagId, "plus");
-                        // }}
-                        // handleMinus={(tagId) => {
-                        //     handleUserRating(tagId, "minus");
-                        // }}
-                        handleRating={handleUserRating}
                         filmId={filmId}
+                        handleRating={handleUserRating}
                     />
                 );
             })}

@@ -1,0 +1,45 @@
+.commentFeed__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.commentFeed__header > h2{
+    margin-left: 100px;
+    margin-top: 3px;
+    position: relative;
+    top: 5px;
+}
+
+.commentFeed__newComment {
+    margin-right: 100px;
+    display: flex;
+    align-content: flex-end;
+    margin: auto;
+    margin-right: 250px;
+    background-color: green;
+    padding-inline: 8px;
+    border-radius: 3px;
+    color: white;
+
+}
+
+.newComment__text {
+    margin: auto;
+    margin-right: 4px;
+
+
+}
+
+ .newComment__icon {
+    margin: auto;
+    margin-top: 6px;
+}
+
+
+.commentFeed__CommentForm {
+    margin: auto;
+    /* text-align: center; */
+    margin-left: 175px;
+
+}

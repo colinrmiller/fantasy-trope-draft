@@ -57,10 +57,10 @@ a {
 .pageContainer {
   color: #99aabb;
   background: #1c2229;
-  height: 1024px;
 }
 
 hr {
   border: none;
   border-bottom: 1px solid #99aabb;
+  margin-top: 8px;
 }

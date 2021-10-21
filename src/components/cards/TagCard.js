@@ -1,51 +1,45 @@
 import React from "react";
 import "./TagCard.css";
 import { useState, useEffect } from "react";
-import { APIManager } from "../../modules/APIManager";
+// import { APIManager } from "../../modules/APIManager";
+import { TagAPIManager } from "../../modules/TagAPIManager";
 
-export const TagCard = ({
-    tag,
-    handlePlus,
-    handleMinus,
-    filmId,
-    handleRating,
-}) => {
-    const API = new APIManager();
+export const TagCard = ({ tag, filmId, handleRating }) => {
+    const API = new TagAPIManager();
     const [hover, setHover] = useState(false);
-    const [userVote, setUserVote] = useState("");
+    const [userRating, setUserRating] = useState("");
     const [upVoteCount, setUpvoteCount] = useState(tag.plusRatings);
     const [downVoteCount, setDownvoteCount] = useState(tag.minusRatings);
 
-    const getVote = () => {
+    const getUserRating = () => {
         // determine if the currentUser has +/- review on the tag
         API.getUserFilmTag(tag.id, filmId).then((res) => {
-            debugger;
             if (res) {
                 if (res.length > 0) {
-                    if (res[0].rating === 1) setUserVote("plus");
-                    else if (res[0].rating === -1) setUserVote("minus");
+                    if (res[0].rating === 1) setUserRating("plus");
+                    else if (res[0].rating === -1) setUserRating("minus");
                 }
             }
         });
     };
 
     const handlePlusRating = () => {
-        switch (userVote) {
+        switch (userRating) {
             case "plus":
                 setUpvoteCount(upVoteCount - 1);
-                setUserVote("");
+                setUserRating("");
                 handleRating(tag.id, "");
                 break;
             case "":
                 setUpvoteCount(upVoteCount + 1);
-                setUserVote("plus");
+                setUserRating("plus");
                 handleRating(tag.id, "plus");
 
                 break;
             case "minus":
                 setUpvoteCount(upVoteCount + 1);
                 setDownvoteCount(downVoteCount - 1);
-                setUserVote("plus");
+                setUserRating("plus");
                 handleRating(tag.id, "plus");
                 break;
             default:
@@ -53,21 +47,21 @@ export const TagCard = ({
     };
 
     const handleMinusRating = () => {
-        switch (userVote) {
+        switch (userRating) {
             case "plus":
                 setUpvoteCount(upVoteCount - 1);
                 setDownvoteCount(downVoteCount + 1);
-                setUserVote("minus");
+                setUserRating("minus");
                 handleRating(tag.id, "minus");
                 break;
             case "":
                 setDownvoteCount(downVoteCount + 1);
-                setUserVote("minus");
+                setUserRating("minus");
                 handleRating(tag.id, "minus");
                 break;
             case "minus":
                 setDownvoteCount(downVoteCount - 1);
-                setUserVote("");
+                setUserRating("");
                 handleRating(tag.id, "minus");
                 break;
             default:
@@ -75,7 +69,7 @@ export const TagCard = ({
     };
 
     useEffect(() => {
-        getVote();
+        getUserRating();
     }, []);
 
     return !hover ? (
@@ -96,7 +90,7 @@ export const TagCard = ({
             <div className="tagCard__dropdown">
                 <div
                     className={
-                        userVote === "minus"
+                        userRating === "minus"
                             ? "tagCard__minus vote--active"
                             : "tagCard__minus"
                     }
@@ -106,7 +100,7 @@ export const TagCard = ({
                 </div>
                 <div
                     className={
-                        userVote === "plus"
+                        userRating === "plus"
                             ? "tagCard__minus vote--active"
                             : "tagCard__minus"
                     }

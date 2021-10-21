@@ -7,6 +7,11 @@ import AddIcon from "@mui/icons-material/Add";
 import { StarRating } from "../utilities/StarRating";
 import { FilmCardLarge } from "../cards/FilmCardLarge";
 import { TagList } from "../TagList/TagList";
+import { CommentFeed } from "../comments/CommentFeed";
+import { CommentCard } from "../cards/CommentCard";
+import { FilmFeed } from "../home/FilmFeed";
+import { FBLogin } from "../utilities/FBLogin";
+// import { GithubLogin } from "../auth/GithubLogin";
 
 export const FilmDetails = () => {
     const [film, setFilm] = useState({});
@@ -21,6 +26,7 @@ export const FilmDetails = () => {
             } else return dateString;
         } else return dateString;
     };
+
     useEffect(() => {
         API.getFilm(filmId).then((res) => setFilm(res));
     }, []);
@@ -30,8 +36,27 @@ export const FilmDetails = () => {
         setFilmPoster(basePath + film?.poster_path);
     }, [film]);
 
+    // State Handeling for Video-Embed
+    const [videoId, setVideoId] = useState("");
+    const getVideo = () => {
+        API.getVideo(filmId).then((res) => setVideoId(res));
+    };
+    useEffect(() => {
+        getVideo();
+    }, [film]);
+
+    // State Handeling for Film Recomendations
+    const [similarFilmList, setSimilarFilmList] = useState([]);
+    const getSimilar = () => {
+        API.getSimilar(filmId).then((res) => setSimilarFilmList(res));
+    };
+    useEffect(() => {
+        getSimilar();
+    }, [film]);
+
     return (
         <div className="filmDetails">
+            {/* <GithubLogin /> */}
             <div className="filmDetails__head">
                 <div className="filmDetails__head--img">
                     <div className="img-container">
@@ -42,7 +67,8 @@ export const FilmDetails = () => {
                         /> */}
                         <FilmCardLarge film={film} />
 
-                        <StarRating />
+                        <StarRating handleRating={() => {}} />
+
                         {/* <div className="img__addButton">
                             <p className="addButton__container">Add Film</p>
                             <AddIcon />
@@ -57,6 +83,10 @@ export const FilmDetails = () => {
                         </div>
                     </div>
                     <div className="content__body">
+                        <p className="filmDetails__tagline">
+                            <strong>{film.tagline}</strong>
+                        </p>
+
                         <div className="content__synopsis">
                             {film?.overview}
                         </div>
@@ -66,6 +96,31 @@ export const FilmDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            {videoId !== "" && videoId ? (
+                <>
+                    <hr />
+                    <div className="filmDetails__video">
+                        <iframe
+                            width="400"
+                            height="225"
+                            src={"https://www.youtube.com/embed/" + videoId}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <hr />
+                </>
+            ) : null}
+
+            <div className="filmDetails__similar">
+                <FilmFeed filmList={similarFilmList} header="more like this" />
+            </div>
+
+            <div className="filmDetails__CommentFeed">
+                <CommentFeed filmId={filmId} />
             </div>
         </div>
     );

@@ -30,3 +30,6 @@ yarn-error.log*
 src/modules/keys.js
 
 .babelrc
+TODO.md
+
+/api/generatedDb.json

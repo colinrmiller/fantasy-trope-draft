@@ -1,0 +1,64 @@
+import React, { useState, useEffect } from "react";
+import { TagAPIManager } from "../../modules/TagAPIManager";
+import { APIManager } from "../../modules/APIManager";
+import { FilmCard } from "./FilmCard";
+import { TagCard } from "../cards/TagCard";
+import "./TagActivityCard.css";
+export const TagActivityCard = ({ userFilmTag }) => {
+    const API = new APIManager();
+    const TagAPI = new TagAPIManager();
+
+    const filmId = userFilmTag.filmId;
+    const userId = userFilmTag.userId;
+    const [tagList, setTagList] = useState([]);
+    const [film, setFilm] = useState({});
+    const [user, setUser] = useState({});
+
+    const getFilm = () => {
+        API.getFilm(filmId).then((res) => {
+            setFilm(res);
+        });
+    };
+    const getUser = () => {
+        API.getUser(userId).then((res) => {
+            setUser(res);
+        });
+    };
+
+    const getUserFilmTagList = () => {
+        TagAPI.getUserFilmTagList(userId, filmId)
+            .then((embeddedTagList) => embeddedTagList.map((tag) => tag.tag))
+            .then((res) => {
+                setTagList(res);
+            });
+    };
+
+    useEffect(() => {
+        getFilm();
+        getUser();
+        getUserFilmTagList();
+    }, []);
+
+    return (
+        <div className="tagActivityCard">
+            <div className="tagActivityCard__header">
+                <h3 className="tagActivity__header--filmTitle">
+                    {film?.title}
+                </h3>
+                <h5 className="tagActivity__header--user">{user?.username}</h5>
+            </div>
+            <div className="tagActivityCard__body">
+                <div className="tagActivityCard__filmCard">
+                    <FilmCard film={film} />
+                </div>
+                <div className="tagActivityCard__info">
+                    <div className="tagActivityCard__tagList">
+                        {tagList.map((tag) => (
+                            <TagCard tag={tag} filmId={filmId} key={tag.id} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};

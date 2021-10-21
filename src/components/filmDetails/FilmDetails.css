@@ -1,5 +1,5 @@
 .filmDetails__head {
-    height: 450px;
+    height: 536px;
 }
 
 
@@ -42,7 +42,7 @@
     position: relative;
     top: 156px;
     max-width: 878px;
-
+    max-height: 374px;
 }
 
 .filmDetails__head--img {
@@ -84,4 +84,13 @@
 .content__synopsis {
     margin-top: 8px;
 
+}
+
+.starRating {
+    font-color: white;
+}
+
+.filmDetails__video {
+    text-align: center;
+    margin-top: 10px;
 }

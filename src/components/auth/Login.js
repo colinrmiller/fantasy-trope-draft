@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./login.css";
 import { useEffect } from "react";
-
+// import FB
 // extra
 import { APIManager } from "../../modules/APIManager";
 export const Login = () => {
@@ -45,6 +45,11 @@ export const Login = () => {
             }
         });
     };
+
+    // FaceBook Integration
+    // FB.getLoginStatus(function (response) {
+    //     statusChangeCallback(response);
+    // });
 
     return (
         <main className="container--login">
