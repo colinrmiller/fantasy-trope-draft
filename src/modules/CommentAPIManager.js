@@ -84,6 +84,61 @@ export class CommentAPIManager {
         );
     };
 
+    addCommentTags = (commentId, tagIdList) => {
+        if (tagIdList.length > 0) {
+            const promiseArray = tagIdList.map((tagId) =>
+                this.addCommentTag(commentId, tagId)
+            );
+            // const promiseArray = tagIdList.reduce((partialArray, filmId) => {
+            //     partialArray = [...partialArray, this.getFilm(filmId)];
+            //     // partialArray.push(this.getFilm(filmId));
+            //     return partialArray;
+            // }, []);
+            const res = Promise.all(promiseArray);
+            return res;
+        }
+    };
+
+    addCommentTag = (commentId, tagId) => {
+        const newCommentTag = {
+            commentId: commentId,
+            tagId: tagId,
+        };
+        return fetch(`${remoteURL}/commentsTags/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newCommentTag),
+        }).then((response) => response.json());
+    };
+
+    getCommentTags = (commentId) => {
+        return fetch(
+            `${remoteURL}/commentsTags/?commentId=${commentId}&_expand=tag`
+        ).then((response) => response.json());
+    };
+
+    // addFilmComment = (filmComment) => {
+    //     return fetch(`${remoteURL}/filmsComments/`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(filmComment),
+    //     }).then((response) => response.json());
+    // };
+
+    getAllFilms = (filmIds) => {
+        if (filmIds.length > 0) {
+            const promiseArray = filmIds.reduce((partialArray, filmId) => {
+                partialArray.push(this.getFilm(filmId));
+                return partialArray;
+            }, []);
+            const res = Promise.all(promiseArray);
+            return res;
+        }
+    };
     // getUsersFilmCommentList = (filmId) => {
     //     return fetch(
     //         `${remoteURL}/usersFilmsComments/?filmId=${filmId}&_expand=comment`

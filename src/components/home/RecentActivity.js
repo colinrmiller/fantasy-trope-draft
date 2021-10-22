@@ -3,6 +3,7 @@ import { TagAPIManager } from "../../modules/TagAPIManager";
 import { filterRecentTags } from "../utilities/filterRecentTags";
 import { useState, useEffect } from "react";
 import { TagActivityCard } from "../cards/TagActivityCard";
+import "./RecentActivity.css";
 
 export const RecentActivity = () => {
     const API = new TagAPIManager();

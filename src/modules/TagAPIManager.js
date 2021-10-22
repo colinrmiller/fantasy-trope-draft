@@ -26,6 +26,12 @@ export class TagAPIManager {
         ).then((res) => res.json());
     };
 
+    getUsersFilmTagTotal = (filmId, tagId) => {
+        return fetch(
+            `${remoteURL}/usersFilmsTags/?tagId=${tagId}&filmId=${filmId}`
+        ).then((res) => res.json());
+    };
+
     getRecentUserFilmTags = () => {
         return fetch(
             `${remoteURL}/usersFilmsTags/?_sort=dateTime&_order_desc`
@@ -104,4 +110,16 @@ export class TagAPIManager {
     getTags = () => {
         return fetch(`${remoteURL}/tags/`).then((res) => res.json());
     };
+
+    gatTagList(tagIdList) {
+        let queryString = "?";
+        tagIdList.forEach((tagId) => {
+            queryString += `id=${tagId}&`;
+        });
+
+        queryString += `_expand=tag`;
+
+        let url = `${remoteURL}/tags/${queryString}`;
+        return fetch(url).then((res) => res.json());
+    }
 }

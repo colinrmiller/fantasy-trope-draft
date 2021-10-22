@@ -1,10 +1,10 @@
 import React from "react";
-import "./FilmCard.css";
 import { Link } from "react-router-dom";
 import { APIManager } from "../../modules/APIManager";
 import { useState, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import "./Cards.css";
 
 export const FilmCard = ({ film }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));

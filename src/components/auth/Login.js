@@ -4,20 +4,13 @@ import "./login.css";
 import { useEffect } from "react";
 // import FB
 // extra
-import { APIManager } from "../../modules/APIManager";
+import { FaceBookLogin } from "./FaceBookLogin";
+
 export const Login = () => {
     const [loginUser, setLoginUser] = useState({ email: "" });
     const [existDialog, setExistDialog] = useState(false);
 
     const history = useHistory();
-
-    // TEST
-    const [movie, setMovie] = useState({});
-    const API = new APIManager();
-    useEffect(() => {
-        API.getMovie(551).then((movie) => setMovie(movie));
-    });
-    // END
 
     const handleInputChange = (event) => {
         const newUser = { ...loginUser };
@@ -32,8 +25,8 @@ export const Login = () => {
             .then((user) => (user.length ? user[0] : false));
     };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+    const handleLogin = (event) => {
+        event.preventDefault();
 
         existingUserCheck().then((exists) => {
             if (exists) {
@@ -82,22 +75,11 @@ export const Login = () => {
                     <fieldset>
                         <button type="login__form--submit">Sign in</button>
                     </fieldset>
+                    <FaceBookLogin />
                 </form>
             </section>
             <section className="link--register">
                 <Link to="/register">Register for an account</Link>
-            </section>
-            <section className="example_display">
-                <h2> Example API Call</h2>
-                <h3>{movie?.title}</h3>
-                <img
-                    src={
-                        "https://image.tmdb.org/t/p/original" +
-                        movie?.poster_path
-                    }
-                    style={{ height: "250px" }}
-                />
-                <p>{movie?.overview}</p>
             </section>
         </main>
     );

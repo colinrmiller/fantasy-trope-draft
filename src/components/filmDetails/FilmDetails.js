@@ -10,7 +10,10 @@ import { TagList } from "../TagList/TagList";
 import { CommentFeed } from "../comments/CommentFeed";
 import { CommentCard } from "../cards/CommentCard";
 import { FilmFeed } from "../home/FilmFeed";
-import { FBLogin } from "../utilities/FBLogin";
+// import { FBLogin } from "../utilities/FBLogin";
+import { FaceBookLogin } from "../auth/FaceBookLogin";
+// import {}
+
 // import { GithubLogin } from "../auth/GithubLogin";
 
 export const FilmDetails = () => {
@@ -56,6 +59,7 @@ export const FilmDetails = () => {
 
     return (
         <div className="filmDetails">
+            {/* <FaceBookLogin /> */}
             {/* <GithubLogin /> */}
             <div className="filmDetails__head">
                 <div className="filmDetails__head--img">

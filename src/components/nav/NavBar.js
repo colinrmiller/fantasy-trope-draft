@@ -5,7 +5,7 @@ import "./NavBar.css";
 import { SearchBarComp } from "../utilities/SearchBarComp";
 import { useContext } from "react";
 // import { AuthContext } from "../FTD";
-
+import { TimeUntil } from "../utilities/TimeUntil";
 export const NavBar = (props) => {
     // const { state, dispatch } = useContext(AuthContext);
 
@@ -19,6 +19,9 @@ export const NavBar = (props) => {
                 <h1 className="nav__logo--logo logo-dark">Draft</h1>
             </div>
             <ul className="nav nav-pills nav-fill">
+                <li className="nav-item">
+                    <TimeUntil />
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/">
                         <strong>Home</strong>

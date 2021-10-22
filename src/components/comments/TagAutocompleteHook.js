@@ -159,7 +159,7 @@ const Listbox = styled("ul")(
 `
 );
 
-export function TagAutocompleteHook({ optionList }) {
+export function TagAutocompleteHook({ optionList, addTag, deleteTag }) {
     const {
         getRootProps,
         getInputLabelProps,
@@ -177,6 +177,11 @@ export function TagAutocompleteHook({ optionList }) {
         multiple: true,
         options: optionList,
         getOptionLabel: (option) => option.name,
+        onChange: (event, value) => {
+            addTag(value);
+        },
+        // inputValue: { inputValue },
+        // onInputChange: { addTag },
     });
 
     return (
@@ -190,7 +195,11 @@ export function TagAutocompleteHook({ optionList }) {
                     {value.map((option, index) => (
                         <StyledTag
                             label={option.name}
+                            value={option.id}
                             {...getTagProps({ index })}
+                            onClick={() => {
+                                addTag(option.id);
+                            }}
                         />
                     ))}
 

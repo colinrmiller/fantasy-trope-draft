@@ -170,6 +170,7 @@ export class APIManager {
                 }).then((response) => response.json());
             });
     }
+
     getAllFilms = (filmIds) => {
         if (filmIds.length > 0) {
             const promiseArray = filmIds.reduce((partialArray, filmId) => {

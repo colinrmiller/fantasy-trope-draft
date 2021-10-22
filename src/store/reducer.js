@@ -10,7 +10,6 @@ export const initialState = {
 export const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN": {
-            debugger;
             localStorage.setItem(
                 "isLoggedIn",
                 JSON.stringify(action.payload.isLoggedIn)

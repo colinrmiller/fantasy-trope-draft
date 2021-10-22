@@ -3,7 +3,7 @@ import { TagAPIManager } from "../../modules/TagAPIManager";
 import { APIManager } from "../../modules/APIManager";
 import { FilmCard } from "./FilmCard";
 import { TagCard } from "../cards/TagCard";
-import "./TagActivityCard.css";
+import "./Cards.css";
 export const TagActivityCard = ({ userFilmTag }) => {
     const API = new APIManager();
     const TagAPI = new TagAPIManager();

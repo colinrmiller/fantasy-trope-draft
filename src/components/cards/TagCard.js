@@ -1,15 +1,56 @@
 import React from "react";
-import "./TagCard.css";
+import "./Cards.css";
 import { useState, useEffect } from "react";
 // import { APIManager } from "../../modules/APIManager";
 import { TagAPIManager } from "../../modules/TagAPIManager";
 
-export const TagCard = ({ tag, filmId, handleRating }) => {
+export const TagCard = ({ tag, filmId }) => {
+    const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new TagAPIManager();
     const [hover, setHover] = useState(false);
     const [userRating, setUserRating] = useState("");
-    const [upVoteCount, setUpvoteCount] = useState(tag.plusRatings);
-    const [downVoteCount, setDownvoteCount] = useState(tag.minusRatings);
+    const [ratedTag, setRatedTag] = useState({ ...tag });
+
+    // const [upVoteCount, setUpvoteCount] = useState(tag.plusRatings);
+    // const [downVoteCount, setDownvoteCount] = useState(tag.minusRatings);
+    let upVoteCount = 0;
+    let downVoteCount = 0;
+
+    // handleUpVote =() => {
+
+    // }
+    const handleUserRating = (rating) => {
+        // get any previous user rating for currentUser and tagId
+        // if no previous rating create a new UserFilmRating
+        // if previous, modify it with new rating
+        return API.getUserFilmTag(tag.id, filmId)
+            .then((userTag) => {
+                if (userTag?.length > 0) {
+                    const updatedTag = { ...userTag[0] };
+                    switch (rating) {
+                        case "plus":
+                            updatedTag["rating"] = rating === "plus" ? 1 : -1;
+                            return API.updateUserTag(updatedTag);
+                        case "minus":
+                            updatedTag["rating"] = rating === "plus" ? 1 : -1;
+                            return API.updateUserTag(updatedTag);
+                        case "":
+                            return API.deleteUserTag(updatedTag);
+                        default:
+                    }
+                    return API.updateUserTag(updatedTag);
+                } else {
+                    const newTag = {
+                        filmId: filmId,
+                        tagId: tag.id,
+                        userId: currentUser,
+                    };
+                    newTag["rating"] = rating === "plus" ? 1 : -1;
+                    return API.addUserTag(newTag);
+                }
+            })
+            .then(() => getTagRating());
+    };
 
     const getUserRating = () => {
         // determine if the currentUser has +/- review on the tag
@@ -23,25 +64,40 @@ export const TagCard = ({ tag, filmId, handleRating }) => {
         });
     };
 
+    const getTagRating = () => {
+        API.getUsersFilmTagTotal(filmId, tag.id).then((totalTagList) => {
+            const ratedTag = { ...tag };
+            ratedTag["plusRatings"] = 0;
+            ratedTag["minusRatings"] = 0;
+            totalTagList.forEach((userTag) => {
+                ratedTag["plusRatings"] =
+                    userTag.rating === 1
+                        ? ratedTag["plusRatings"] + 1
+                        : ratedTag["plusRatings"];
+                ratedTag["minusRatings"] =
+                    userTag.rating === -1
+                        ? ratedTag["minusRatings"] + 1
+                        : ratedTag["minusRatings"];
+            });
+            setRatedTag(ratedTag);
+        });
+    };
+
     const handlePlusRating = () => {
         switch (userRating) {
             case "plus":
-                setUpvoteCount(upVoteCount - 1);
+                // setUpvoteCount(upVoteCount - 1);
                 setUserRating("");
-                handleRating(tag.id, "");
-                break;
+                return handleUserRating("");
             case "":
-                setUpvoteCount(upVoteCount + 1);
+                // setUpvoteCount(upVoteCount + 1);
                 setUserRating("plus");
-                handleRating(tag.id, "plus");
-
-                break;
+                return handleUserRating("plus");
             case "minus":
-                setUpvoteCount(upVoteCount + 1);
-                setDownvoteCount(downVoteCount - 1);
+                // setUpvoteCount(upVoteCount + 1);
+                // setDownvoteCount(downVoteCount - 1);
                 setUserRating("plus");
-                handleRating(tag.id, "plus");
-                break;
+                return handleUserRating("plus");
             default:
         }
     };
@@ -49,27 +105,25 @@ export const TagCard = ({ tag, filmId, handleRating }) => {
     const handleMinusRating = () => {
         switch (userRating) {
             case "plus":
-                setUpvoteCount(upVoteCount - 1);
-                setDownvoteCount(downVoteCount + 1);
+                // setUpvoteCount(upVoteCount - 1);
+                // setDownvoteCount(downVoteCount + 1);
                 setUserRating("minus");
-                handleRating(tag.id, "minus");
-                break;
+                return handleUserRating("minus");
             case "":
-                setDownvoteCount(downVoteCount + 1);
+                // setDownvoteCount(downVoteCount + 1);
                 setUserRating("minus");
-                handleRating(tag.id, "minus");
-                break;
+                return handleUserRating("minus");
             case "minus":
-                setDownvoteCount(downVoteCount - 1);
+                // setDownvoteCount(downVoteCount - 1);
                 setUserRating("");
-                handleRating(tag.id, "minus");
-                break;
+                return handleUserRating("minus");
             default:
         }
     };
 
     useEffect(() => {
         getUserRating();
+        getTagRating();
     }, []);
 
     return !hover ? (
@@ -94,9 +148,11 @@ export const TagCard = ({ tag, filmId, handleRating }) => {
                             ? "tagCard__minus vote--active"
                             : "tagCard__minus"
                     }
-                    onClick={handleMinusRating}
+                    onClick={() => {
+                        handleMinusRating().then(getUserRating);
+                    }}
                 >
-                    - {downVoteCount}
+                    - {ratedTag.minusRatings}
                 </div>
                 <div
                     className={
@@ -104,9 +160,11 @@ export const TagCard = ({ tag, filmId, handleRating }) => {
                             ? "tagCard__minus vote--active"
                             : "tagCard__minus"
                     }
-                    onClick={handlePlusRating}
+                    onClick={() => {
+                        handlePlusRating().then(getUserRating);
+                    }}
                 >
-                    &#10003; {upVoteCount}
+                    &#10003; {ratedTag.plusRatings}
                 </div>
                 {/* <div className={"tagCard__dropdown tagCard__" + tag.tag.type}> */}
             </div>

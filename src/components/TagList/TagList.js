@@ -47,6 +47,7 @@ export const TagList = ({ filmId }) => {
     };
 
     const getTagList = () => {
+        // get the list of tags associated with the film, unique by tagId
         API.getUsersFilmTagList(filmId).then((totalUsersTagsList) => {
             const tagList = totalUsersTagsList.map((userTag) => userTag.tag);
             const uniqueTags = reduceTagList(tagList);
@@ -92,36 +93,36 @@ export const TagList = ({ filmId }) => {
         }
     };
 
-    const handleUserRating = (tagId, rating) => {
-        // get any previous user rating for currentUser and tagId
-        // if no previous rating create a new UserFilmRating
-        // if previous, modify it with new rating
-        return API.getUserFilmTag(tagId, filmId).then((userTag) => {
-            if (userTag?.length > 0) {
-                const updatedTag = { ...userTag[0] };
-                switch (rating) {
-                    case "plus":
-                        updatedTag["rating"] = rating === "plus" ? 1 : -1;
-                        return API.updateUserTag(updatedTag);
-                    case "minus":
-                        updatedTag["rating"] = rating === "plus" ? 1 : -1;
-                        return API.updateUserTag(updatedTag);
-                    case "":
-                        return API.deleteUserTag(updatedTag);
-                    default:
-                }
-                return API.updateUserTag(updatedTag);
-            } else {
-                const newTag = {
-                    filmId: filmId,
-                    tagId: tagId,
-                    userId: currentUser,
-                };
-                newTag["rating"] = rating === "plus" ? 1 : -1;
-                return API.addUserTag(newTag);
-            }
-        });
-    };
+    // const handleUserRating = (tagId, rating) => {
+    //     // get any previous user rating for currentUser and tagId
+    //     // if no previous rating create a new UserFilmRating
+    //     // if previous, modify it with new rating
+    //     return API.getUserFilmTag(tagId, filmId).then((userTag) => {
+    //         if (userTag?.length > 0) {
+    //             const updatedTag = { ...userTag[0] };
+    //             switch (rating) {
+    //                 case "plus":
+    //                     updatedTag["rating"] = rating === "plus" ? 1 : -1;
+    //                     return API.updateUserTag(updatedTag);
+    //                 case "minus":
+    //                     updatedTag["rating"] = rating === "plus" ? 1 : -1;
+    //                     return API.updateUserTag(updatedTag);
+    //                 case "":
+    //                     return API.deleteUserTag(updatedTag);
+    //                 default:
+    //             }
+    //             return API.updateUserTag(updatedTag);
+    //         } else {
+    //             const newTag = {
+    //                 filmId: filmId,
+    //                 tagId: tagId,
+    //                 userId: currentUser,
+    //             };
+    //             newTag["rating"] = rating === "plus" ? 1 : -1;
+    //             return API.addUserTag(newTag);
+    //         }
+    //     });
+    // };
 
     useEffect(() => {
         getTagList();
@@ -131,14 +132,7 @@ export const TagList = ({ filmId }) => {
         <div className="tagList">
             <NewTagInput onSubmit={handleNewTagSubmit} />
             {tagList.map((tag) => {
-                return (
-                    <TagCard
-                        key={tag.id}
-                        tag={tag}
-                        filmId={filmId}
-                        handleRating={handleUserRating}
-                    />
-                );
+                return <TagCard key={tag.id} tag={tag} filmId={filmId} />;
             })}
         </div>
     );

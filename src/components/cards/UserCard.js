@@ -1,9 +1,11 @@
 import React from "react";
 import Avatar from "react-avatar";
-import "./UserCard.css";
+import "./Cards.css";
 
 export const UserCard = ({ user, size = "small" }) => {
-    const fbId = sessionStorage.getItem("fb_id");
+    const fbId = sessionStorage.getItem("FB_Id");
+    const fbPicture = sessionStorage.getItem("FB_Picture");
+    // const [state, setstate] = useState(initialState)
     switch (size) {
         case "small":
             return (
@@ -12,19 +14,20 @@ export const UserCard = ({ user, size = "small" }) => {
                         {/* <Avatar
                             size="26"
                             name={user.firstName + " " + user.lastName}
-                        />
-                        <Avatar facebookId={fbId} />
-                        <Avatar
+                        /> */}
+                        <img src={fbPicture} alt="user avatar" />
+                        {/* <Avatar facebookId={fbId} /> */}
+                        {/* <Avatar
                             googleId="118096717852922241760"
                             size="100"
                             round={true}
                         />
-                        <Avatar facebookId="100008343750912" size="150" /> */}
+                        <Avatar facebookId="100008343750912" size="150" />
                         <Avatar
                             githubHandle="colinrmiller"
                             size={150}
                             round="20px"
-                        />
+                        />*/}
                     </div>
                     <h4 className="userCard__username">{user.username}</h4>
                 </div>

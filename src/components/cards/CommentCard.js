@@ -3,7 +3,8 @@ import { APIManager } from "../../modules/APIManager";
 import { CommentAPIManager } from "../../modules/CommentAPIManager";
 import { useState, useEffect } from "react";
 import { dateConversion } from "../utilities/dateConversion";
-import "./CommentCard.css";
+import "./Cards.css";
+
 import { CommentCardBody } from "./CommentCardBody";
 import { CommentCardEdit } from "./CommentCardEdit";
 import { UserCard } from "./UserCard";
@@ -16,6 +17,7 @@ export const CommentCard = ({ comment, handleDelete }) => {
 
     const [commentUser, setCommentUser] = useState({});
     const [isEditing, setIsEditing] = useState(false);
+    const [tagList, setTagList] = useState([]);
 
     const [activeComment, setActiveComment] = useState({ ...comment });
 
@@ -23,12 +25,17 @@ export const CommentCard = ({ comment, handleDelete }) => {
         API.getUser(comment.userId).then((user) => {
             setCommentUser(user);
         });
+        CommentAPI.getCommentTags(comment.id).then((tags) => {
+            const tagList = tags.map((tag) => tag.tag);
+            setTagList(tagList);
+        });
     }, []);
 
     const handleSubmitEdit = (comment) => {
         setActiveComment(comment);
         CommentAPI.editComment(comment);
     };
+
     const handleCancelEdit = () => {
         setIsEditing(false);
     };
@@ -50,6 +57,7 @@ export const CommentCard = ({ comment, handleDelete }) => {
                     isCurrentUser={currentUser == commentUser.id}
                     setIsEditing={setIsEditing}
                     handleDelete={handleDelete}
+                    tagList={tagList}
                 />
             ) : (
                 <CommentCardEdit

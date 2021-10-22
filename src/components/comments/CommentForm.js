@@ -8,6 +8,7 @@ import { CommentAPIManager } from "../../modules/CommentAPIManager";
 
 export const CommentForm = ({ handleSubmitComment, filmId }) => {
     const API = new TagAPIManager();
+    const CommentAPI = new CommentAPIManager();
     // const CommentAPI = new CommentAPIManager();
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
 
@@ -15,12 +16,12 @@ export const CommentForm = ({ handleSubmitComment, filmId }) => {
         text: "",
         userId: currentUser,
         filmId: filmId,
-        tagId: null,
         dateTime: Date.now(),
     };
 
     const [commentInput, setCommentInput] = useState(emptyComment);
     const [tagList, setTagList] = useState([]);
+    const [selectedTagIds, setSelectedTagIds] = useState([]);
 
     // const getEditText = (commentId) => {
     //     CommentAPI.getComment(commentId).then((res) => {
@@ -53,15 +54,36 @@ export const CommentForm = ({ handleSubmitComment, filmId }) => {
     const handleSubmit = (event) => {
         if (commentInput !== "") {
             event.preventDefault();
-            handleSubmitComment(commentInput);
+            handleSubmitComment(commentInput).then((res) => {
+                debugger;
+                const commentId = res.id;
+                const tagIdArray = selectedTagIds.map((tag) => tag.id);
+                CommentAPI.addCommentTags(commentId, tagIdArray);
+            });
             // postMessage(commentInput);
             setCommentInput(emptyComment);
         }
     };
 
+    const handleAddTag = (newValue) => {
+        debugger;
+        const newTagsSelected = newValue;
+        setSelectedTagIds(newTagsSelected);
+    };
+
+    // onInputChange={(event, newInputValue) => {
+    //     setInputValue(newInputValue);
+    //   }}
+
     return (
         <div className="messageInput" sx={{ display: "flex !important" }}>
-            <TagAutocompleteHook optionList={tagList} />
+            {tagList.length > 0 ? (
+                <TagAutocompleteHook
+                    optionList={tagList}
+                    addTag={handleAddTag}
+                    inputValue={selectedTagIds}
+                />
+            ) : null}
             <Input
                 id="messageInput__input"
                 label=""

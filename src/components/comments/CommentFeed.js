@@ -21,8 +21,9 @@ export const CommentFeed = ({ filmId }) => {
     }, []);
 
     const handleCommentSubmit = (text) => {
-        API.addComment(text, currentUser, filmId).then(() => {
+        return API.addComment(text, currentUser, filmId).then((res) => {
             getFilmComments();
+            return res;
         });
     };
 

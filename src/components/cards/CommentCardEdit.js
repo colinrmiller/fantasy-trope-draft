@@ -1,10 +1,10 @@
 import { Button, Input } from "@mui/material";
-import "../comments/Comments.css";
 import React from "react";
 import { TagAutocompleteHook } from "../comments/TagAutocompleteHook";
 import { useState, useEffect } from "react";
 import { TagAPIManager } from "../../modules/TagAPIManager";
 // import { CommentAPIManager } from "../../modules/CommentAPIManager";
+import "./Cards.css";
 
 export const CommentCardEdit = ({ comment, handleSubmitEdit, cancelEdit }) => {
     const API = new TagAPIManager();
@@ -53,7 +53,6 @@ export const CommentCardEdit = ({ comment, handleSubmitEdit, cancelEdit }) => {
     const handleSubmit = (event) => {
         if (commentInput.text !== "") {
             event.preventDefault();
-            debugger;
             handleSubmitEdit(commentInput);
             // postMessage(commentInput);
             setCommentInput(emptyComment);
