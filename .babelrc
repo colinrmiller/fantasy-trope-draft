@@ -7,5 +7,14 @@
             "rootPathPrefix": "~/"
           }
         ]
+      ],
+      "presets": [
+      [
+        "next/babel",
+        {
+          "preset-react": { "throwIfNamespace": false }
+        }
       ]
+    ]
+  
 }

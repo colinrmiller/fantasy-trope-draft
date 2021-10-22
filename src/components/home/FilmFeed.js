@@ -5,7 +5,7 @@ import { FilmCard } from "../cards/FilmCard";
 import { APIManager } from "../../modules/APIManager";
 import "./FilmFeed.css";
 
-export const FilmFeed = ({ filmList }) => {
+export const FilmFeed = ({ filmList, header }) => {
     // const [mainFilmList, setMainFilmList] = useState([]);
     // const [filter, setfilter] = useState("popular");
 
@@ -18,7 +18,7 @@ export const FilmFeed = ({ filmList }) => {
         <>
             <hr />
             <div className="FilmFeed">
-                <h3 className="FilmFeed__header">Header</h3>
+                <h3 className="FilmFeed__header">{header}</h3>
                 <div className="FilmFeed__feed">
                     {filmList?.length > 0 ? (
                         filmList.map((film) => (

@@ -1,5 +1,6 @@
 .newTagInput__form {
     display: flex;
+    height: 40px;
 }
 
 
@@ -10,7 +11,7 @@
 .newTagInput__submit {
     margin: 0;
     padding: 0;
-    height: 28px;
+    height: 40px;
 
 }
 
@@ -22,4 +23,5 @@
 .newTagInput__container {
     margin: auto;
     margin-left: 0;
+    height: 40px;
 }

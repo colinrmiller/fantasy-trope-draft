@@ -43,13 +43,13 @@ export const UserPage = () => {
 
     return (
         <div className="user">
-            <div className="user__header">{user?.userName}</div>
+            <div className="user__header">{user?.username}</div>
             <div className="FilmFeedDiscover">
                 <h3 className="FilmFeedDiscover__header">
-                    {user?.userName + "'s Saved Films"}
+                    {user?.username + "'s Saved Films"}
                 </h3>
                 <div className="FilmFeedDiscover__feed">
-                    <FilmFeed filmList={userFilms} />
+                    <FilmFeed filmList={userFilms} header="" />
                 </div>
             </div>
         </div>

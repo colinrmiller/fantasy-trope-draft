@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import "bootstrap/dist/css/bootstrap.min.css"
 import { SearchBarComp } from "../utilities/SearchBarComp";
-
+import { useContext } from "react";
+// import { AuthContext } from "../FTD";
+import { TimeUntil } from "../utilities/TimeUntil";
 export const NavBar = (props) => {
+    // const { state, dispatch } = useContext(AuthContext);
+
+    // const { avatar_url, name, public_repos, followers, following } = state.user;
+
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     return (
         <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
@@ -13,6 +19,9 @@ export const NavBar = (props) => {
                 <h1 className="nav__logo--logo logo-dark">Draft</h1>
             </div>
             <ul className="nav nav-pills nav-fill">
+                <li className="nav-item">
+                    <TimeUntil />
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/">
                         <strong>Home</strong>
@@ -41,6 +50,9 @@ export const NavBar = (props) => {
                         <strong>Search</strong>
                     </Link>
                 </li>
+                {/* <li className="nav_avatar">
+                    <p>{state}</p>
+                </li> */}
                 {/* <li>SearchBarComp</li> */}
             </ul>
         </nav>

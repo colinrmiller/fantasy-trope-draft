@@ -1,0 +1,289 @@
+
+.filmCard {
+    width: 98px;
+    /* height: 183px; */
+    border-radius: 5px;
+    /* background-color: blanchedalmond; */
+    /* padding: 20px; */
+    color: white;
+    font-size: 22px;
+    /* border: 1px solid white; */
+    flex: 1 1;
+    -webkit-flex: 1;
+    text-align: center;
+    min-width: 117px;
+    margin-inline: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.filmCard__img { 
+border-radius: 5px;
+    width: 100%;
+}
+
+.filmCard__interaction {
+    /* display: none; */
+    top: -55px;
+    position: relative;
+    background: rgba(200, 200, 200, 1);
+    height: 50px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: -49px;
+
+}
+
+.filmCard__interaction:hover {
+    display: block ;
+    cursor: pointer;
+
+}
+
+.filmCard__addFilm, .filmCard__deleteFilm {
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 11px;
+
+}
+
+.filmCard__addFilm > svg, .filmCard__deleteFilm > svg {
+    margin: auto;
+    margin-left: 0;
+
+}
+.filmCard__addFilm > p, .filmCard__deleteFilm > p  {
+    margin: auto;
+    font-size: 17px;
+    margin-right: 0;
+
+}
+
+
+.cardIcon--add {
+    font-size: 20px;
+}
+
+.commentCard {
+    display: flex;
+    flex-direction: column;
+    width: 72%;
+
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 8px
+}
+
+
+.commentCard__header {
+    display: flex;
+    justify-content: space-between;
+}
+.commentCard__user {
+    margin-right: 10px;
+    /* text-transform: uppercase; */
+}
+
+.commentCard__text {
+    padding-inline: 30px;
+    margin-bottom: 15px;
+}
+
+.commentCard__interaction {
+    display: flex;
+    justify-content: end;
+    margin-inline-end: 20px;
+}
+
+.commentCard__button {
+    background-color: #c8c8c8;
+    color: black;
+    border-radius: 3px;
+    height: 20px;
+    /* width: 60px; */
+    margin-inline: 5px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    text-align: center;
+}
+
+
+
+.filmCardLarge {
+    width: 196;
+    border-radius: 5px;
+    color: white;
+    font-size: 22px;
+    -webkit-flex: 1;
+    text-align: center;
+    min-width: 234px;
+    margin-inline: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+.filmCardLarge__img { 
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 100%;
+}
+
+.filmCardLarge__interaction {
+    /* display: none; */
+    top: -55px;
+    position: relative;
+    background: rgba(200, 200, 200, .5);
+    height: 50px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.filmCard__interaction:hover {
+    display: block ;
+    cursor: pointer;
+
+}
+
+.filmCard__addFilm, .filmCard__deleteFilm {
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 11px;
+
+}
+
+.filmCard__addFilm > svg, .filmCard__deleteFilm > svg {
+    margin: auto;
+    margin-left: 0;
+
+}
+.filmCard__addFilm > p, .filmCard__deleteFilm > p  {
+    margin: auto;
+    font-size: 17px;
+    margin-right: 0;
+
+}
+
+
+.cardIcon--add {
+    font-size: 20px;
+}
+
+
+
+.tagActivityCard {
+    border: 1px solid white;
+    max-width: 333px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-inline: 30px;
+}
+.tagActivityCard__header {
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+
+.tagActivity__header--user {
+    margin-left: 10px;
+    text-transform:uppercase;
+}
+
+.tagActivit__header--filmTitle {
+    display: flex;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.tagActivityCard__body {
+    display: flex;
+    max-width: 392px;
+}
+
+.tagCard{
+    height: 40px;
+    background: red;
+    margin: auto;
+    padding-inline: 9px;
+    border-radius: 3px;
+    margin-inline: 5px;
+    color: black;
+    white-space: nowrap;
+    margin-block: 4px;
+    text-align: center;
+    min-width: 40px;
+    max-width: 100px;
+}
+
+.tagCard__dropdown {
+    position: relative;
+    height: 40px;
+    /* z-index: 2; */
+    background-color: whitesmoke;
+    display: flex;
+
+}
+
+.tagCard__rating {
+    background: red;
+
+
+}
+.tagCard__genre {
+    background: rgb(0, 89, 255);
+
+
+}
+.tagCard__kind {
+    background: rgb(21, 182, 0);
+
+
+}
+.tagCard__trope {
+    background: rgb(177, 64, 158);
+
+
+}
+
+.tagCard__text {
+    z-index: 1;
+    margin-block: 8px;
+}
+
+.tagCard__plus {
+    margin: auto;
+    width: 50%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+.tagCard__minus {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.vote--active {
+    background-color: green;
+}
+
+.userCard {
+    display: flex;
+    height: 26px;
+    width: 100px;
+}
+
+.userCard__username {
+    margin-left: 8px;
+}
+
+
+.userCard__avatar {
+
+}

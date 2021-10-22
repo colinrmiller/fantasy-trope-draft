@@ -170,6 +170,7 @@ export class APIManager {
                 }).then((response) => response.json());
             });
     }
+
     getAllFilms = (filmIds) => {
         if (filmIds.length > 0) {
             const promiseArray = filmIds.reduce((partialArray, filmId) => {
@@ -187,91 +188,21 @@ export class APIManager {
         ).then((res) => res.json());
     };
 
-    getUsersFilmTags = (filmId, tagId) => {
+    getVideo = (filmId) => {
         return fetch(
-            `${remoteURL}/usersFilmsTags/?filmId=${filmId}&tagId=${tagId}`
-        ).then((res) => res.json());
+            `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${tmdb}&language=en-US
+            `
+        )
+            .then((res) => res.json())
+            .then((res) => res?.results[0]?.key);
     };
 
-    getUsersFilmTagList = (filmId) => {
+    getSimilar = (filmId) => {
         return fetch(
-            `${remoteURL}/usersFilmsTags/?filmId=${filmId}&_expand=tag`
-        ).then((res) => res.json());
-    };
-
-    getUserFilmTag = (tagId, filmId) => {
-        const currentUser = parseInt(sessionStorage.getItem("active_user"));
-        return fetch(
-            `${remoteURL}/usersFilmsTags/?tagId=${tagId}&filmId=${filmId}&userId=${currentUser}`
-        ).then((res) => res.json());
-    };
-
-    addTag = (tag) => {
-        return fetch(`${remoteURL}/tags/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(tag),
-        }).then((response) => response.json());
-    };
-
-    addFilmTag = (filmTag) => {
-        return fetch(`${remoteURL}/filmsTags/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(filmTag),
-        }).then((response) => response.json());
-    };
-
-    getFilmTag = (filmTagId) => {
-        return fetch(`${remoteURL}/filmsTags/${filmTagId}`).then((res) =>
-            res.json()
-        );
-    };
-
-    updateFilmTag = (filmTag) => {
-        return fetch(`${remoteURL}/filmsTags/${filmTag.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(filmTag),
-        }).then((response) => response.json());
-    };
-
-    updateUserTag = (userTag) => {
-        return fetch(`${remoteURL}/usersFilmsTags/${userTag.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userTag),
-        }).then((response) => response.json());
-    };
-
-    deleteUserTag = (userTag) => {
-        return fetch(`${remoteURL}/usersFilmsTags/${userTag.id}`, {
-            method: "DELETE",
-        }).then((response) => response.json());
-    };
-
-    addUserTag = (userTag) => {
-        return fetch(`${remoteURL}/usersFilmsTags/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userTag),
-        }).then((response) => response.json());
-    };
-
-    searchTag = (tag) => {
-        return fetch(
-            `${remoteURL}/tags/?name=${tag?.name}&type${tag?.type}`,
-            {}
-        ).then((response) => response.json());
+            `https://api.themoviedb.org/3/movie/${filmId}/similar?api_key=${tmdb}&language=en-US
+            `
+        )
+            .then((res) => res.json())
+            .then((res) => res?.results);
     };
 }

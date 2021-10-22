@@ -27,7 +27,7 @@ export const Search = () => {
                 setSearchQuery={setSearchQuery}
                 onSubmit={handleSubmit}
             />
-            <FilmFeed filmList={searchResults} />
+            <FilmFeed filmList={searchResults} header="" />
         </div>
     );
 };
