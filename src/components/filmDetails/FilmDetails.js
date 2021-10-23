@@ -32,7 +32,7 @@ export const FilmDetails = () => {
 
     useEffect(() => {
         API.getFilm(filmId).then((res) => setFilm(res));
-    }, []);
+    }, [filmId]);
 
     useEffect(() => {
         let basePath = "https://image.tmdb.org/t/p/original";

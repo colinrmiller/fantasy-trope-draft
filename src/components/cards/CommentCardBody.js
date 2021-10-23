@@ -12,7 +12,7 @@ export const CommentCardBody = ({
         <>
             <div className="commentCard__tagList">
                 {tagList.map((tag) => (
-                    <TagCard tag={tag} filmId={comment.filmId} />
+                    <TagCard tag={tag} filmId={comment.filmId} key={tag.id} />
                 ))}
             </div>
             <div className="commentCard__text">{comment.text}</div>

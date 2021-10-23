@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "react-avatar";
 import "./Cards.css";
+import { Link } from "react-router-dom";
 
 export const UserCard = ({ user, size = "small" }) => {
     const fbId = sessionStorage.getItem("FB_Id");
@@ -9,7 +10,7 @@ export const UserCard = ({ user, size = "small" }) => {
     switch (size) {
         case "small":
             return (
-                <div className="userCard">
+                <Link className="userCard" to={`/user/${user.id}`}>
                     <div className="user">
                         {/* <Avatar
                             size="26"
@@ -30,17 +31,17 @@ export const UserCard = ({ user, size = "small" }) => {
                         />*/}
                     </div>
                     <h4 className="userCard__username">{user.username}</h4>
-                </div>
+                </Link>
             );
         case "large":
             return (
-                <div className="userCard">
+                <Link className="userCard" to={`/user/${user.id}`}>
                     <div className="user">
                         {/* <Avatar name={user.firstName + " " + user.lastName} /> */}
                     </div>
                     <h5 className="userCard__username">{user.username}</h5>
                     <Avatar facebookId={fbId} />
-                </div>
+                </Link>
             );
         default:
             return null;

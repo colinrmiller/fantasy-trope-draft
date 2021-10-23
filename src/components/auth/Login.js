@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./login.css";
 import { useEffect } from "react";
-// import FB
-// extra
 import { FaceBookLogin } from "./FaceBookLogin";
 
 export const Login = () => {
@@ -19,7 +17,6 @@ export const Login = () => {
     };
 
     const existingUserCheck = () => {
-        // If your json-server URL is different, please change it below!
         return fetch(`http://localhost:8088/users?email=${loginUser.email}`)
             .then((res) => res.json())
             .then((user) => (user.length ? user[0] : false));

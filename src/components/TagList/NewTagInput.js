@@ -72,14 +72,14 @@ export const NewTagInput = ({ onSubmit }) => {
                         optionList={tagList}
                         inputValue={input}
                     />
-                    <input
+                    {/* <input
                         type="text"
                         id="new-tag-input"
                         placeholder=""
                         name="tagInput"
                         value={input}
                         onChange={(event) => setInput(event.target.value)}
-                    />
+                    /> */}
                     <button type="submit" className="newTagInput__submit">
                         <AddIcon sx={{ margin: "auto" }} />
                     </button>

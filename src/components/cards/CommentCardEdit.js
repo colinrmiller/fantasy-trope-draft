@@ -3,42 +3,40 @@ import React from "react";
 import { TagAutocompleteHook } from "../comments/TagAutocompleteHook";
 import { useState, useEffect } from "react";
 import { TagAPIManager } from "../../modules/TagAPIManager";
-// import { CommentAPIManager } from "../../modules/CommentAPIManager";
+import { CommentAPIManager } from "../../modules/CommentAPIManager";
 import "./Cards.css";
 
 export const CommentCardEdit = ({ comment, handleSubmitEdit, cancelEdit }) => {
     const API = new TagAPIManager();
-    // const CommentAPI = new CommentAPIManager();
+    const CommentAPI = new CommentAPIManager();
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
+
+    const [commentInput, setCommentInput] = useState(comment);
+    const [tagList, setTagList] = useState([]);
+    const [inputTagList, setInputTagList] = useState([]);
 
     const emptyComment = {
         text: "",
         userId: currentUser,
         filmId: comment.filmId,
-        tagId: 0,
         dateTime: Date.now(),
     };
-
-    const [commentInput, setCommentInput] = useState(comment);
-    const [tagList, setTagList] = useState([]);
-
-    // const getEditText = (commentId) => {
-    //     CommentAPI.getComment(commentId).then((res) => {
-    //         setCommentInput(res);
-    //     });
-    // };
 
     const getTagList = () => {
         API.getTags().then((res) => setTagList(res));
     };
 
+    const getCommentTags = () => {
+        debugger;
+        return CommentAPI.getCommentTags(comment.id).then((res) => {
+            const inputTagArray = res.map((commentTag) => commentTag.tag);
+            setInputTagList(inputTagArray);
+        });
+    };
+
     useEffect(() => {
         getTagList();
-        // if (commentEditId > 0) {
-        //     getEditText(commentEditId).then((res) => {
-        //         setCommentInput(res);
-        //     });
-        // }
+        getCommentTags();
     }, []);
 
     const onTextChangeHandler = (text) => {
@@ -53,15 +51,41 @@ export const CommentCardEdit = ({ comment, handleSubmitEdit, cancelEdit }) => {
     const handleSubmit = (event) => {
         if (commentInput.text !== "") {
             event.preventDefault();
-            handleSubmitEdit(commentInput);
-            // postMessage(commentInput);
-            setCommentInput(emptyComment);
+            handleRewriteTags().then(() => {
+                handleSubmitEdit(commentInput);
+                // postMessage(commentInput);
+                setCommentInput(emptyComment);
+            });
         }
+    };
+
+    const handleRewriteTags = () => {
+        return CommentAPI.getCommentTags(comment.id).then((res) => {
+            const tagIdArray = res.map((commentTag) => commentTag.id);
+            return CommentAPI.deleteCommentTags(comment.id, tagIdArray).then(
+                (res) => {
+                    // debugger;
+                    const inputTagIdList = inputTagList.map((tag) => tag.id);
+                    return CommentAPI.addCommentTags(
+                        comment.id,
+                        inputTagIdList
+                    );
+                    // .then(() => {
+                    //     debugger;
+                    //     getTagList();
+                    // });
+                }
+            );
+        });
     };
 
     return (
         <div className="messageInput" sx={{ display: "flex !important" }}>
-            <TagAutocompleteHook optionList={tagList} />
+            <TagAutocompleteHook
+                optionList={tagList}
+                initialValue={inputTagList}
+                setValue={setInputTagList}
+            />
             <Input
                 id="messageInput__input"
                 label=""

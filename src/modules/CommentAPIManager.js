@@ -84,21 +84,6 @@ export class CommentAPIManager {
         );
     };
 
-    addCommentTags = (commentId, tagIdList) => {
-        if (tagIdList.length > 0) {
-            const promiseArray = tagIdList.map((tagId) =>
-                this.addCommentTag(commentId, tagId)
-            );
-            // const promiseArray = tagIdList.reduce((partialArray, filmId) => {
-            //     partialArray = [...partialArray, this.getFilm(filmId)];
-            //     // partialArray.push(this.getFilm(filmId));
-            //     return partialArray;
-            // }, []);
-            const res = Promise.all(promiseArray);
-            return res;
-        }
-    };
-
     addCommentTag = (commentId, tagId) => {
         const newCommentTag = {
             commentId: commentId,
@@ -113,10 +98,49 @@ export class CommentAPIManager {
         }).then((response) => response.json());
     };
 
+    addCommentTags = (commentId, tagIdList) => {
+        // if (tagIdList.length > 0) {
+        const promiseArray = tagIdList.map((tagId) =>
+            this.addCommentTag(commentId, tagId)
+        );
+        // const promiseArray = tagIdList.reduce((partialArray, filmId) => {
+        //     partialArray = [...partialArray, this.getFilm(filmId)];
+        //     // partialArray.push(this.getFilm(filmId));
+        //     return partialArray;
+        // }, []);
+        const res = Promise.all(promiseArray);
+        return res;
+        // }
+    };
+
+    getCommentTag = (commentId, tagId) => {
+        return fetch(
+            `${remoteURL}/commentsTags/?commentId=${commentId}&tagId=${tagId}&_expand=tag`
+        ).then((response) => response.json());
+    };
+
     getCommentTags = (commentId) => {
         return fetch(
             `${remoteURL}/commentsTags/?commentId=${commentId}&_expand=tag`
         ).then((response) => response.json());
+    };
+
+    deleteCommentTag = (commentTagId) => {
+        // return this.getCommentTag(commentId, tagId).then((res) => {
+        //     const commentTagId = res.id;
+        //     if (res.length > 0) {
+        return fetch(`${remoteURL}/commentsTags/${commentTagId}`, {
+            method: "DELETE",
+        }).then((result) => result.json());
+        //     } else return null;
+        // });
+    };
+
+    deleteCommentTags = (commentId, tagIdList) => {
+        const promiseArray = tagIdList.map((tagId) => {
+            return this.deleteCommentTag(tagId);
+        });
+        return Promise.all(promiseArray);
     };
 
     // addFilmComment = (filmComment) => {

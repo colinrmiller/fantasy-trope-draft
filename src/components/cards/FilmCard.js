@@ -20,6 +20,7 @@ export const FilmCard = ({ film }) => {
 
     return (
         <div className="filmCard">
+            {/* <BrowserRouter basename="/calendar"> */}
             <Link to={"/film-details/" + film.id}>
                 <img
                     src={
@@ -59,6 +60,7 @@ export const FilmCard = ({ film }) => {
                     </div>
                 </div>
             )}
+            {/* </BrowserRouter> */}
         </div>
     );
 };

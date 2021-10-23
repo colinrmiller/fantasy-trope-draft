@@ -116,7 +116,7 @@ export const TagCard = ({ tag, filmId }) => {
             case "minus":
                 // setDownvoteCount(downVoteCount - 1);
                 setUserRating("");
-                return handleUserRating("minus");
+                return handleUserRating("");
             default:
         }
     };

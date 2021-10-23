@@ -6,7 +6,11 @@ import { useState, useEffect } from "react";
 import { TagAPIManager } from "../../modules/TagAPIManager";
 import { CommentAPIManager } from "../../modules/CommentAPIManager";
 
-export const CommentForm = ({ handleSubmitComment, filmId }) => {
+export const CommentForm = ({
+    handleSubmitComment,
+    filmId,
+    closeCommentForm,
+}) => {
     const API = new TagAPIManager();
     const CommentAPI = new CommentAPIManager();
     // const CommentAPI = new CommentAPIManager();
@@ -15,7 +19,7 @@ export const CommentForm = ({ handleSubmitComment, filmId }) => {
     const emptyComment = {
         text: "",
         userId: currentUser,
-        filmId: filmId,
+        filmId: parseInt(filmId),
         dateTime: Date.now(),
     };
 
@@ -55,21 +59,20 @@ export const CommentForm = ({ handleSubmitComment, filmId }) => {
         if (commentInput !== "") {
             event.preventDefault();
             handleSubmitComment(commentInput).then((res) => {
-                debugger;
                 const commentId = res.id;
                 const tagIdArray = selectedTagIds.map((tag) => tag.id);
                 CommentAPI.addCommentTags(commentId, tagIdArray);
             });
             // postMessage(commentInput);
             setCommentInput(emptyComment);
+            closeCommentForm();
         }
     };
 
-    const handleAddTag = (newValue) => {
-        debugger;
-        const newTagsSelected = newValue;
-        setSelectedTagIds(newTagsSelected);
-    };
+    // const handleAddTag = (newValue) => {
+    //     const newTagsSelected = newValue;
+    //     setSelectedTagIds(newTagsSelected);
+    // };
 
     // onInputChange={(event, newInputValue) => {
     //     setInputValue(newInputValue);
@@ -80,8 +83,8 @@ export const CommentForm = ({ handleSubmitComment, filmId }) => {
             {tagList.length > 0 ? (
                 <TagAutocompleteHook
                     optionList={tagList}
-                    addTag={handleAddTag}
-                    inputValue={selectedTagIds}
+                    setValue={setSelectedTagIds}
+                    initialValue={selectedTagIds}
                 />
             ) : null}
             <Input
