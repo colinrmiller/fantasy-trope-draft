@@ -6,10 +6,68 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import "./Cards.css";
 
+const hoverAddFilm = ({ handleMouseOver, handleMouseOut }) => {
+    return (
+        <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <span>Hover Me</span>
+        </div>
+    );
+};
+
 export const FilmCard = ({ film }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new APIManager();
     const [inList, setInList] = useState(false);
+
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
+
+    const FilmCardInteraction = () => {
+        return inList ? (
+            <div
+                // onMouseOver={(event) => {
+                //     event.stopPropagation();
+                //     setIsHovering(true);
+                // }}
+                className="filmCard__interaction"
+                onMouseOver={handleMouseOver}
+                onClick={() =>
+                    API.deleteFilm(currentUser, film.id).then(() =>
+                        setInList(false)
+                    )
+                }
+            >
+                <div className="filmCard__deleteFilm">
+                    <p className="filmCard__deleteFilm--text">Watching</p>
+                    <RemoveIcon className="cardIcon--add" />
+                </div>
+            </div>
+        ) : (
+            <div
+                className="filmCard__interaction"
+                onClick={() =>
+                    API.addFilm(currentUser, film.id).then((res) => {
+                        console.log(res);
+                        setInList(true);
+                    })
+                }
+                // onMouseOver={handleMouseOver}
+            >
+                {" "}
+                <div className="filmCard__addFilm">
+                    <p className="filmCard__addFilm--text">Add Film</p>
+                    <AddIcon className="cardIcon--add" />
+                </div>
+            </div>
+        );
+    };
 
     useEffect(() => {
         API.getUserFilm(currentUser, film.id).then((res) => {
@@ -19,7 +77,12 @@ export const FilmCard = ({ film }) => {
     }, []);
 
     return (
-        <div className="filmCard">
+        <div
+            className="filmCard"
+            onMouseEnter={handleMouseOver}
+            onMouseLeave={handleMouseOut}
+        >
+            {/* <BrowserRouter basename="/calendar"> */}
             <Link to={"/film-details/" + film.id}>
                 <img
                     src={
@@ -29,7 +92,9 @@ export const FilmCard = ({ film }) => {
                     className="filmCard__img"
                 />
             </Link>
-            {inList ? (
+            {isHovering && <FilmCardInteraction inList={inList} />}
+
+            {/* {inList ? (
                 <div
                     className="filmCard__interaction"
                     onClick={() =>
@@ -52,13 +117,9 @@ export const FilmCard = ({ film }) => {
                             setInList(true);
                         })
                     }
-                >
-                    <div className="filmCard__addFilm">
-                        <p className="filmCard__addFilm--text">Add Film</p>
-                        <AddIcon className="cardIcon--add" />
-                    </div>
-                </div>
-            )}
+                ></div>
+            )} */}
+            {/* </BrowserRouter> */}
         </div>
     );
 };

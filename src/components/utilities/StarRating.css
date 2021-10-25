@@ -1,6 +1,6 @@
 .starRating {
     margin:auto;
-    background-color: #c8c8c8;
+    /* background-color: #c8c8c8; */
     border-radius: 3px;
 }
 
@@ -19,5 +19,5 @@
   }
   
 .MuiRating-decimal {
-  border-right: 1px solid #1c2229;
+  /* border-right: 1px solid #1c2229; */
 }

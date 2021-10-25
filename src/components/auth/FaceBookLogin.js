@@ -29,7 +29,7 @@ export const FaceBookLogin = () => {
     const getFBPicture = () => {
         window.FB.api("/me", { fields: "picture" }, function (response) {
             // setLastName(response);
-            sessionStorage.setItem("FB_Picture", response.picture.data.url);
+            sessionStorage.setItem("FB_Picture", response?.picture.data.url);
         });
     };
 

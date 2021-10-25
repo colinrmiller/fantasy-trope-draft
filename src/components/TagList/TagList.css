@@ -3,16 +3,8 @@
     height: 40px;
 }
 
-
-#new-tag-input {    
+#new-tag-input {
     width: 90px;
-}
-
-.newTagInput__submit {
-    margin: 0;
-    padding: 0;
-    height: 40px;
-
 }
 
 .tagList {
@@ -24,4 +16,36 @@
     margin: auto;
     margin-left: 0;
     height: 40px;
+    margin-block: 5px;
 }
+
+.newTagInput__container .MuiAutocomplete-root {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.MuiOutlinedInput-root {
+    border-radius: 0 !important;
+
+}
+
+.newTagInput__submit {
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+
+}
+
+.newTagInput__submit>.MuiSvgIcon-fontSizeMedium {
+    margin-top: 3px;
+}
+
+.newTagInput__submit>svg {
+    margin: auto;
+}
+
+.TextField-without-border-radius fieldset {}

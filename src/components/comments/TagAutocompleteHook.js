@@ -4,6 +4,7 @@ import { useAutocomplete } from "@mui/core/AutocompleteUnstyled";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
+import { useEffect } from "react";
 
 const Root = styled("div")(
     ({ theme }) => `
@@ -159,7 +160,7 @@ const Listbox = styled("ul")(
 `
 );
 
-export function TagAutocompleteHook({ optionList, addTag, deleteTag }) {
+export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
     const {
         getRootProps,
         getInputLabelProps,
@@ -176,12 +177,17 @@ export function TagAutocompleteHook({ optionList, addTag, deleteTag }) {
         // defaultValue: [top100Films[1]],
         multiple: true,
         options: optionList,
+        defaultValue: initialValue || [],
         getOptionLabel: (option) => option.name,
         onChange: (event, value) => {
-            addTag(value);
+            setValue(value);
         },
-        // inputValue: { inputValue },
-        // onInputChange: { addTag },
+        // inputValue: initialValue,
+        // onInputChange: { setValue },
+    });
+
+    useEffect(() => {
+        // groupedOptions = [initialValue];
     });
 
     return (
@@ -198,7 +204,7 @@ export function TagAutocompleteHook({ optionList, addTag, deleteTag }) {
                             value={option.id}
                             {...getTagProps({ index })}
                             onClick={() => {
-                                addTag(option.id);
+                                setValue(option.id);
                             }}
                         />
                     ))}

@@ -34,7 +34,7 @@ export class TagAPIManager {
 
     getRecentUserFilmTags = () => {
         return fetch(
-            `${remoteURL}/usersFilmsTags/?_sort=dateTime&_order_desc`
+            `${remoteURL}/usersFilmsTags/?_sort=dateTime&_order=desc`
         ).then((res) => res.json());
     };
 

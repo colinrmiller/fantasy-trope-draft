@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // import { APIManager } from "../../modules/APIManager";
 import { TagAPIManager } from "../../modules/TagAPIManager";
 
-export const TagCard = ({ tag, filmId }) => {
+export const CommentTagCard = ({ tag, filmId }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new TagAPIManager();
     const [hover, setHover] = useState(false);
@@ -128,25 +128,28 @@ export const TagCard = ({ tag, filmId }) => {
 
     return !hover ? (
         <div
-            className={"tagCard tagCard__" + tag.type}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            className={"commentTagCard commentTagCard__" + tag.type}
+            // onMouseEnter={() => setHover(true)}
+            // onMouseLeave={() => setHover(false)}
         >
-            <div className="tagCard__text">{tag.name}</div>
+            <div className="commentTagCard__text">{tag.name}</div>
         </div>
     ) : (
         <div
-            className={"tagCard tagCard__reveal tagCard__" + tag.type}
+            className={
+                "commentTagCard commentTagCard__reveal commentTagCard__" +
+                tag.type
+            }
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className="tagCard__text">{tag.name}</div>
-            <div className="tagCard__dropdown">
+            <div className="commentTagCard__text">{tag.name}</div>
+            <div className="commentTagCard__dropdown">
                 <div
                     className={
                         userRating === "minus"
-                            ? "tagCard__minus vote--active"
-                            : "tagCard__minus"
+                            ? "commentTagCard__minus vote--active"
+                            : "commentTagCard__minus"
                     }
                     onClick={() => {
                         handleMinusRating().then(getUserRating);
@@ -157,8 +160,8 @@ export const TagCard = ({ tag, filmId }) => {
                 <div
                     className={
                         userRating === "plus"
-                            ? "tagCard__minus vote--active"
-                            : "tagCard__minus"
+                            ? "commentTagCard__minus vote--active"
+                            : "commentTagCard__minus"
                     }
                     onClick={() => {
                         handlePlusRating().then(getUserRating);
@@ -166,7 +169,7 @@ export const TagCard = ({ tag, filmId }) => {
                 >
                     &#10003; {ratedTag.plusRatings}
                 </div>
-                {/* <div className={"tagCard__dropdown tagCard__" + tag.tag.type}> */}
+                {/* <div className={"commentTagCard__dropdown commentTagCard__" + tag.tag.type}> */}
             </div>
         </div>
     );

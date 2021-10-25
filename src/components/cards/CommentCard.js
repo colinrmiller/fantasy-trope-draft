@@ -8,6 +8,7 @@ import "./Cards.css";
 import { CommentCardBody } from "./CommentCardBody";
 import { CommentCardEdit } from "./CommentCardEdit";
 import { UserCard } from "./UserCard";
+import { Button } from "@mui/material";
 
 export const CommentCard = ({ comment, handleDelete }) => {
     const API = new APIManager();
@@ -25,15 +26,20 @@ export const CommentCard = ({ comment, handleDelete }) => {
         API.getUser(comment.userId).then((user) => {
             setCommentUser(user);
         });
+        getCommentTagList();
+    }, []);
+
+    const getCommentTagList = () => {
         CommentAPI.getCommentTags(comment.id).then((tags) => {
             const tagList = tags.map((tag) => tag.tag);
             setTagList(tagList);
         });
-    }, []);
+    };
 
     const handleSubmitEdit = (comment) => {
         setActiveComment(comment);
         CommentAPI.editComment(comment);
+        getCommentTagList();
     };
 
     const handleCancelEdit = () => {

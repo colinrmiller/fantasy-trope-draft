@@ -40,8 +40,8 @@ export const FTD = () => {
             />
 
             <Route path="/login">
-                {/* <Login /> */}
-                <LoginBypass />
+                <Login />
+                {/* <LoginBypass /> */}
                 {/* <GithubLogin /> */}
             </Route>
             <Route path="/register">

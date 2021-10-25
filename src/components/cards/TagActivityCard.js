@@ -3,6 +3,7 @@ import { TagAPIManager } from "../../modules/TagAPIManager";
 import { APIManager } from "../../modules/APIManager";
 import { FilmCard } from "./FilmCard";
 import { TagCard } from "../cards/TagCard";
+import { Link } from "react-router-dom";
 import "./Cards.css";
 export const TagActivityCard = ({ userFilmTag }) => {
     const API = new APIManager();
@@ -33,6 +34,8 @@ export const TagActivityCard = ({ userFilmTag }) => {
             });
     };
 
+    const handleUserClicked = () => {};
+
     useEffect(() => {
         getFilm();
         getUser();
@@ -45,7 +48,11 @@ export const TagActivityCard = ({ userFilmTag }) => {
                 <h3 className="tagActivity__header--filmTitle">
                     {film?.title}
                 </h3>
-                <h5 className="tagActivity__header--user">{user?.username}</h5>
+                <Link to={"/user/" + user.id}>
+                    <h5 className="tagActivity__header--user">
+                        {user?.username}
+                    </h5>
+                </Link>
             </div>
             <div className="tagActivityCard__body">
                 <div className="tagActivityCard__filmCard">

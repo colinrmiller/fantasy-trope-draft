@@ -39,6 +39,10 @@ export const CommentFeed = ({ filmId }) => {
         });
     };
 
+    const handleCloseComment = () => {
+        setCommentFormActive(false);
+    };
+
     return (
         <div className="commentFeed">
             <div className="commentFeed__header">
@@ -67,6 +71,7 @@ export const CommentFeed = ({ filmId }) => {
                     <CommentForm
                         handleSubmitComment={handleCommentSubmit}
                         filmId={filmId}
+                        closeCommentForm={handleCloseComment}
                     />
                 </div>
             ) : null}
