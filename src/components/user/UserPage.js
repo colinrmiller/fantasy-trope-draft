@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { FilmCard } from "../cards/FilmCard";
 import { FilmFeed } from "../home/FilmFeed";
+import { AddUser } from "./AddUser";
+import "./UserPage.css";
 
 export const UserPage = () => {
     const API = new APIManager();
@@ -15,7 +17,7 @@ export const UserPage = () => {
 
     useEffect(() => {
         API.getUser(userId).then((res) => setUser(res));
-    }, []);
+    }, [userId]);
 
     useEffect(() => {
         API.getUserFilmIds(userId).then((res) => {
@@ -28,9 +30,11 @@ export const UserPage = () => {
     useEffect(() => {
         if (userFilmIds.length > 0) {
             API.getAllFilms(userFilmIds).then((res) => setUserFilms(res));
-        }
+        } else setUserFilms([]);
         // API.getUserFilmIds(userId).then((res) => setUserFilmIds(res));
     }, [userFilmIds]);
+
+    const isCurrentUser = currentUser == userId;
 
     // useEffect(() => {
     //     userFilmIds.forEach(filmId=> {
@@ -43,13 +47,23 @@ export const UserPage = () => {
 
     return (
         <div className="user">
-            <div className="user__header">{user?.username}</div>
+            <div className="user__header">
+                <h2 className="user_username">{user?.username}</h2>
+                <AddUser
+                    isFollowing={true}
+                    hidden={isCurrentUser}
+                    userId={userId}
+                />
+            </div>
             <div className="FilmFeedDiscover">
-                <h3 className="FilmFeedDiscover__header">
+                {/* <h3 className="FilmFeedDiscover__header">
                     {user?.username + "'s Saved Films"}
-                </h3>
+                </h3> */}
                 <div className="FilmFeedDiscover__feed">
-                    <FilmFeed filmList={userFilms} header="" />
+                    <FilmFeed
+                        filmList={userFilms}
+                        header={user?.username + "'s Saved Films"}
+                    />
                 </div>
             </div>
         </div>

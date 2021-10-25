@@ -22,7 +22,7 @@ export const ApplicationViews = () => {
                     <FilmDetails />
                     {/* Render the component for the user's tasks */}
                 </Route>
-                <Route exact path="/user-details/:userId(\d+)">
+                <Route exact path="/user/:userId(\d+)">
                     <UserPage />
                     {/* Render the component for the user's events */}
                 </Route>

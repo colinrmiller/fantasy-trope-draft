@@ -1,0 +1,70 @@
+.user {}
+
+.user__header {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+}
+
+/* .user__header {
+} */
+
+.user_username {
+    font-size: 40px;
+    margin-left: 350px;
+}
+
+.addUser {
+    display: flex;
+    margin: auto;
+    height: 45px;
+    width: 190px;
+    margin-right: 40px;
+    justify-content: space-around;
+
+    /* background-color: green;
+    justify-content: space-between;
+    color: white;
+    font-size: 25px;
+    border-radius: 3px;
+    cursor: pointer;
+    */
+}
+
+.addUser__container {
+    display: flex;
+    margin: auto;
+    margin-right: 0;
+    height: 45px;
+    width: 190px;
+    background-color: green;
+    justify-content: space-between;
+    color: white;
+    margin-right: 40px;
+    font-size: 25px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.addUser__text {
+    margin: auto;
+    margin-left: 20px;
+}
+
+.addUser__icon {
+    transform: scale(1.8);
+    /* border-left: grey 1px solid; */
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.FilmFeedDiscover {}
+
+.FilmFeedDiscover__header {}
+
+.FilmFeeDiscover__feed {}

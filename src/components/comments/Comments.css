@@ -1,10 +1,18 @@
+.commentFeed__body {
+    margin-inline: 180px;
+    /* background: #48494b; */
+
+}
+
 .commentFeed__header {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    height: 48px;
+
 }
 
-.commentFeed__header > h2{
+.commentFeed__header>h2 {
     margin-left: 100px;
     margin-top: 3px;
     position: relative;
@@ -31,7 +39,7 @@
 
 }
 
- .newComment__icon {
+.newComment__icon {
     margin: auto;
     margin-top: 6px;
 }

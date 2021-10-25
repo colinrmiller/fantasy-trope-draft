@@ -1,17 +1,15 @@
 .FilmFeed {
-    min-height: 268px;
-    margin-bottom: 61px;
+    min-height: 288px;
     width: 95%;
-
 }
 
 .FilmFeed__header {
     text-transform: uppercase;
     margin-left: 90px;
     margin-bottom: 2px;
-
-
+    margin-top: 16px;
 }
+
 .FilmFeed__feed {
     display: -webkit-box;
     display: -moz-box;
@@ -21,16 +19,17 @@
     flex-flow: row;
     /* height: 100%; */
     position: absolute;
+    min-width: 95%;
     max-width: 100%;
     overflow-x: scroll;
     padding-block: 16px;
     border-top: solid 1px grey;
     border-bottom: solid 1px grey;
     padding-inline: 30px;
+    min-height: 186px;
 
 }
 
 .FilmFeed__feed::-webkit-scrollbar {
     display: none;
 }
-

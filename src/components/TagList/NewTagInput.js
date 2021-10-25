@@ -5,6 +5,7 @@ import { TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { TagAPIManager } from "../../modules/TagAPIManager";
 import { useAutocomplete } from "@mui/core";
+import "./TagList";
 
 export const NewTagInput = ({ onSubmit }) => {
     const API = new TagAPIManager();
@@ -56,7 +57,7 @@ export const NewTagInput = ({ onSubmit }) => {
                     <label htmlFor="header-search">
                         <span className="visually-hidden"></span>
                     </label>
-                    <select
+                    {/* <select
                         id="new-tag-input_type"
                         name="tagInput"
                         value={0}
@@ -66,7 +67,7 @@ export const NewTagInput = ({ onSubmit }) => {
                         <option value="kind">kind</option>
                         <option value="rating">rating</option>
                         <option value="trope">trope</option>
-                    </select>
+                    </select> */}
                     <AutocompleteComp
                         handleChange={handleInputChange}
                         optionList={tagList}

@@ -19,9 +19,17 @@ export const RecentActivity = () => {
 
     return (
         <div className="recentActivity">
-            {recentTags.map((tag) => {
-                return <TagActivityCard userFilmTag={tag} key={tag.id} />;
-            })}
+            <div className="recentActivity__feed">
+                {recentTags
+                    .sort((tagA, tagB) => {
+                        return tagB.dateTime - tagA.dateTime;
+                    })
+                    .map((tag) => {
+                        return (
+                            <TagActivityCard userFilmTag={tag} key={tag.id} />
+                        );
+                    })}
+            </div>
         </div>
     );
 };

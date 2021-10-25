@@ -115,7 +115,7 @@ export const FilmDetails = () => {
                             allowFullScreen
                         ></iframe>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                 </>
             ) : null}
 

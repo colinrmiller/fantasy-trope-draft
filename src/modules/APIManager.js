@@ -183,4 +183,35 @@ export class APIManager {
             .then((res) => res.json())
             .then((res) => res?.results);
     };
+
+    getUserFriend = (userId, friendId) => {
+        return fetch(
+            `${remoteURL}/usersFriends/?currentUserId=${userId}&userId=${friendId}`
+        ).then((res) => res.json());
+    };
+
+    addUserFriend = (userId, friendId) => {
+        const newEntry = {
+            currentUserId: userId,
+            userId: friendId,
+        };
+        return fetch(
+            `${remoteURL}/usersFriends/?currentUserId=${userId}&userId=${friendId}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newEntry),
+            }
+        ).then((res) => res.json());
+    };
+
+    deleteUserFriend = (userId, friendId) => {
+        return this.getUserFriend(userId, friendId).then((userFriend) => {
+            return fetch(`${remoteURL}/usersFriends/${userFriend[0].id}`, {
+                method: "DELETE",
+            });
+        });
+    };
 }

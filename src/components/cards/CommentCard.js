@@ -8,6 +8,7 @@ import "./Cards.css";
 import { CommentCardBody } from "./CommentCardBody";
 import { CommentCardEdit } from "./CommentCardEdit";
 import { UserCard } from "./UserCard";
+import { Button } from "@mui/material";
 
 export const CommentCard = ({ comment, handleDelete }) => {
     const API = new APIManager();

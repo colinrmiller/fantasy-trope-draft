@@ -77,6 +77,7 @@
 }
 
 .content__synopsis {
+    margin-bottom: 17px;
     margin-top: 8px;
 }
 
@@ -87,4 +88,8 @@
 .filmDetails__video {
     text-align: center;
     margin-top: 10px;
+}
+
+.filmDetails__tagline {
+    text-transform: uppercase;
 }

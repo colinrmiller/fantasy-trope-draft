@@ -1,17 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-// import "bootstrap/dist/css/bootstrap.min.css"
 import { SearchBarComp } from "../utilities/SearchBarComp";
 import { useContext } from "react";
 // import { AuthContext } from "../FTD";
 import { TimeUntil } from "../utilities/TimeUntil";
+import { UserCardNav } from "./UserCardNav";
+import { useState, useEffect } from "react";
+import { APIManager } from "../../modules/APIManager";
+
 export const NavBar = (props) => {
     // const { state, dispatch } = useContext(AuthContext);
-
     // const { avatar_url, name, public_repos, followers, following } = state.user;
 
+    const API = new APIManager();
+
+    const [user, setUser] = useState(null);
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
+
+    useEffect(() => {
+        API.getUser(currentUser).then((res) => {
+            setUser(res);
+        });
+    }, []);
+
     return (
         <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
             <div className="nav__logo">
@@ -19,9 +31,9 @@ export const NavBar = (props) => {
                 <h1 className="nav__logo--logo logo-dark">Draft</h1>
             </div>
             <ul className="nav nav-pills nav-fill">
-                <li className="nav-item">
-                    <TimeUntil />
-                </li>
+                {/* <li className="nav-item">
+                    <TimeUntil /> */}
+                {/* </li> */}
                 <li className="nav-item">
                     <Link className="nav-link" to="/">
                         <strong>Home</strong>
@@ -33,16 +45,13 @@ export const NavBar = (props) => {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link
-                        className="nav-link"
-                        to={"/user-details/" + currentUser}
-                    >
+                    <Link className="nav-link" to={"/user/" + currentUser}>
                         <strong>Your Movies</strong>
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/messages">
-                        <strong>Profile</strong>
+                    <Link className="nav-link" to="/new-game">
+                        <strong>New Game</strong>
                     </Link>
                 </li>
                 <li className="nav-item">
@@ -50,10 +59,12 @@ export const NavBar = (props) => {
                         <strong>Search</strong>
                     </Link>
                 </li>
-                {/* <li className="nav_avatar">
-                    <p>{state}</p>
-                </li> */}
-                {/* <li>SearchBarComp</li> */}
+                <li className="nav-item">
+                    <div className="nav__avatar">
+                        <UserCardNav user={user} />
+                    </div>
+                </li>
+                {/* {/* <li>SearchBarComp</li> */}
             </ul>
         </nav>
     );

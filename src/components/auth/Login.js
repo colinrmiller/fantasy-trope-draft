@@ -42,7 +42,7 @@ export const Login = () => {
     // });
 
     return (
-        <main className="container--login">
+        <main className="login">
             <dialog className="dialog dialog--auth" open={existDialog}>
                 <div>User does not exist</div>
                 <button
@@ -53,8 +53,8 @@ export const Login = () => {
                 </button>
             </dialog>
             <section>
-                <h1>Fantasy Trope Draft</h1>
-                <form className="form--login" onSubmit={handleLogin}>
+                <h1>Screen Draft</h1>
+                <form className="login__form" onSubmit={handleLogin}>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -75,7 +75,7 @@ export const Login = () => {
                     <FaceBookLogin />
                 </form>
             </section>
-            <section className="link--register">
+            <section className="login--registerLink">
                 <Link to="/register">Register for an account</Link>
             </section>
         </main>

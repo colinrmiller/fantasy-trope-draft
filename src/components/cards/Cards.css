@@ -1,5 +1,5 @@
 .filmCard {
-    width: 98px;
+    max-width: 98px;
     /* height: 183px; */
     border-radius: 5px;
     /* background-color: blanchedalmond; */
@@ -38,19 +38,22 @@
     cursor: pointer;
 }
 
-.filmCard__addFilm, .filmCard__deleteFilm {
+.filmCard__addFilm,
+.filmCard__deleteFilm {
     display: flex;
     margin: auto;
     position: relative;
     top: 11px;
 }
 
-.filmCard__addFilm>svg, .filmCard__deleteFilm>svg {
+.filmCard__addFilm>svg,
+.filmCard__deleteFilm>svg {
     margin: auto;
     margin-left: 0;
 }
 
-.filmCard__addFilm>p, .filmCard__deleteFilm>p {
+.filmCard__addFilm>p,
+.filmCard__deleteFilm>p {
     margin: auto;
     font-size: 17px;
     margin-right: 0;
@@ -63,16 +66,34 @@
 .commentCard {
     display: flex;
     flex-direction: column;
-    width: 72%;
+    width: 100%;
     margin: auto;
     border: 1px solid grey;
-    border-radius: 5px;
-    padding: 8px
+    /* border-radius: 5px; */
+    padding: 14px;
+    box-sizing: border-box;
+    margin-block: 12px;
+    background: #0e2541;
+
+
+}
+
+.commentCard__container {
+    /* display: flex;
+flex-direction: column;
+width: 100%;
+margin: auto;
+border: 1px solid grey;
+border-radius: 5px;
+padding: 8px;
+box-sizing:border-box; */
+
 }
 
 .commentCard__header {
     display: flex;
     justify-content: space-between;
+    height: 48px;
 }
 
 .commentCard__user {
@@ -81,8 +102,10 @@
 }
 
 .commentCard__text {
-    padding-inline: 30px;
+    /* padding-inline: 30px; */
     margin-bottom: 15px;
+    margin-left: 5px;
+
 }
 
 .commentCard__interaction {
@@ -106,6 +129,38 @@
 .commentCard__tagList {
     display: flex;
     margin-top: 27px;
+}
+
+.commentCardEdit {}
+
+.commentCardEdit .css-1txnhvm {
+    margin-left: 11px;
+    margin-bottom: 8px;
+}
+
+.commentCardEdit__body {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.commentCardEdit__buttons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 58px;
+}
+
+.commentCardEdit__buttons>button {
+    margin-inline: 8px;
+}
+
+.commentCardEdit__tagInput {
+    margin-left: 8px;
+}
+
+.commentCardEdit__textInput {
+    /* margin-left: 8px; */
 }
 
 .filmCardLarge {
@@ -143,19 +198,22 @@
     cursor: pointer;
 }
 
-.filmCard__addFilm, .filmCard__deleteFilm {
+.filmCard__addFilm,
+.filmCard__deleteFilm {
     display: flex;
     margin: auto;
     position: relative;
     top: 11px;
 }
 
-.filmCard__addFilm>svg, .filmCard__deleteFilm>svg {
+.filmCard__addFilm>svg,
+.filmCard__deleteFilm>svg {
     margin: auto;
     margin-left: 0;
 }
 
-.filmCard__addFilm>p, .filmCard__deleteFilm>p {
+.filmCard__addFilm>p,
+.filmCard__deleteFilm>p {
     margin: auto;
     font-size: 17px;
     margin-right: 0;
@@ -210,6 +268,8 @@
     text-align: center;
     min-width: 40px;
     max-width: 200px;
+    /* padding-top: 0;
+    padding-bottom: 0 */
 }
 
 .tagCard__dropdown {
@@ -238,7 +298,8 @@
 
 .tagCard__text {
     z-index: 1;
-    margin-block: 8px;
+    /* margin-block: 8px; */
+    padding-top: 7px;
 }
 
 .tagCard__plus {
@@ -249,6 +310,67 @@
 }
 
 .tagCard__minus {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.commentTagCard {
+    height: 20px;
+    background: red;
+    margin: auto;
+    padding-inline: 9px;
+    border-radius: 3px;
+    margin-inline: 5px;
+    color: black;
+    white-space: nowrap;
+    margin-block: 4px;
+    text-align: center;
+    min-width: 40px;
+    max-width: 200px;
+}
+
+.commentTagCard__dropdown {
+    position: relative;
+    height: 20px;
+    /* z-index: 2; */
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.commentTagCard__rating {
+    background: red;
+}
+
+.commentTagCard__genre {
+    background: rgb(0, 89, 255);
+}
+
+.commentTagCard__kind {
+    background: rgb(21, 182, 0);
+}
+
+.commentTagCard__trope {
+    background: rgb(177, 64, 158);
+}
+
+.commentTagCard__text {
+    z-index: 1;
+    margin-block: 8px;
+    font-size: 14px;
+    margin-top: 1px;
+    margin-inline: -1px;
+
+}
+
+.commentTagCard__plus {
+    margin: auto;
+    width: 50%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+
+.commentTagCard__minus {
     margin: auto;
     width: 50%;
     text-align: center;
@@ -268,4 +390,13 @@
     margin-left: 8px;
 }
 
-.userCard__avatar {}
+/* .userCard__avatar div img {
+    max-height: 40px;
+    max-width: 40px !important;
+}
+
+.sb-avatar {
+    max-height: 40px;
+    max-width: 40px !important;
+
+} */

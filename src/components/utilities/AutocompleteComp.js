@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useState } from "react";
+import "../TagList/TagList.css";
 
 const options = ["Option 1", "Option 2"];
 
@@ -21,6 +22,7 @@ export function AutocompleteComp({ optionList, handleChange, inputValue }) {
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
+                className="tagList__autocomplete"
                 // onInputChange
                 // inputValue={inputValue}
                 // onInputChange={(event, newInputValue) => {
@@ -33,7 +35,7 @@ export function AutocompleteComp({ optionList, handleChange, inputValue }) {
                 id="controllable-states-demo"
                 options={optionList}
                 getOptionLabel={(option) => option.name || ""}
-                sx={{ width: 300, background: "white" }}
+                sx={{ width: 220, background: "white" }}
                 renderInput={(params) => <TextField {...params} />}
             />
         </div>

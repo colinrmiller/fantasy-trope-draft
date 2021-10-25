@@ -1,4 +1,33 @@
 .recentActivity {
     display: flex;
     max-height: 400px;
+    min-height: 400px;
+}
+
+.recentActivity__feed {
+    display: flex;
+}
+
+.recentActivity__feed {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+    position: absolute;
+    min-width: 95%;
+    max-width: 100%;
+    overflow-x: scroll;
+    padding-block: 16px;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+    padding-inline: 30px;
+    min-height: 268px;
+
+}
+
+.recentActivity__feed::-webkit-scrollbar {
+    display: none;
 }
