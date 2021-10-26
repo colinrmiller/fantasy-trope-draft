@@ -4,6 +4,7 @@ import { FilmFeedDiscover } from "./FilmFeedDiscover";
 import { TagActivityCard } from "../cards/TagActivityCard";
 import { RecentActivity } from "./RecentActivity";
 import "./Home.css";
+import { FilmFeedInTheaters } from "./FilmFeedInTheaters";
 
 export const Home = () => {
     const testUserFilmTag = {
@@ -17,6 +18,7 @@ export const Home = () => {
         <div className="home">
             {" "}
             <div className="home__welcomeMessage">Welcome</div>
+            <hr />
             <div className="home__tagActivity">
                 {/* <TagActivityCard userFilmTag={testUserFilmTag} /> */}
                 <RecentActivity />
@@ -24,9 +26,9 @@ export const Home = () => {
             <div className="home__FilmFeedDiscover">
                 <FilmFeedDiscover />
             </div>
-            <div className="home__FilmFeedDiscover">
-                <FilmFeedDiscover />
-            </div>
+            {/* <div className="home__FilmFeedDiscover">
+                <FilmFeedInTheaters />
+            </div> */}
             <div className="home__tagFeed"></div>
         </div>
     );

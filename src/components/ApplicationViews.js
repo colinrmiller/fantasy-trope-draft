@@ -4,6 +4,7 @@ import { Home } from "./home/Home";
 import { FilmDetails } from "./filmDetails/FilmDetails";
 import { UserPage } from "./user/UserPage";
 import { Search } from "./utilities/Search";
+import { Friends } from "./user/Friends";
 
 export const ApplicationViews = () => {
     return (
@@ -13,6 +14,7 @@ export const ApplicationViews = () => {
                     <Home />
                 </Route>
                 <Route path="/friends">
+                    <Friends />
                     {/* Render the component for list of friends */}
                 </Route>
                 <Route path="/messages">

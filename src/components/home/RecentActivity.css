@@ -1,8 +1,9 @@
 .recentActivity {
-    display: flex;
-    max-height: 400px;
-    min-height: 400px;
+    /* display: flex; */
+    height: 400px;
 }
+
+.recentActivity__header {}
 
 .recentActivity__feed {
     display: flex;

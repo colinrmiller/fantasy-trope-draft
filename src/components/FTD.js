@@ -5,6 +5,7 @@ import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { LoginBypass } from "./auth/LoginBypass";
 import { Register } from "./auth/Register";
+// import { RewriteJSON } from "./utilities/RewriteTags";
 // import { GithubLogin } from "./auth/GithubLogin";
 
 // import { createContext, useReducer } from "react";
@@ -15,7 +16,7 @@ import { Register } from "./auth/Register";
 
 export const FTD = () => {
     // const [state, dispatch] = useReducer(reducer, initialState);
-
+    // RewriteJSON();
     return (
         <>
             {/* <AuthContext.Provider

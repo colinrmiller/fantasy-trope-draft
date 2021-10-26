@@ -224,11 +224,13 @@ box-sizing:border-box; */
 }
 
 .tagActivityCard {
-    border: 1px solid white;
+    border: 1px solid #99aabb;
     max-width: 333px;
     border-radius: 5px;
     padding: 5px;
     margin-inline: 30px;
+    max-height: 380px;
+
 }
 
 .tagActivityCard__header {

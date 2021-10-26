@@ -104,6 +104,19 @@ export class APIManager {
         ).then((res) => res.json());
     };
 
+    getInTheaters = () => {
+        const oneWeekMilliSec = 604800000;
+        let today = new Date();
+        const fiveWeeksAgo = new Date(today - oneWeekMilliSec * 5);
+        const end = today.toISOString().split("T")[0];
+
+        const start = fiveWeeksAgo.toISOString().split("T")[0];
+
+        const apiString = `https://api.themoviedb.org/3/discover/movie/?primary_release_date.gte=${start}&primary_release_date.lte=${end}&api_key=${tmdb}`;
+        debugger;
+        return fetch(apiString).then((res) => res.json());
+    };
+
     getUser = (userId) => {
         return fetch(`${remoteURL}/users/${userId}`).then((res) => res.json());
     };

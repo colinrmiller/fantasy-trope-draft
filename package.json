@@ -13,6 +13,7 @@
     "devcert": "^1.2.0",
     "devcert-cli": "^1.0.0",
     "material-ui-search-bar": "^1.0.0",
+    "node-fetch": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-avatar": "^3.10.0",
