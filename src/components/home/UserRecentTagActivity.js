@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import { TagActivityCard2 } from "../cards/TagActivityCard2";
 import "./RecentActivity.css";
 
-export const RecentActivity = () => {
+export const UserRecentTagActivity = ({ userId }) => {
     const API = new TagAPIManager();
     const [recentTags, setRecentTags] = useState([]);
     const fetchLimit = 20;
 
     const getRecentTags = () => {
-        API.getRecentUserFilmTags().then((res) => {
+        API.getRecentUserFilmTagsByUser(userId).then((res) => {
             setRecentTags(filterRecentTags(res));
         });
     };

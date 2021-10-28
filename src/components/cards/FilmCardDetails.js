@@ -7,7 +7,7 @@ import "./Cards.css";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-export const FilmCardLarge = ({ film }) => {
+export const FilmCardDetails = ({ film }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new APIManager();
     const [inList, setInList] = useState(false);
@@ -27,10 +27,10 @@ export const FilmCardLarge = ({ film }) => {
                         "https://image.tmdb.org/t/p/original" + film.poster_path
                     }
                     alt={film?.title}
-                    className="filmCardLarge__img"
+                    className="filmCardDetails__img"
                 />
             </Link>
-            {/* {inList ? (
+            {inList ? (
                 <div
                     className="filmCard__interaction"
                     onClick={() =>
@@ -59,7 +59,7 @@ export const FilmCardLarge = ({ film }) => {
                         <AddIcon className="cardIcon--add" />
                     </div>
                 </div>
-            )} */}
+            )}
         </div>
     );
 };

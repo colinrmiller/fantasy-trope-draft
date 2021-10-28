@@ -226,7 +226,7 @@ export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
     );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+// Top 100 films as rated by IMDb users. https://www.imdb.com/chart/top
 const top100Films = [
     { name: "The Shawshank Redemption", year: 1994 },
     { name: "The Godfather", year: 1972 },

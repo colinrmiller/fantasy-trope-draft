@@ -4,7 +4,8 @@
 }
 
 #new-tag-input {
-    width: 90px;
+    width: 155px;
+    ;
 }
 
 .tagList {
@@ -46,6 +47,11 @@
 
 .newTagInput__submit>svg {
     margin: auto;
+}
+
+.newTagInput__newTag--button {
+    margin: auto;
+    margin-left: 30px;
 }
 
 .TextField-without-border-radius fieldset {}

@@ -5,13 +5,13 @@ import { FilmCard } from "../cards/FilmCard";
 import { APIManager } from "../../modules/APIManager";
 import "./FilmFeed.css";
 
-export const FilmFeedDiscover = () => {
+export const FilmFeedInTheaters = () => {
     const [mainFilmList, setMainFilmList] = useState([]);
-    const [filter, setfilter] = useState("Discover New Movies");
+    const [filter, setfilter] = useState("Popular On ScreenDraft");
 
     const API = new APIManager();
     useEffect(() => {
-        API.getPopular().then((res) => setMainFilmList(res.results));
+        API.getInTheaters().then((res) => setMainFilmList(res.results));
     }, []);
 
     return (

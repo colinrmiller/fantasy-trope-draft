@@ -5,6 +5,11 @@ import { useState, useEffect } from "react";
 import { FilmCard } from "../cards/FilmCard";
 import { FilmFeed } from "../home/FilmFeed";
 import { AddUser } from "./AddUser";
+import { DisplayRankings } from "./DisplayRankings";
+import { FilmFeedNoSavedFilms } from "../feeds/FilmFeedNoSavedFilms";
+import { UserRecentTagActivity } from "../home/UserRecentTagActivity";
+// import { Rankings } from "../dataViz/RankingScatterplot";
+
 import "./UserPage.css";
 
 export const UserPage = () => {
@@ -29,7 +34,9 @@ export const UserPage = () => {
 
     useEffect(() => {
         if (userFilmIds.length > 0) {
-            API.getAllFilms(userFilmIds).then((res) => setUserFilms(res));
+            API.getAllFilmsByIdArray(userFilmIds).then((res) =>
+                setUserFilms(res)
+            );
         } else setUserFilms([]);
         // API.getUserFilmIds(userId).then((res) => setUserFilmIds(res));
     }, [userFilmIds]);
@@ -55,17 +62,26 @@ export const UserPage = () => {
                     userId={userId}
                 />
             </div>
-            <div className="FilmFeedDiscover">
-                {/* <h3 className="FilmFeedDiscover__header">
+            <DisplayRankings userId={user.id} />
+            {/* <Rankings /> */}
+            {/* <div className="FilmFeedDiscover">
+                <h3 className="FilmFeed__header">
                     {user?.username + "'s Saved Films"}
                 </h3> */}
-                <div className="FilmFeedDiscover__feed">
+            <div className="userPage__recentTagActivity">
+                <UserRecentTagActivity userId={userId} />
+            </div>
+            <div className="FilmFeed__feed">
+                {userFilms.length > 0 ? (
                     <FilmFeed
                         filmList={userFilms}
                         header={user?.username + "'s Saved Films"}
                     />
-                </div>
+                ) : (
+                    <FilmFeedNoSavedFilms />
+                )}
             </div>
+            {/* </div> */}
         </div>
     );
 };

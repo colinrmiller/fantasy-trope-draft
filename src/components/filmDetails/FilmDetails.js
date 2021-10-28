@@ -5,7 +5,7 @@ import { APIManager } from "../../modules/APIManager";
 import "./FilmDetails.css";
 import AddIcon from "@mui/icons-material/Add";
 import { StarRating } from "../utilities/StarRating";
-import { FilmCardLarge } from "../cards/FilmCardLarge";
+import { FilmCardDetails } from "../cards/FilmCardDetails";
 import { TagList } from "../TagList/TagList";
 import { CommentFeed } from "../comments/CommentFeed";
 import { CommentCard } from "../cards/CommentCard";
@@ -69,7 +69,7 @@ export const FilmDetails = () => {
                             alt={film?.title + " Poster"}
                             className="img"
                         /> */}
-                        <FilmCardLarge film={film} />
+                        <FilmCardDetails film={film} />
 
                         <StarRating handleRating={() => {}} />
 

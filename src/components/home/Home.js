@@ -5,6 +5,8 @@ import { TagActivityCard } from "../cards/TagActivityCard";
 import { RecentActivity } from "./RecentActivity";
 import "./Home.css";
 import { FilmFeedInTheaters } from "./FilmFeedInTheaters";
+import { CompareTwo } from "../pairwiseComparison/CompareTwo";
+import { StarredComparisonsFeed } from "../feeds/StarredComparisonsFeed";
 
 export const Home = () => {
     const testUserFilmTag = {
@@ -19,6 +21,8 @@ export const Home = () => {
             {" "}
             <div className="home__welcomeMessage">Welcome</div>
             <hr />
+            <CompareTwo />
+            <hr />
             <div className="home__tagActivity">
                 {/* <TagActivityCard userFilmTag={testUserFilmTag} /> */}
                 <RecentActivity />
@@ -26,9 +30,15 @@ export const Home = () => {
             <div className="home__FilmFeedDiscover">
                 <FilmFeedDiscover />
             </div>
+            <div className="home__FilmFeedDiscover">
+                <FilmFeedInTheaters />
+            </div>
             {/* <div className="home__FilmFeedDiscover">
                 <FilmFeedInTheaters />
             </div> */}
+            <div className="home__starredComparisons">
+                <StarredComparisonsFeed />
+            </div>
             <div className="home__tagFeed"></div>
         </div>
     );

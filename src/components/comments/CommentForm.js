@@ -56,9 +56,11 @@ export const CommentForm = ({
     // };
 
     const handleSubmit = (event) => {
+        debugger;
         if (commentInput !== "") {
             event.preventDefault();
             handleSubmitComment(commentInput).then((res) => {
+                debugger;
                 const commentId = res.id;
                 const tagIdArray = selectedTagIds.map((tag) => tag.id);
                 CommentAPI.addCommentTags(commentId, tagIdArray);

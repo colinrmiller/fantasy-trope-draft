@@ -26,6 +26,11 @@ yarn-error.log*
 .eslintcache
 
 /api/db.json
+/api/dbHold.json
+/api/dbTest.json
+/api/exdb.json
+/api/generatedDb.json
+/api/dumbyData_UsersMovieTags.json
 
 # /src/modules/keys
 src/modules/keys.js

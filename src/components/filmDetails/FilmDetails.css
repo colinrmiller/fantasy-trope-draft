@@ -1,12 +1,13 @@
 .filmDetails__head {
-    height: 536px;
+    height: 616px;
+
 }
 
 .img-container {
     height: 416px;
     position: relative;
     top: 100px;
-    left: 262px;
+    left: 217px;
     width: 247px;
     border-radius: 5px;
     object-fit: cover;

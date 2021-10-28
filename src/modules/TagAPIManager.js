@@ -38,6 +38,12 @@ export class TagAPIManager {
         ).then((res) => res.json());
     };
 
+    getRecentUserFilmTagsByUser = (userId) => {
+        return fetch(
+            `${remoteURL}/usersFilmsTags/?&userId=${userId}&_sort=dateTime&_order=desc`
+        ).then((res) => res.json());
+    };
+
     addNewTag = (tag) => {
         return fetch(`${remoteURL}/tags/`, {
             method: "POST",

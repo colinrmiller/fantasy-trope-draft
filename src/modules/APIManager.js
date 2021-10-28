@@ -1,95 +1,23 @@
 import { tmdb } from "./keys.js";
-
+import { CommentAPIManager } from "./CommentAPIManager.js";
 const remoteURL = "http://localhost:8088";
 
 export class APIManager {
-    // target: json paramater to query;                     eg. "users", "articles", "tasks"
-    // id: target/id;                                       eg. 1
-    // expandArray: array of parameters to expand on;       eg. ["task", "article"]
-    // getById(target, id, expandArray = []) {
-    //     //  add trailing string of expand parameters for non-empty expandArray
-    //     let expandQuery = expandArray.length > 0 ? "?" : "";
-    //     if (expandArray.length > 0) {
-    //         expandArray.forEach((elem) => {
-    //             expandQuery += `_expand=${elem}&`;
-    //         });
-    //     }
-    //     let url = `${remoteURL}/${target}/${id}/${expandQuery}`;
-    //     return fetch(url).then((res) => res.json());
-    // }
-
-    // getAll(target, expandArray = []) {
-    //     let expandQuery = expandArray.length > 0 ? "?" : "";
-    //     if (expandArray.length > 0) {
-    //         expandArray.forEach((elem) => {
-    //             expandQuery += `_expand=${elem}&`;
-    //         });
-    //     }
-    //     let url = `${remoteURL}/${target}/${expandQuery}`;
-    //     return fetch(url).then((res) => res.json());
-    // }
-
-    // getAllByUserId(target, userId, expandArray = []) {
-    //     let queryParamaters = "?";
-    //     if (expandArray.length > 0) {
-    //         expandArray.forEach((elem) => {
-    //             queryParamaters += `_expand=${elem}&`;
-    //         });
-    //     }
-    //     queryParamaters += `userId=${userId}`;
-    //     let url = `${remoteURL}/${target}/${queryParamaters}`;
-    //     return fetch(url).then((res) => res.json());
-    // }
-
-    // getAllByUserArray(target, userArray, expandArray = []) {
-    //     const currentUserId = parseInt(sessionStorage.getItem("active_user"));
-    //     let queryString = "?";
-    //     userArray = [...userArray, currentUserId];
-    //     userArray.forEach((userId) => {
-    //         queryString += `userId=${userId}&`;
-    //     });
-
-    //     if (expandArray.length > 0) {
-    //         expandArray.forEach((elem) => {
-    //             queryString += `_expand=${elem}&`;
-    //         });
-    //     }
-    //     let url = `${remoteURL}/${target}/${queryString}`;
-    //     return fetch(url).then((res) => res.json());
-    // }
-
-    // getRandomId(target) {
-    //     return fetch(`${remoteURL}/${target}`)
-    //         .then((result) => result.json())
-    //         .then((objArray) => {
-    //             const randomIndex = Math.floor(Math.random() * objArray.length);
-    //             const randomObj = objArray[randomIndex];
-    //             return randomObj.id;
-    //         });
-    // }
-
-    // delete(target, id) {
-    //     return fetch(`${remoteURL}/${target}/${id}`, {
-    //         method: "DELETE",
-    //     }).then((result) => result.json());
-    // }
-
-    // addEntry(target, newEntry) {
-    //     return fetch(`${remoteURL}/${target}`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(newEntry),
-    //     }).then((response) => response.json());
-    // }
-
     getFriends = () => {
         const currentUserId = parseInt(sessionStorage.getItem("active_user"));
         return fetch(
             `http://localhost:8088/friends?currentUserId=${currentUserId}&_expand=user`
         ).then((result) => result.json());
     };
+
+    // getFilmsByIdArray = (filmIdArray) => {
+    //     const queryString = "?";
+
+    //     filmIdArray.forEach((filmId) => {
+    //         queryString += `filmId=${filmId}&`;
+    //     });
+    //     return fetch();
+    // };
 
     getFilm = (filmId) => {
         return fetch(
@@ -102,6 +30,8 @@ export class APIManager {
             `
             https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`
         ).then((res) => res.json());
+        // const apiString = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`;
+        // return fetch(apiString).then((res) => res.json());
     };
 
     getInTheaters = () => {
@@ -111,10 +41,15 @@ export class APIManager {
         const end = today.toISOString().split("T")[0];
 
         const start = fiveWeeksAgo.toISOString().split("T")[0];
-
+        // const apiString = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`;
         const apiString = `https://api.themoviedb.org/3/discover/movie/?primary_release_date.gte=${start}&primary_release_date.lte=${end}&api_key=${tmdb}`;
-        debugger;
-        return fetch(apiString).then((res) => res.json());
+        return fetch(apiString)
+            .then((res) => {
+                return res.json();
+            })
+            .catch((error) => {
+                return [];
+            });
     };
 
     getUser = (userId) => {
@@ -162,7 +97,7 @@ export class APIManager {
             });
     }
 
-    getAllFilms = (filmIds) => {
+    getAllFilmsByIdArray = (filmIds) => {
         if (filmIds.length > 0) {
             const promiseArray = filmIds.reduce((partialArray, filmId) => {
                 partialArray.push(this.getFilm(filmId));
@@ -170,7 +105,27 @@ export class APIManager {
             }, []);
             const res = Promise.all(promiseArray);
             return res;
-        }
+        } else return Promise.all([]);
+    };
+
+    putFilmNames = (filmObjArray) => {
+        if (filmObjArray.length > 0) {
+            const promiseArray = filmObjArray.reduce((partialArray, filmId) => {
+                partialArray.push(this.getFilm(filmId["filmId"]));
+                return partialArray;
+            }, []);
+            const res = Promise.all(promiseArray).then((result) => {
+                return result.map((resultObj, index) => {
+                    return {
+                        filmName: resultObj.title,
+                        filmId: filmObjArray[index]["filmId"],
+                        valuation: filmObjArray[index]["valuation"],
+                        index: filmObjArray[index]["index"],
+                    };
+                });
+            });
+            return res;
+        } else return Promise.all([]);
     };
 
     getFilmSearch = (searchQuery) => {
@@ -226,5 +181,105 @@ export class APIManager {
                 method: "DELETE",
             });
         });
+    };
+
+    // ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+    // ----------------------- Pairwise Comparison --------------------------------
+    // ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+
+    CommentAPI = new CommentAPIManager();
+
+    getActiveFilms = () => {
+        let activeFilms = [];
+
+        return fetch(`${remoteURL}/usersFilmsTags`)
+            .then((res) => res.json())
+            .then((res) =>
+                res.map((userFilmTag) => {
+                    return userFilmTag.filmId;
+                })
+            )
+            .then((filmIds) => {
+                return filmIds.flatMap((filmId) => {
+                    if (!activeFilms.includes(filmId)) {
+                        activeFilms = [...activeFilms, filmId];
+                        return [filmId];
+                    } else return [];
+                });
+            });
+    };
+
+    getRandomFilm = () => {
+        return this.getActiveFilms().then((filmIds) => {
+            const randomId = Math.floor(filmIds.length * Math.random());
+
+            return this.getFilm(filmIds[randomId]);
+        });
+    };
+
+    addUserFilmChoice = (userId, filmA, filmB, choice) => {
+        const filmChoice = {
+            userId: userId,
+        };
+        switch (choice) {
+            case "A":
+                filmChoice["plusFilmId"] = filmA;
+                filmChoice["minusFilmId"] = filmB;
+                break;
+            case "B":
+                filmChoice["minusFilmId"] = filmA;
+                filmChoice["plusFilmId"] = filmB;
+                break;
+            default:
+                return Error;
+        }
+        return fetch(`${remoteURL}/userComparisons`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(filmChoice),
+        }).then((response) => response.json());
+    };
+
+    getRatedFilmPairs = (userId) => {
+        return fetch(`${remoteURL}/userComparisons?userId=${userId}`).then(
+            (res) => res.json()
+        );
+    };
+
+    getStarredFilmComparisons = () => {
+        return fetch(`${remoteURL}/starredFilmPairs/`).then((res) =>
+            res.json()
+        );
+    };
+
+    getStarredFilmComparisonsByUser = (userId) => {
+        return fetch(`${remoteURL}/starredFilmPairs/?&userId=${userId}`).then(
+            (res) => res.json()
+        );
+    };
+
+    addStarredComparison = (userId, filmAId, filmBId) => {
+        const starredFilmPair = {
+            userId: userId,
+            filmA: filmAId,
+            filmB: filmBId,
+        };
+        return fetch(`${remoteURL}/starredFilmPairs`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(starredFilmPair),
+        }).then((response) => response.json());
+    };
+
+    getUserComparison = (userId, pair) => {
+        return fetch(
+            `${remoteURL}/userComparisons?userId=${userId}&plusFilmId=${pair.filmA}&plusFilmId=${pair.filmB}&minusFilmId=${pair.filmB}&minusFilmId=${pair.filmA}`
+        ).then((res) => res.json());
     };
 }

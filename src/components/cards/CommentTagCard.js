@@ -23,7 +23,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
         // get any previous user rating for currentUser and tagId
         // if no previous rating create a new UserFilmRating
         // if previous, modify it with new rating
-        return API.getUserFilmTag(tag.id, filmId)
+        return API.getUserFilmTag(tag?.id, filmId)
             .then((userTag) => {
                 if (userTag?.length > 0) {
                     const updatedTag = { ...userTag[0] };
@@ -42,7 +42,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
                 } else {
                     const newTag = {
                         filmId: filmId,
-                        tagId: tag.id,
+                        tagId: tag?.id,
                         userId: currentUser,
                     };
                     newTag["rating"] = rating === "plus" ? 1 : -1;
@@ -54,7 +54,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
 
     const getUserRating = () => {
         // determine if the currentUser has +/- review on the tag
-        API.getUserFilmTag(tag.id, filmId).then((res) => {
+        API.getUserFilmTag(tag?.id, filmId).then((res) => {
             if (res) {
                 if (res.length > 0) {
                     if (res[0].rating === 1) setUserRating("plus");
@@ -65,7 +65,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
     };
 
     const getTagRating = () => {
-        API.getUsersFilmTagTotal(filmId, tag.id).then((totalTagList) => {
+        API.getUsersFilmTagTotal(filmId, tag?.id).then((totalTagList) => {
             const ratedTag = { ...tag };
             ratedTag["plusRatings"] = 0;
             ratedTag["minusRatings"] = 0;
@@ -128,11 +128,11 @@ export const CommentTagCard = ({ tag, filmId }) => {
 
     return !hover ? (
         <div
-            className={"commentTagCard commentTagCard__" + tag.type}
+            className={"commentTagCard commentTagCard__" + tag?.type}
             // onMouseEnter={() => setHover(true)}
             // onMouseLeave={() => setHover(false)}
         >
-            <div className="commentTagCard__text">{tag.name}</div>
+            <div className="commentTagCard__text">{tag?.name}</div>
         </div>
     ) : (
         <div
@@ -143,7 +143,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className="commentTagCard__text">{tag.name}</div>
+            <div className="commentTagCard__text">{tag?.name}</div>
             <div className="commentTagCard__dropdown">
                 <div
                     className={

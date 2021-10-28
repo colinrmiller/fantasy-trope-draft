@@ -63,7 +63,9 @@
     margin-right: 20px;
 }
 
-.FilmFeedDiscover {}
+.FilmFeedDiscover {
+    min-height: 180px;
+}
 
 .FilmFeedDiscover__header {}
 

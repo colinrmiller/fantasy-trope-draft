@@ -7,7 +7,7 @@ import "./FilmFeed.css";
 
 export const FilmFeedInTheaters = () => {
     const [mainFilmList, setMainFilmList] = useState([]);
-    const [filter, setfilter] = useState("popular");
+    const [filter, setfilter] = useState("New Releases");
 
     const API = new APIManager();
     useEffect(() => {
@@ -18,9 +18,9 @@ export const FilmFeedInTheaters = () => {
         <div className="FilmFeed">
             <h3 className="FilmFeed__header">{filter}</h3>
             <div className="FilmFeed__feed">
-                {mainFilmList.map((film) => (
-                    <FilmCard key={film.id} film={film} />
-                ))}
+                {mainFilmList.map((film) => {
+                    return <FilmCard key={film.id} film={film} />;
+                })}
             </div>
         </div>
     );

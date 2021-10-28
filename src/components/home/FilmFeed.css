@@ -27,9 +27,13 @@
     border-bottom: solid 1px grey;
     padding-inline: 30px;
     min-height: 186px;
-
+    background: #1c2229;
 }
 
 .FilmFeed__feed::-webkit-scrollbar {
     display: none;
+}
+
+.filmFeedNoSavedFilms {
+    height: 100px;
 }

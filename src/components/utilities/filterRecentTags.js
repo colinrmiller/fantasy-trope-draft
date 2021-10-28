@@ -10,6 +10,7 @@ export const filterRecentTags = (tagList) => {
                 uniqueUserIds.push(tag.userId);
             }
         });
+
         // ... for each user, find one tag from each film they have tagged.
         uniqueUserIds.forEach((userId) => {
             let uniqueUserFilmIds = []; // hold track of films so that no more than one tag is collected per film

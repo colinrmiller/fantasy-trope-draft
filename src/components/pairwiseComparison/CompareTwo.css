@@ -1,0 +1,23 @@
+.compareTwo {
+    height: 350px;
+    margin-top: 10px;
+}
+
+.compareTwo__filmContainer {
+    /* width: 300px; */
+}
+
+.compareTwo__compare {
+    display: flex;
+    max-width: 60%;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.compareTwo__seperator {
+    margin: auto;
+    text-align: center;
+    height: 800px;
+    line-height: 400px;
+    font-size: 40px;
+}

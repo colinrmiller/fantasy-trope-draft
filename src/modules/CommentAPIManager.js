@@ -153,7 +153,7 @@ export class CommentAPIManager {
     //     }).then((response) => response.json());
     // };
 
-    getAllFilms = (filmIds) => {
+    getAllFilmsByIdArray = (filmIds) => {
         if (filmIds.length > 0) {
             const promiseArray = filmIds.reduce((partialArray, filmId) => {
                 partialArray.push(this.getFilm(filmId));

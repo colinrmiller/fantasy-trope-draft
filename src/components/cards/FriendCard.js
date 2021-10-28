@@ -16,5 +16,5 @@ export const FriendCard = ({ userId }) => {
         getUser();
     }, []);
 
-    return <div className="userId"></div>;
+    return <div className="friendCard"></div>;
 };
