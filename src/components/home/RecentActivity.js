@@ -21,7 +21,7 @@ export const RecentActivity = () => {
     return (
         <div className="recentActivity">
             <h3 className="recentActivity__header">Recent Film Tags</h3>
-            <hr />
+            {/* <hr /> */}
             <div className="recentActivity__feed">
                 {recentTags
                     .sort((tagA, tagB) => {

@@ -29,7 +29,7 @@ export const FilmFeed = ({ filmList, header }) => {
                     )}
                 </div>
             </div>
-            <hr />
+            {/* <hr /> */}
         </>
     );
 };

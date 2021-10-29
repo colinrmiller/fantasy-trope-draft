@@ -37,7 +37,10 @@ export const NewTagInput = ({ onSubmit }) => {
                 <form
                     action="/"
                     method="get"
-                    onSubmit={(event) => onSubmit(event, input, type)}
+                    onSubmit={(event) => {
+                        setCreateNewTag(false);
+                        onSubmit(event, input, type);
+                    }}
                     className="newTagInput__form"
                 >
                     <label htmlFor="header-search">
@@ -48,7 +51,7 @@ export const NewTagInput = ({ onSubmit }) => {
                             <select
                                 id="new-tag-input_type"
                                 name="tagInput"
-                                value={0}
+                                value={type}
                                 onChange={(event) =>
                                     setType(event.target.value)
                                 }

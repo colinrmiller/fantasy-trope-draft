@@ -47,7 +47,7 @@ export const FilmFeedById = ({ filmIdList, header }) => {
                     )}
                 </div>
             </div>
-            <hr />
+            {/* <hr /> */}
         </>
     );
 };

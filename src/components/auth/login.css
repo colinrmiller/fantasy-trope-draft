@@ -3,10 +3,40 @@
   min-height: 5rem;
 }
 
+.loginPage {
+  width: 40%;
+  margin: auto;
+  height: 400px;
+  margin-top: 30px;
+}
+
+.loginPage>h2 {
+  margin-top: 106px;
+
+}
+
+/* .loginPage>fieldset {background-color: #edeff1;
+display: flex;
+justify-content: flex-end;
+
+} */
+
 .form--login {
   width: 40%;
   margin: auto;
   margin-top: 20%;
+}
+
+.loginPage__fieldset {
+  background-color: #edeff1;
+  display: flex;
+  justify-content: flex-end;
+  border: 0;
+  padding-top: 10px;
+}
+
+.login__label {
+  margin-right: auto;
 }
 
 .login__form--submit {

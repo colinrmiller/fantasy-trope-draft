@@ -8,6 +8,8 @@
 .nav-pills {
     display: flex;
     width: 100%;
+    justify-content: flex-end;
+
 }
 
 .nav-item {
@@ -15,6 +17,7 @@
     list-style-type: none;
     margin-bottom: 10px;
     text-transform: uppercase;
+    margin-inline: 15px;
 }
 
 .nav__logo {
@@ -27,7 +30,7 @@
 
 .nav__logo--logo {
     position: relative;
-    top: 2px;
+    top: 10px;
     bottom: 0;
     left: 40px;
     font-size: 41px;
@@ -42,6 +45,8 @@
     /* margin-inline: 27px; */
     margin-top: 8px;
     text-align: end;
+    margin-left: 10px;
+    margin-top: 7px;
 }
 
 .nav__avatar {}

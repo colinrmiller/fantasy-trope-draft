@@ -52,12 +52,14 @@ export const Login = () => {
                     Close
                 </button>
             </dialog>
-            <section>
-                <h1>Screen Draft</h1>
+            <section className="loginPage">
                 <form className="login__form" onSubmit={handleLogin}>
                     <h2>Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                    <fieldset className="loginPage__fieldset">
+                        <label className="login__label" htmlFor="inputEmail">
+                            {" "}
+                            Email address{" "}
+                        </label>
                         <input
                             type="email"
                             id="email"
@@ -68,15 +70,15 @@ export const Login = () => {
                             value={loginUser.email}
                             onChange={handleInputChange}
                         />
-                    </fieldset>
-                    <fieldset>
+                        {/* </fieldset>
+                    <fieldset> */}
                         <button type="login__form--submit">Sign in</button>
                     </fieldset>
-                    <FaceBookLogin />
+                    <section className="login--registerLink">
+                        <Link to="/register">Register for an account</Link>
+                    </section>
+                    {/* <FaceBookLogin /> */}
                 </form>
-            </section>
-            <section className="login--registerLink">
-                <Link to="/register">Register for an account</Link>
             </section>
         </main>
     );

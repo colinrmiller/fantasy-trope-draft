@@ -1,12 +1,12 @@
 .filmDetails__head {
-    height: 616px;
+    height: 580px;
 
 }
 
 .img-container {
     height: 416px;
     position: relative;
-    top: 100px;
+    top: 80px;
     left: 217px;
     width: 247px;
     border-radius: 5px;
@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 156px;
+    top: 120px;
     max-width: 878px;
     max-height: 374px;
 }

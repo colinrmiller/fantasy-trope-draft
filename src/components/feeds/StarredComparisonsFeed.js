@@ -21,7 +21,7 @@ export const StarredComparisonsFeed = () => {
     return (
         <div className="StarredComparisonsFeed">
             <h3 className="StarredComparisonsFeed__header">Recent Decisions</h3>
-            <hr />
+            {/* <hr /> */}
             <div className="StarredComparisonsFeed__feed">
                 {starredComparisons
                     .filter((tag, index) => index < fetchLimit)

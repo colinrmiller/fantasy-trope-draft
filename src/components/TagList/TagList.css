@@ -52,6 +52,10 @@
 .newTagInput__newTag--button {
     margin: auto;
     margin-left: 30px;
+    color: #9b9b9b;
+    font-size: 13px;
+    margin-bottom: 0;
+
 }
 
 .TextField-without-border-radius fieldset {}
