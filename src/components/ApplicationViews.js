@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { FilmDetails } from "./filmDetails/FilmDetails";
+import { SavedComparison } from "./pairwiseComparison/SavedComparison";
 import { UserPage } from "./user/UserPage";
 import { Search } from "./utilities/Search";
 import { Friends } from "./user/Friends";
@@ -24,12 +25,15 @@ export const ApplicationViews = () => {
                     <FilmDetails />
                     {/* Render the component for the user's tasks */}
                 </Route>
+                <Route exact path="/comparison/:filmIdA(\d+)/:filmIdB(\d+)">
+                    <SavedComparison />
+                    {/* Render the component for the user's tasks */}
+                </Route>
                 <Route exact path="/user/:userId(\d+)">
                     <UserPage />
                     {/* Render the component for the user's events */}
                 </Route>
                 <Route exact path="/search/">
-                    <Search />
                     {/* Render the component for the user's events */}
                 </Route>
             </div>

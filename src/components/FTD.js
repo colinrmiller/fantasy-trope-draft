@@ -2,9 +2,11 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
+import { Footer } from "./footer/Footer";
 import { Login } from "./auth/Login";
 import { LoginBypass } from "./auth/LoginBypass";
 import { Register } from "./auth/Register";
+import { Search } from "./utilities/Search";
 // import { RewriteJSON } from "./utilities/RewriteTags";
 // import { GithubLogin } from "./auth/GithubLogin";
 
@@ -31,7 +33,10 @@ export const FTD = () => {
                         return (
                             <>
                                 <NavBar />
+                                <Search />
+
                                 <ApplicationViews />
+                                <Footer />
                             </>
                         );
                     } else {

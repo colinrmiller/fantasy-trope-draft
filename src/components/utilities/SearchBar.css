@@ -1,0 +1,31 @@
+.searchBar {
+    display: flex;
+    padding-left: 50px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    /* width: 100%; */
+    border-bottom: 1px solid grey;
+    justify-content: flex-end;
+    padding-right: 80px;
+    color: white;
+}
+
+.searchBar--input {
+    /* margin-left: -20px; */
+    z-index: 0;
+}
+
+.searchBar--icon {
+    margin-left: -26px;
+    background-color: #2e7d32;
+    height: 32px;
+    width: 60px;
+    border-radius: 3px;
+    text-align: right;
+}
+
+.searchBar--icon:hover {
+    /* margin-left: -20px; */
+    background-color: #1b5e20;
+
+}

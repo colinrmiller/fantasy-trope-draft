@@ -14,7 +14,7 @@ const hoverAddFilm = ({ handleMouseOver, handleMouseOut }) => {
     );
 };
 
-export const FilmCard = ({ film }) => {
+export const FilmCard = ({ film, expand }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new APIManager();
     const [inList, setInList] = useState(false);
@@ -78,7 +78,9 @@ export const FilmCard = ({ film }) => {
 
     return (
         <div
-            className="filmCard"
+            className={
+                isHovering && expand ? "filmCard filmCard--hover" : "filmCard"
+            }
             onMouseEnter={handleMouseOver}
             onMouseLeave={handleMouseOut}
         >

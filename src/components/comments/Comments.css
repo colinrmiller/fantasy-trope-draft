@@ -12,6 +12,10 @@
     width: 100%;
     height: 48px;
     margin-bottom: -6px;
+}
+
+.pairwiseCommentFeed__header {
+    border-top: 1px solid grey;
 
 
 }

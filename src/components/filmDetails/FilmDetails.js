@@ -69,7 +69,7 @@ export const FilmDetails = () => {
                             alt={film?.title + " Poster"}
                             className="img"
                         /> */}
-                        <FilmCardDetails film={film} />
+                        <FilmCardDetails film={film} expand />
 
                         <StarRating handleRating={() => {}} />
 

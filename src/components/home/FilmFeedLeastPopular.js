@@ -11,10 +11,9 @@ export const FilmFeedDiscover = () => {
 
     const API = new APIManager();
     useEffect(() => {
-        API.getPopular()
+        API.getLeastPopular()
             .then((res) => {
-                // debugger;
-                setMainFilmList(res.results);
+                setMainFilmList(res);
             })
             .catch((error) => {
                 setMainFilmList([]);

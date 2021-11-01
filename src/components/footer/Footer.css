@@ -1,0 +1,86 @@
+.footer {
+    font-size: 12px;
+    height: 63px;
+    background-color: black;
+    color: grey;
+    /* font-family: graphik-regular, sans-serif; */
+    padding-top: 7px;
+}
+
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.footer div {
+    margin-bottom: 6px;
+}
+
+.footer__interaction {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.footer__left {
+    width: 20%;
+    margin-top: 1px;
+}
+
+
+.footer__right {
+    margin-top: 1px;
+    margin-right: 12px;
+    text-align: right;
+    width: 20%;
+}
+
+.attribution--text {
+    margin-left: 12px;
+    /* top: -70px; */
+    /* text-align: start; */
+    /* position: relative; */
+    /* margin-left: 43px; */
+}
+
+#tmdb--logo {
+    width: 38px;
+    height: 27px;
+    margin-top: -10px;
+    margin-left: 83px;
+}
+
+.footer--connect a {
+    margin-left: 20px;
+
+}
+
+.footer--connect a,
+a:hover,
+a:visited,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+#github--icon {
+    height: 12px;
+    width: 12px;
+    color: white;
+    background: white;
+    filter: invert(100%);
+}
+
+#linkdin--logo {
+    height: 12px;
+    width: 12px;
+}
+
+.footer__bottom {
+    text-align: center;
+    color: grey;
+    background-color: black;
+    margin-top: auto;
+}

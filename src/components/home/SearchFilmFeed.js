@@ -5,25 +5,7 @@ import { FilmCard } from "../cards/FilmCard";
 import { APIManager } from "../../modules/APIManager";
 import "./FilmFeed.css";
 
-export const FilmFeedById = ({ filmIdList, header }) => {
-    const API = new APIManager();
-    const [filmObjList, setFilmObjList] = useState([]);
-
-    const readFilmIdList = () => {
-        if (filmIdList.length > 0) {
-            // debugger;
-            const partialFilmList = filmIdList.filter(
-                (value, index) => index < 20
-            );
-            return API.getAllFilmsByIdArray(partialFilmList).then((res) => {
-                setFilmObjList(res);
-            });
-        }
-    };
-
-    useEffect(() => {
-        readFilmIdList();
-    }, [filmIdList]);
+export const SearchFilmFeed = ({ filmList, closeSearch }) => {
     // const [mainFilmList, setMainFilmList] = useState([]);
     // const [filter, setfilter] = useState("popular");
 
@@ -34,12 +16,14 @@ export const FilmFeedById = ({ filmIdList, header }) => {
 
     return (
         <>
-            <hr />
             <div className="FilmFeed">
-                <h3 className="FilmFeed__header">{header}</h3>
+                <div className="FilmFeed__header">
+                    <h3>Search Results</h3>
+                    <div>Close</div>
+                </div>
                 <div className="FilmFeed__feed">
-                    {filmObjList?.length > 0 ? (
-                        filmObjList.map((film) => (
+                    {filmList?.length > 0 ? (
+                        filmList.map((film) => (
                             <FilmCard key={film.id} film={film} expand />
                         ))
                     ) : (

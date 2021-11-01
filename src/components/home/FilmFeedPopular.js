@@ -19,7 +19,7 @@ export const FilmFeedInTheaters = () => {
             <h3 className="FilmFeed__header">{filter}</h3>
             <div className="FilmFeed__feed">
                 {mainFilmList.map((film) => (
-                    <FilmCard key={film.id} film={film} />
+                    <FilmCard key={film.id} film={film} expand />
                 ))}
             </div>
         </div>

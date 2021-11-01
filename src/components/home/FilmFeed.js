@@ -22,7 +22,7 @@ export const FilmFeed = ({ filmList, header }) => {
                 <div className="FilmFeed__feed">
                     {filmList?.length > 0 ? (
                         filmList.map((film) => (
-                            <FilmCard key={film.id} film={film} />
+                            <FilmCard key={film.id} film={film} expand />
                         ))
                     ) : (
                         <></>

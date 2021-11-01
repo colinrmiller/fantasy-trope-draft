@@ -28,8 +28,25 @@ export class APIManager {
     getPopular = () => {
         return fetch(
             `
-            https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`
+            https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=2&adult=false&api_key=${tmdb}`
         ).then((res) => res.json());
+        // const apiString = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`;
+        // return fetch(apiString).then((res) => res.json());
+    };
+
+    getLeastPopular = () => {
+        return fetch(
+            `
+            https://api.themoviedb.org/3/discover/movie?sort_by=popularity.asc&api_key=${tmdb}`
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                return res.results.filter((film) => {
+                    const bool = film.poster_path && !film.adult;
+                    // debugger;
+                    return bool;
+                });
+            });
         // const apiString = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`;
         // return fetch(apiString).then((res) => res.json());
     };
@@ -219,6 +236,24 @@ export class APIManager {
         });
     };
 
+    getUserFilmChoice = (filmIdA, filmIdB, userId) => {
+        return fetch(
+            `${remoteURL}/userComparisons?plusFilmId=${filmIdA}&plusFilmId=${filmIdB}&minusFilmId=${filmIdA}&minusFilmId=${filmIdB}&userId=${userId}`
+        ).then((response) => response.json());
+    };
+
+    getFilmChoices = (filmIdA, filmIdB) => {
+        return fetch(
+            `${remoteURL}/userComparisons?plusFilmId=${filmIdA}&plusFilmId=${filmIdB}&minusFilmId=${filmIdA}&minusFilmId=${filmIdB}`
+        ).then((response) => response.json());
+    };
+
+    deleteUserFilmChoice = (choiceId) => {
+        return fetch(`${remoteURL}/userComparisons/${choiceId}`, {
+            method: "DELETE",
+        }).then((response) => response.json());
+    };
+
     addUserFilmChoice = (userId, filmA, filmB, choice) => {
         const filmChoice = {
             userId: userId,
@@ -242,6 +277,35 @@ export class APIManager {
             },
             body: JSON.stringify(filmChoice),
         }).then((response) => response.json());
+    };
+
+    putUserFilmChoice = (oldChoice, filmA, filmB, choice) => {
+        const newChoice = { ...oldChoice };
+        switch (choice) {
+            case "A":
+                newChoice["plusFilmId"] = filmA;
+                newChoice["minusFilmId"] = filmB;
+                break;
+            case "B":
+                newChoice["minusFilmId"] = filmA;
+                newChoice["plusFilmId"] = filmB;
+                break;
+            default:
+                return Error;
+        }
+        return fetch(`${remoteURL}/userComparisons/${newChoice.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newChoice),
+        }).then((response) => response.json());
+    };
+
+    updateUserFilmChoice = (userId, filmA, filmB, choice) => {
+        return this.getUserFilmChoice(filmA, filmB, userId).then((res) => {
+            return this.putUserFilmChoice(res[0], filmA, filmB, choice);
+        });
     };
 
     getRatedFilmPairs = (userId) => {

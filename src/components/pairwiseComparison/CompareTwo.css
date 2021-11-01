@@ -1,6 +1,6 @@
 .compareTwo {
-    height: 372px;
-    margin-top: 10px;
+    height: 445px;
+    margin-top: 25px;
 }
 
 .compareTwo__filmContainer {
@@ -9,7 +9,7 @@
 
 .compareTwo__compare {
     display: flex;
-    max-width: 60%;
+    max-width: 56%;
     margin: auto;
     justify-content: space-around;
 }
@@ -19,5 +19,57 @@
     text-align: center;
     height: 800px;
     line-height: 400px;
+    font-size: 40px;
+}
+
+.savedCompareTwo {
+    /* height: 445px; */
+    margin-top: 25px;
+}
+
+.savedCompareTwo__filmContainer {
+    /* width: 300px; */
+}
+
+.savedCompareTwo__compare {
+    display: flex;
+    max-width: 87%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.savedCompareTwo__seperator {
+    margin: auto;
+    text-align: center;
+    /* height: 800px; */
+    line-height: 400px;
+    font-size: 40px;
+    margin-inline: 12px;
+}
+
+.savedCompareTwo__aside--left {
+    text-align: right;
+    margin-right: 7px;
+    width: 21%;
+}
+
+.savedCompareTwo__aside--left>h2 {
+    margin-left: auto;
+}
+
+.savedCompareTwo__aside--right {
+    margin-left: 7px;
+    width: 21%;
+}
+
+.savedCompareTwo__aside--right>p {
+    text-align: left;
+}
+
+.savedCompareTwo__title {
+    margin-top: 100px;
+}
+
+.savedCompareTwo__score {
     font-size: 40px;
 }
