@@ -12,14 +12,14 @@ export const FaceBookLogin = () => {
             console.log(response);
             if (response) {
                 sessionStorage.setItem("FB_Id", response.authResponse.userID);
-                getFBPicture();
+                // getFBPicture();
                 getFBName();
             }
         });
     }, []);
 
     useEffect(() => {
-        getFBPicture();
+        // getFBPicture();
     }, [responseParams]);
 
     const responseFacebook = (response) => {

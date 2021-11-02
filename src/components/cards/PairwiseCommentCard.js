@@ -1,6 +1,6 @@
 import React from "react";
 import { APIManager } from "../../modules/APIManager";
-import { CommentAPIManager } from "../../modules/CommentAPIManager";
+import { PairwiseCommentAPIManager } from "../../modules/PairwiseCommentAPIManager";
 import { useState, useEffect } from "react";
 import { dateConversion } from "../utilities/dateConversion";
 import "./Cards.css";
@@ -10,9 +10,10 @@ import { CommentCardEdit } from "./CommentCardEdit";
 import { UserCard } from "./UserCard";
 import { Button } from "@mui/material";
 
+// TODO : Testing, edit comment
 export const PairwiseCommentCard = ({ comment, handleDelete }) => {
     const API = new APIManager();
-    const CommentAPI = new CommentAPIManager();
+    const CommentAPI = new PairwiseCommentAPIManager();
 
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
 
@@ -29,7 +30,7 @@ export const PairwiseCommentCard = ({ comment, handleDelete }) => {
 
     const handleSubmitEdit = (comment) => {
         setActiveComment(comment);
-        CommentAPI.editComment(comment);
+        CommentAPI.editPairwiseComment(comment);
     };
 
     const handleCancelEdit = () => {

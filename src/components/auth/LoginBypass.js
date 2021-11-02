@@ -33,15 +33,15 @@ export const LoginBypass = () => {
     };
 
     const handleLogin = () => {
-        existingUserCheck().then((exists) => {
-            // if (exists) {
-            // The user id is saved under the key active_user in session Storage. Change below if needed!
-            sessionStorage.setItem("active_user", 1);
-            history.push("/");
-            // } else {
-            //     setExistDialog(true);
-            // }
-        });
+        // existingUserCheck().then((exists) => {
+        // if (exists) {
+        // The user id is saved under the key active_user in session Storage. Change below if needed!
+        sessionStorage.setItem("active_user", 1);
+        history.push("/");
+        // } else {
+        //     setExistDialog(true);
+        // }
+        // });
     };
     handleLogin();
     return (

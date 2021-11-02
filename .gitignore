@@ -37,5 +37,6 @@ src/modules/keys.js
 
 .babelrc
 TODO.md
+NOTES.md
 
 /api/generatedDb.json
