@@ -3,6 +3,8 @@ import "./Cards.css";
 import { useState, useEffect } from "react";
 // import { APIManager } from "../../modules/APIManager";
 import { TagAPIManager } from "../../modules/TagAPIManager";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export const TagCard = ({ tag, filmId }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
@@ -133,6 +135,18 @@ export const TagCard = ({ tag, filmId }) => {
             onMouseLeave={() => setHover(false)}
         >
             <div className="tagCard__text">{tag.name}</div>
+            <div className="tagCard__subText">
+                <div>{tag.type}</div>
+                <div
+                    className={
+                        ratedTag.plusRatings - ratedTag.minusRatings > 0
+                            ? "subText--plus"
+                            : "subText--minus"
+                    }
+                >
+                    {ratedTag.plusRatings - ratedTag.minusRatings}
+                </div>
+            </div>
         </div>
     ) : (
         <div
@@ -141,30 +155,35 @@ export const TagCard = ({ tag, filmId }) => {
             onMouseLeave={() => setHover(false)}
         >
             <div className="tagCard__text">{tag.name}</div>
+            <div className="tagCard__subText">
+                <div>{tag.type}</div>
+                <div>{ratedTag.plusRatings - ratedTag.minusRatings}</div>
+            </div>
             <div className="tagCard__dropdown">
-                <div
-                    className={
-                        userRating === "minus"
-                            ? "tagCard__minus vote--active"
-                            : "tagCard__minus"
-                    }
-                    onClick={() => {
-                        handleMinusRating().then(getUserRating);
-                    }}
-                >
-                    - {ratedTag.minusRatings}
-                </div>
+                {" "}
                 <div
                     className={
                         userRating === "plus"
-                            ? "tagCard__minus vote--active"
+                            ? "tagCard__minus voteActive--plus"
                             : "tagCard__minus"
                     }
                     onClick={() => {
                         handlePlusRating().then(getUserRating);
                     }}
                 >
-                    &#10003; {ratedTag.plusRatings}
+                    <ArrowUpwardIcon /> {ratedTag.plusRatings}
+                </div>
+                <div
+                    className={
+                        userRating === "minus"
+                            ? "tagCard__minus voteActive--minus"
+                            : "tagCard__minus"
+                    }
+                    onClick={() => {
+                        handleMinusRating().then(getUserRating);
+                    }}
+                >
+                    <ArrowDownwardIcon /> {ratedTag.minusRatings}
                 </div>
                 {/* <div className={"tagCard__dropdown tagCard__" + tag.tag.type}> */}
             </div>

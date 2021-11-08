@@ -17,10 +17,11 @@ code {
 
 html #root {
   background: #1c2229;
-  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  /* top: -64px; */
+  /* position: relative; */
 }
 
 * {
@@ -34,6 +35,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1c2229;
+
 }
 
 code {
@@ -44,7 +47,7 @@ code {
 a {
 
 
-  color: #99aabb;
+  color: rgba(255, 255, 255, 0.8);
   font-family: Graphik-Semibold-Web, sans-serif;
   font-weight: 400;
 
@@ -54,7 +57,7 @@ a {
 }
 
 .pageContainer {
-  color: #99aabb;
+  color: rgba(255, 255, 255, 0.8);
   background: #1c2229;
 }
 

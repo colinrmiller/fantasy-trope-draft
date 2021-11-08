@@ -9,9 +9,10 @@
 
 .compareTwo__compare {
     display: flex;
-    max-width: 56%;
+    /* max-width: 56%; */
     margin: auto;
     justify-content: space-around;
+    margin-inline: 3%;
 }
 
 .compareTwo__seperator {
@@ -20,6 +21,10 @@
     height: 800px;
     line-height: 400px;
     font-size: 40px;
+}
+
+.compareTwo__seperator--loading {
+    font-size: 18px;
 }
 
 .savedCompareTwo {

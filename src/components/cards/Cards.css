@@ -29,21 +29,62 @@
 }
 
 .filmCard__interaction {
-    /* display: none; */
-    top: -55px;
+    color: #3f51b5;
+    top: -51px;
+    left: 83px;
     position: relative;
-    background: rgba(200, 200, 200, 1);
     height: 50px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    width: 40px;
+    height: 40px;
     margin-bottom: -49px;
+    border-radius: 20px;
+    filter: drop-shadow(0px 0px 2px black);
 }
+
+.filmCardDetails__interaction {
+    color: #3f51b5;
+    top: -36px;
+    left: 204px;
+
+    position: relative;
+    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -49px;
+    border-radius: 20px;
+    filter: drop-shadow(0px 0px 2px black);
+}
+
+.cardIcon--remove {
+    color: #f44336;
+}
+
+
+.SearchFilmCard {
+    max-height: 245px;
+}
+
+.SearchFilmCard__text {
+    color: #99aabb;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.SearchFilmCard__title {
+    font-size: 18px;
+}
+
+.SearchFilmCard__year {
+    font-size: 12px;
+}
+
 
 .filmCardCompare__interaction {
     /* display: none; */
     top: 14px;
     position: relative;
-    background: rgba(200, 200, 200, 1);
+    background: #3f50b5;
     height: 48px;
     border-radius: 5px;
     /* margin-bottom: -49 */
@@ -86,7 +127,7 @@
     margin-right: 0;
 }
 
-.cardIcon--add {
+.cardIcon {
     font-size: 20px;
 }
 
@@ -101,8 +142,6 @@
     box-sizing: border-box;
     margin-block: 12px;
     background: #0e2541;
-
-
 }
 
 .commentCard__container {
@@ -158,7 +197,24 @@ box-sizing:border-box; */
     margin-top: 27px;
 }
 
-.commentCardEdit {}
+.messageInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    border: 1px solid grey;
+    /* border-radius: 5px; */
+    padding: 14px;
+    box-sizing: border-box;
+    margin-block: 12px;
+    background: #0e2541;
+
+
+}
+
+.commentCardEdit {
+    background: blue;
+}
 
 .commentCardEdit .css-1txnhvm {
     margin-left: 11px;
@@ -273,7 +329,7 @@ box-sizing:border-box; */
     margin-right: 0;
 }
 
-.cardIcon--add {
+.cardIcon {
     font-size: 20px;
 }
 
@@ -337,12 +393,12 @@ box-sizing:border-box; */
 
 
 .tagCard {
-    height: 40px;
+    height: 44px;
     background: red;
     margin: auto;
     padding-inline: 9px;
     border-radius: 3px;
-    margin-inline: 5px;
+    margin-inline: 11px;
     color: black;
     white-space: nowrap;
     margin-block: 4px;
@@ -355,32 +411,57 @@ box-sizing:border-box; */
 
 .tagCard__dropdown {
     position: relative;
-    height: 40px;
-    /* z-index: 2; */
-    background-color: whitesmoke;
+    height: 36px;
+    left: -39px;
+    width: 30px;
+    z-index: 2;
+    top: -46px;
+    /* background-color: inherit; */
     display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    font-size: 1px;
+    color: rgba(255, 255, 255, 0.6);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
 }
 
 .tagCard__rating {
-    background: red;
+    background: #ff6333;
 }
 
 .tagCard__genre {
-    background: rgb(0, 89, 255);
+    background: #ff9100
 }
 
 .tagCard__kind {
-    background: rgb(21, 182, 0);
+    background: #ff4569;
 }
 
 .tagCard__trope {
-    background: rgb(177, 64, 158);
+    background: #c6ff00;
 }
 
 .tagCard__text {
     z-index: 1;
     /* margin-block: 8px; */
     padding-top: 7px;
+}
+
+.tagCard__subText {
+    text-align: left;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subText--plus {
+    color: #3f50b5
+}
+
+.subText--minus {
+    color: #f44336
 }
 
 .tagCard__plus {
@@ -398,7 +479,6 @@ box-sizing:border-box; */
 
 .commentTagCard {
     height: 20px;
-    background: red;
     margin: auto;
     padding-inline: 9px;
     border-radius: 3px;
@@ -457,8 +537,14 @@ box-sizing:border-box; */
     text-align: center;
 }
 
-.vote--active {
-    background-color: green;
+.voteActive--plus {
+    color: #3f50b5
+        /* background-color: green; */
+}
+
+.voteActive--minus {
+    color: #f44336
+        /* background-color: green; */
 }
 
 .userCard {

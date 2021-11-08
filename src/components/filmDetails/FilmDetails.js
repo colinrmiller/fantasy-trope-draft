@@ -12,6 +12,7 @@ import { CommentCard } from "../cards/CommentCard";
 import { FilmFeed } from "../home/FilmFeed";
 // import { FBLogin } from "../utilities/FBLogin";
 import { FaceBookLogin } from "../auth/FaceBookLogin";
+import { AddRemoveFilm } from "../utilities/AddRemoveFilm";
 // import {}
 
 // import { GithubLogin } from "../auth/GithubLogin";
@@ -19,6 +20,11 @@ import { FaceBookLogin } from "../auth/FaceBookLogin";
 export const FilmDetails = () => {
     const [film, setFilm] = useState({});
     const [filmPoster, setFilmPoster] = useState("");
+    const [filmBackground, setFilmBackground] = useState("");
+    const [filmLoaded, setFilmLoaded] = useState(false);
+
+    const [userRating, setUserRating] = useState(null);
+    const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const { filmId } = useParams();
     const API = new APIManager();
 
@@ -30,20 +36,56 @@ export const FilmDetails = () => {
         } else return dateString;
     };
 
+    const getUserRating = () => {
+        API.getUserFilmRating(currentUser, filmId).then((res) => {
+            if (res.length > 0) {
+                setUserRating(res[0].rating);
+            }
+        });
+    };
+
+    const putUserRating = (newRating) => {
+        API.setUserFilmRating(currentUser, filmId, newRating).then(() => {
+            getUserRating();
+        });
+    };
+
+    // const getUserRating
     useEffect(() => {
-        API.getFilm(filmId).then((res) => setFilm(res));
+        getUserRating();
+        setFilmLoaded(false);
+    }, []);
+
+    useEffect(() => {
+        setFilmLoaded(false);
+        API.getFilm(filmId).then((res) => {
+            setFilm(res);
+            setFilmLoaded(true);
+        });
     }, [filmId]);
 
     useEffect(() => {
-        let basePath = "https://image.tmdb.org/t/p/original";
-        setFilmPoster(basePath + film?.poster_path);
-    }, [film]);
+        const head = document.getElementsByClassName("filmDetails__head");
+        if (head) {
+            head[0].style.width = "100%";
+            // head[0].style.display = "table";
+            head[0].style.background =
+                "linear-gradient( rgba(28, 34, 41, 0.4), rgba(28, 34, 41, 0.5), rgba(28, 34, 41, 0.6), rgba(28, 34, 41, .7), rgba(28, 34, 41, 0.8), rgba(28, 34, 41, 0.9), rgba(28, 34, 41, 0.9), rgba(28, 34, 41, 1)  )," +
+                "url('https://image.tmdb.org/t/p/original" +
+                film.backdrop_path +
+                "')";
+            head[0].style.backgroundPosition = "center top";
+        }
+    }, [filmLoaded]);
 
     // State Handeling for Video-Embed
     const [videoId, setVideoId] = useState("");
     const getVideo = () => {
         API.getVideo(filmId).then((res) => setVideoId(res));
     };
+
+    useEffect(() => {}, [film]);
+
     useEffect(() => {
         getVideo();
     }, [film]);
@@ -71,8 +113,11 @@ export const FilmDetails = () => {
                         /> */}
                         <FilmCardDetails film={film} expand />
 
-                        <StarRating handleRating={() => {}} />
-
+                        <StarRating
+                            userRating={userRating}
+                            handleRating={(newValue) => putUserRating(newValue)}
+                        />
+                        <AddRemoveFilm film={film} />
                         {/* <div className="img__addButton">
                             <p className="addButton__container">Add Film</p>
                             <AddIcon />

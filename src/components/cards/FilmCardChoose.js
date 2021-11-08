@@ -21,7 +21,7 @@ export const FilmCardChoose = ({ film, handleGetNewFilm, handleChoice }) => {
                     <p className="filmCardCompare__interaction--text">
                         New Pick
                     </p>
-                    {/* <RemoveIcon className="cardIcon--add" /> */}
+                    {/* <RemoveIcon className="cardIcon" /> */}
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ export const FilmCardDetails = ({ film }) => {
                     className="filmCardDetails__img"
                 />
             </Link>
-            {inList ? (
+            {/* {inList ? (
                 <div
                     className="filmCard__interaction"
                     onClick={() =>
@@ -41,7 +41,7 @@ export const FilmCardDetails = ({ film }) => {
                 >
                     <div className="filmCard__deleteFilm">
                         <p className="filmCard__deleteFilm--text">Watching</p>
-                        <RemoveIcon className="cardIcon--add" />
+                        <RemoveIcon className="cardIcon" />
                     </div>
                 </div>
             ) : (
@@ -56,10 +56,10 @@ export const FilmCardDetails = ({ film }) => {
                 >
                     <div className="filmCard__addFilm">
                         <p className="filmCard__addFilm--text">Add Film</p>
-                        <AddIcon className="cardIcon--add" />
+                        <AddIcon className="cardIcon" />
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };

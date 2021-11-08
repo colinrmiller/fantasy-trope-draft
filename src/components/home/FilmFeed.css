@@ -1,6 +1,6 @@
 .FilmFeed {
     min-height: 255px;
-    width: 95%;
+    width: 100%;
 }
 
 .FilmFeed__header {
@@ -8,6 +8,7 @@
     margin-left: 90px;
     margin-bottom: 2px;
     margin-top: 20px;
+    display: flex;
 }
 
 .FilmFeed__feed {
@@ -18,7 +19,7 @@
     display: flex;
     flex-flow: row;
     /* height: 100%; */
-    position: absolute;
+    position: relative;
     min-width: 100%;
     max-width: 100%;
     overflow-x: scroll;
@@ -36,4 +37,64 @@
 
 .filmFeedNoSavedFilms {
     height: 100px;
+}
+
+.SearchFilmFeed {
+    min-height: 325px;
+    width: 100%;
+    position: absolute;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: #1c2229;
+    z-index: 3;
+}
+
+.SearchFilmFeed__feed {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row;
+    /* height: 100%; */
+    position: absolute;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    padding-top: 16px;
+    border-top: solid 1px grey;
+    padding-inline: 0;
+    min-height: 186px;
+    background: #1c2229;
+    margin-left: 50px;
+    margin-right: 50px;
+    max-height: 238px;
+}
+
+.SearchFilmFeed__feed::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.SearchFilmFeed__header {
+    color: #99aabb;
+}
+
+.SearchFilmFeed__close {
+    color: #99aabb;
+    margin-left: auto;
+    position: absolute;
+    right: 83px;
+}
+
+.SearchFilmFeed__buffer {
+    width: 73px;
+    position: absolute;
+    height: 30px;
+
+    background: #1c2229;
+    margin-left: auto;
+    right: 0px;
+    z-index: 1;
 }

@@ -26,7 +26,7 @@ export const FilmRanking = (comparisonList) => {
                     Math.exp(rankedFilmsMap.get(filmPair.minusFilmId)));
         const minusEvaluation =
             rankedFilmsMap.get(filmPair.plusFilmId) -
-            Math.exp(rankedFilmsMap.get(filmPair.minusFilmId)) /
+            Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) /
                 (Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) +
                     Math.exp(rankedFilmsMap.get(filmPair.minusFilmId)));
         rankedFilmsMap.set(filmPair.plusFilmId, plusEvaluation);

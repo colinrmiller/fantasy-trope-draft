@@ -93,9 +93,8 @@ export const SearchBar = ({ handleSubmit }) => {
             <InputBase
                 className="searchBar--input"
                 value={value}
-                onChange={(value) => {
-                    debugger;
-                    setValue(value);
+                onChange={(event) => {
+                    setValue(event.target.value);
                 }}
                 placeholder=" Search..."
                 inputProps={{ "aria-label": "search " }}

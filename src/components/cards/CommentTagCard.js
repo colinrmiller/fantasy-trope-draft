@@ -128,7 +128,7 @@ export const CommentTagCard = ({ tag, filmId }) => {
 
     return !hover ? (
         <div
-            className={"commentTagCard commentTagCard__" + tag?.type}
+            className={"commentTagCard tagCard__" + tag?.type}
             // onMouseEnter={() => setHover(true)}
             // onMouseLeave={() => setHover(false)}
         >

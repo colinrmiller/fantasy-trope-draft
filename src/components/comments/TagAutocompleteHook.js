@@ -160,6 +160,14 @@ const Listbox = styled("ul")(
 `
 );
 
+const modifyOptionList = (optionObjList) => {
+    return optionObjList.map((obj) => {
+        const copy = { ...obj };
+        copy["label"] = obj["name"];
+        return copy;
+    });
+};
+
 export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
     const {
         getRootProps,
@@ -177,8 +185,8 @@ export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
         // defaultValue: [top100Films[1]],
         multiple: true,
         options: optionList,
+        // options: modifyOptionList(optionList),
         defaultValue: initialValue || [],
-        getOptionLabel: (option) => option.name,
         onChange: (event, value) => {
             setValue(value);
         },
@@ -200,7 +208,7 @@ export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
                 >
                     {value.map((option, index) => (
                         <StyledTag
-                            label={option.name}
+                            label={option.label}
                             value={option.id}
                             {...getTagProps({ index })}
                             onClick={() => {
@@ -216,7 +224,7 @@ export function TagAutocompleteHook({ optionList, setValue, initialValue }) {
                 <Listbox {...getListboxProps()}>
                     {groupedOptions.map((option, index) => (
                         <li {...getOptionProps({ option, index })}>
-                            <span>{option.name}</span>
+                            <span>{option.label}</span>
                             <CheckIcon fontSize="small" />
                         </li>
                     ))}

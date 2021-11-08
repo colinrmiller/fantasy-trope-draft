@@ -133,12 +133,7 @@ export const TagList = ({ filmId }) => {
             {tagList.map((tag) => {
                 return <TagCard key={tag.id} tag={tag} filmId={filmId} />;
             })}
-            <NewTagInput
-                onSubmit={() => {
-                    handleNewTagSubmit();
-                    getTagList();
-                }}
-            />
+            <NewTagInput onSubmit={handleNewTagSubmit} />
         </div>
     );
 };

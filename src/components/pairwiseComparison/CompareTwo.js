@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { APIManager } from "../../modules/APIManager";
 import { FilmCardChoose } from "../cards/FilmCardChoose";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { Link } from "react-router-dom";
 import "./CompareTwo.css";
 
 export const CompareTwo = () => {
@@ -10,6 +11,7 @@ export const CompareTwo = () => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const [filmA, setFilmA] = useState({});
     const [filmB, setFilmB] = useState({});
+    const [loaded, setLoaded] = useState(false);
     const [voted, setVoted] = useState(false);
     const [ratedFilmPairs, setRatedFilmPairs] = useState([]);
     const [isStarred, setIsStarred] = useState(false);
@@ -33,13 +35,6 @@ export const CompareTwo = () => {
                 ) {
                     alreadyRated = true;
                 }
-                console.log(
-                    "CheckAlreadyRated",
-                    filmPair,
-                    filmIdA,
-                    filmIdB,
-                    alreadyRated
-                );
             });
         }
         return alreadyRated;
@@ -104,6 +99,7 @@ export const CompareTwo = () => {
     }, []);
 
     useEffect(() => {
+        setLoaded(false);
         getFilms();
     }, []);
 
@@ -115,6 +111,7 @@ export const CompareTwo = () => {
 
     useEffect(() => {
         if (filmA.id === filmB.id) {
+            setLoaded(false);
             getFilmB();
         }
     }, [filmA, filmB]);
@@ -126,28 +123,73 @@ export const CompareTwo = () => {
         }
     }, [voted]);
 
+    useEffect(() => {
+        // function delay(t, v) {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(resolve.bind(null, v), t);
+        //     });
+        // }
+        // setLoaded(false);
+        setTimeout(() => {
+            setLoaded(true);
+        }, 1300);
+    }, [filmA, filmB]);
+
     return (
         <div className="compareTwo">
             <div className="compareTwo__compare">
-                <div className="compareTwo__filmContainer compareTwo__A">
-                    <FilmCardChoose
-                        id="compareTwo__choiceA"
-                        film={filmA}
-                        handleChoice={handleChoiceA}
-                        handleGetNewFilm={getFilmA}
-                    />
-                </div>
-                <div className="compareTwo__seperator">
-                    <p>OR</p>
-                </div>
-                <div className="compareTwo__filmContainer compareTwo__B">
-                    <FilmCardChoose
-                        id="compareTwo__choiceB"
-                        film={filmB}
-                        handleChoice={handleChoiceB}
-                        handleGetNewFilm={getFilmB}
-                    />
-                </div>
+                {loaded ? (
+                    <>
+                        <Link
+                            className="savedCompareTwo__aside--left"
+                            to={`/film-details/${filmA.id}`}
+                        >
+                            <h2 className="savedCompareTwo__title">
+                                {filmA.title}
+                            </h2>
+                            <p className="savedCompareTwo__year">
+                                {filmA.release_date?.slice(0, 4)}
+                            </p>
+                        </Link>
+
+                        <div className="compareTwo__filmContainer compareTwo__A">
+                            <FilmCardChoose
+                                id="compareTwo__choiceA"
+                                film={filmA}
+                                handleChoice={handleChoiceA}
+                                handleGetNewFilm={getFilmA}
+                            />
+                        </div>
+                        <div className="compareTwo__seperator">
+                            <p>OR</p>
+                        </div>
+                        <div className="compareTwo__filmContainer compareTwo__B">
+                            <FilmCardChoose
+                                id="compareTwo__choiceB"
+                                film={filmB}
+                                handleChoice={handleChoiceB}
+                                handleGetNewFilm={getFilmB}
+                            />
+                        </div>
+                        <Link
+                            className="savedCompareTwo__aside--right"
+                            to={`/film-details/${filmB.id}`}
+                        >
+                            <h2 className="savedCompareTwo__title">
+                                {filmB.title}
+                            </h2>
+                            <p className="savedCompareTwo__text">
+                                {filmB.release_date?.slice(0, 4)}{" "}
+                            </p>
+                            <p className="savedCompareTwo__score"></p>
+                        </Link>
+                    </>
+                ) : (
+                    <div className="compareTwo__seperator compareTwo__seperator--loading">
+                        <p>loading...</p>
+                    </div>
+                )}
+
                 <StarComparison />
             </div>
         </div>

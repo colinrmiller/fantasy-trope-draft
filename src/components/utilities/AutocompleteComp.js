@@ -10,12 +10,14 @@ export function AutocompleteComp({ optionList, handleChange, inputValue }) {
     const [value, setValue] = useState(null);
     // const [inputValue, setInputValue] = useState("");
     // const [inputValue, setInputValue] = React.useState("");
+    const modifiedOptionList = optionList.map((obj) => {
+        const copy = { ...obj };
+        copy["label"] = obj["name"];
+        return copy;
+    });
 
     return (
         <div>
-            {/* <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
-            <div>{`inputValue: '${inputValue}'`}</div>
-            <br /> */}
             <Autocomplete
                 size="small"
                 value={value}
@@ -23,18 +25,12 @@ export function AutocompleteComp({ optionList, handleChange, inputValue }) {
                     setValue(newValue);
                 }}
                 className="tagList__autocomplete"
-                // onInputChange
-                // inputValue={inputValue}
-                // onInputChange={(event, newInputValue) => {
-                //     setInputValue(newInputValue);
-                // }}
                 inputValue={inputValue}
                 onInputChange={(event, newInputValue) => {
                     handleChange(newInputValue);
                 }}
                 id="controllable-states-demo"
-                options={optionList}
-                getOptionLabel={(option) => option.name || ""}
+                options={modifiedOptionList}
                 sx={{ width: 220, background: "white" }}
                 renderInput={(params) => <TextField {...params} />}
             />

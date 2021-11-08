@@ -5,6 +5,7 @@ import { FilmRanking } from "../utilities/FilmRanking";
 import { FilmFeedById } from "../home/FilmFeedById";
 import { RankingScatterplot } from "../dataViz/RankingScatterplot";
 import { useParams } from "react-router";
+
 export const DisplayRankings = () => {
     const API = new APIManager();
     const currentUser = parseInt(sessionStorage.getItem("active_user"));

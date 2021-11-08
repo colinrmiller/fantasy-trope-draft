@@ -80,11 +80,19 @@ export const CommentForm = ({
     //     setInputValue(newInputValue);
     //   }}
 
+    const modifyOptionList = (optionObjList) => {
+        return optionObjList.map((obj) => {
+            const copy = { ...obj };
+            copy["label"] = obj["name"];
+            return copy;
+        });
+    };
+
     return (
         <div className="messageInput" sx={{ display: "flex !important" }}>
             {tagList.length > 0 ? (
                 <TagAutocompleteHook
-                    optionList={tagList}
+                    optionList={modifyOptionList(tagList)}
                     setValue={setSelectedTagIds}
                     initialValue={selectedTagIds}
                 />

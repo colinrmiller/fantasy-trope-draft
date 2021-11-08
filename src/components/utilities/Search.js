@@ -4,15 +4,23 @@ import { useState, useEffect } from "react";
 import { APIManager } from "../../modules/APIManager";
 import { SearchFilmFeed } from "../home/SearchFilmFeed";
 
-export const Search = () => {
+export const Search = ({
+    searchQuery,
+    setSearchQuery,
+    searchActive,
+    setSearchActive,
+}) => {
     const API = new APIManager();
-    const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    const [searchActive, setSearchActive] = useState(false);
-    const handleSubmit = (event, query) => {
-        event.preventDefault();
-        setSearchQuery(query);
-        setSearchActive(true);
+    // const handleSubmit = (event, query) => {
+    //     event.preventDefault();
+    //     setSearchQuery(query);
+    //     setSearchActive(true);
+    // };
+
+    const handleClose = () => {
+        setSearchActive(false);
+        setSearchQuery = "";
     };
 
     useEffect(() => {
@@ -25,13 +33,18 @@ export const Search = () => {
     return (
         <div className="search">
             {/* <h3> Search </h3> */}
-            <SearchBar
+            {/* <SearchBar
                 // searchQuery={searchQuery}
                 // setSearchQuery={setSearchQuery}
                 handleSubmit={handleSubmit}
-            />
+            /> */}
             {searchActive ? (
-                <SearchFilmFeed filmList={searchResults} header="" />
+                <SearchFilmFeed
+                    filmList={searchResults}
+                    searchQuery={searchQuery}
+                    handleClose={handleClose}
+                    header=""
+                />
             ) : null}
         </div>
     );

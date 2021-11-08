@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { APIManager } from "../../modules/APIManager";
 import { SavedComparisonFilmCard } from "../cards/SavedComparisonFilmCard";
 import { PairwiseCommentFeed } from "./PairwiseCommentFeed";
+import { Link } from "react-router-dom";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import "./CompareTwo.css";
 
@@ -133,12 +134,12 @@ export const SavedComparison = () => {
     return (
         <div className="savedCompareTwo">
             <div className="savedCompareTwo__compare">
-                <div className="savedCompareTwo__aside--left">
+                <Link className="savedCompareTwo__aside--left" to={`/film-details/${filmA.id}`}>
                     <h2 className="savedCompareTwo__title">{filmA.title}</h2>
                     <p className="savedCompareTwo__year">
                         {filmA.release_date?.slice(0, 4)}
                     </p>
-                </div>
+                </Link>
                 <div className="savedCompareTwo__filmContainer savedCompareTwo__A">
                     <SavedComparisonFilmCard
                         id="savedCompareTwo__choiceA"
@@ -161,13 +162,14 @@ export const SavedComparison = () => {
                     />
                 </div>
                 {/* <StarComparison /> */}
-                <div className="savedCompareTwo__aside--right">
+                <Link className="savedCompareTwo__aside--right" to={`/film-details/${filmB.id}`}>
+
                     <h2 className="savedCompareTwo__title">{filmB.title}</h2>
                     <p className="savedCompareTwo__text">
                         {filmB.release_date?.slice(0, 4)}{" "}
                     </p>
                     <p className="savedCompareTwo__score"></p>
-                </div>
+                </Link>
             </div>
             <div className="savedCompareTwo__CommentFeed">
                 <PairwiseCommentFeed filmIdA={filmIdA} filmIdB={filmIdB} />

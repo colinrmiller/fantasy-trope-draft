@@ -1,7 +1,7 @@
 export const dateConversion = (dateTime) => {
     const time = new Date(dateTime);
     const hours = time.getHours() % 12;
-    const mins = time.getMinutes();
+    const mins =("0" + time.getMinutes()).slice(-2)
     const month = time.toLocaleString("default", { month: "short" });
     console.log(month);
 

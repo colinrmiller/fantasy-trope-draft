@@ -84,9 +84,13 @@ export const CommentFeed = ({ filmId }) => {
                             handleDelete={handleDelete}
                         />
                     ))
-                ) : (
-                    <p> </p>
-                )}
+                ) : !commentFormActive ? (
+                    <p style={{ display: "flex", flexDirection: "column" }}>
+                        {" "}
+                        It's a little quite here...
+                        <break /> Be the first to leave a comment.
+                    </p>
+                ) : null}
             </div>
         </div>
     );

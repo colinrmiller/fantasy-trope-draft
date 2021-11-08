@@ -46,8 +46,7 @@ export const FilmImg = ({ film, isWinner }) => {
                     }
                 >
                     <div className="filmCard__deleteFilm">
-                        <p className="filmCard__deleteFilm--text">Watching</p>
-                        <RemoveIcon className="cardIcon--add" />
+                        <RemoveIcon className="cardIcon" />
                     </div>
                 </div>
             );
@@ -67,8 +66,7 @@ export const FilmImg = ({ film, isWinner }) => {
                     }
                 >
                     <div className="filmCard__deleteFilm">
-                        <p className="filmCard__deleteFilm--text">Watching</p>
-                        <RemoveIcon className="cardIcon--add" />
+                        <RemoveIcon className="cardIcon" />
                     </div>
                 </div>
             );
@@ -122,7 +120,7 @@ export const FilmImg = ({ film, isWinner }) => {
                 >
                     <div className="filmCard__deleteFilm">
                         <p className="filmCard__deleteFilm--text">Watching</p>
-                        <RemoveIcon className="cardIcon--add" />
+                        <RemoveIcon className="cardIcon" />
                     </div>
                 </div>
             ) : (

@@ -65,7 +65,7 @@ export const SavedComparisonFilmCard = ({
                 ) : (
                     <p className="filmCardLarge__score">{score}%</p>
                 )}
-                {/* <RemoveIcon className="cardIcon--add" /> */}
+                {/* <RemoveIcon className="cardIcon" /> */}
             </div>
         </>
     );

@@ -36,7 +36,7 @@ export const UserCardNav = ({ user, size = "small" }) => {
             <div className="userCardNav__body">
                 <h4 className="userCard__username">{user?.username}</h4>
                 <Link className="nav-link" onClick={handleLogout} to="/login">
-                    <p className="logout">logout</p>
+                    <p className="logout">logsdfsdfout</p>
                 </Link>
             </div>
         </Link>

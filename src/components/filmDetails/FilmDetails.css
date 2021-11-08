@@ -1,5 +1,6 @@
 .filmDetails__head {
-    height: 580px;
+    height: 608px;
+    background-position: center top;
 
 }
 
@@ -36,6 +37,8 @@
 }
 
 .filmDetails__head--content {
+    text-shadow: 0px 0px 2px black;
+
     display: flex;
     flex-direction: column;
     position: relative;
@@ -80,6 +83,13 @@
 .content__synopsis {
     margin-bottom: 17px;
     margin-top: 8px;
+}
+
+.content__tags {
+    position: relative;
+    width: 405px;
+    text-shadow: 0px 0px 0 black;
+
 }
 
 .starRating {

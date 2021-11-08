@@ -23,13 +23,23 @@ export const NewTagInput = ({ onSubmit }) => {
         setInput(value);
     };
 
-    const handleNewTag = () => {
+    const handleNewTag = (event) => {
+        event.preventDefault();
         setCreateNewTag(!createNewTag);
+    };
+
+    const clearInput = () => {
+        // BUG : why is this not happening on submit
+        setInput("");
     };
 
     useEffect(() => {
         getTagList();
     }, []);
+
+    useEffect(() => {
+        clearInput();
+    }, [createNewTag]);
 
     if (tagList) {
         return (
@@ -38,8 +48,11 @@ export const NewTagInput = ({ onSubmit }) => {
                     action="/"
                     method="get"
                     onSubmit={(event) => {
+                        debugger;
+                        event.preventDefault();
                         setCreateNewTag(false);
                         onSubmit(event, input, type);
+                        clearInput();
                     }}
                     className="newTagInput__form"
                 >
@@ -67,9 +80,10 @@ export const NewTagInput = ({ onSubmit }) => {
                                 placeholder=""
                                 name="tagInput"
                                 value={input}
-                                onChange={(event) =>
-                                    setInput(event.target.value)
-                                }
+                                onChange={(event) => {
+                                    event.preventDefault();
+                                    setInput(event.target.value);
+                                }}
                             />
                         </>
                     ) : (
@@ -79,8 +93,14 @@ export const NewTagInput = ({ onSubmit }) => {
                             inputValue={input}
                         />
                     )}
-                    <button type="submit" className="newTagInput__submit">
-                        <AddIcon sx={{ margin: "auto" }} />
+                    <button type="submit" className="submit--button">
+                        <AddIcon
+                            sx={{
+                                margin: "auto",
+                                marginTop: "3px",
+                                borderTopRightRadius: "3px",
+                            }}
+                        />
                     </button>
                     {createNewTag ? (
                         <p

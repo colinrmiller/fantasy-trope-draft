@@ -43,7 +43,6 @@ export class APIManager {
             .then((res) => {
                 return res.results.filter((film) => {
                     const bool = film.poster_path && !film.adult;
-                    // debugger;
                     return bool;
                 });
             });
@@ -345,5 +344,46 @@ export class APIManager {
         return fetch(
             `${remoteURL}/userComparisons?userId=${userId}&plusFilmId=${pair.filmA}&plusFilmId=${pair.filmB}&minusFilmId=${pair.filmB}&minusFilmId=${pair.filmA}`
         ).then((res) => res.json());
+    };
+
+    getUserFilmRating = (userId, filmId) => {
+        return fetch(
+            `${remoteURL}/userFilmRating?userId=${userId}&filmId=${filmId}`
+        ).then((res) => res.json());
+    };
+
+    setUserFilmRating = (userId, filmId, rating) => {
+        return this.getUserFilmRating(userId, filmId).then((res) => {
+            if (res.length > 0) {
+                const userFilmRating = {
+                    userId: userId,
+                    filmId: parseInt(filmId),
+                    rating: rating,
+                };
+                return fetch(`${remoteURL}/userFilmRating/${res[0].id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userFilmRating),
+                }).then((res) => res.json());
+            } else {
+                const userFilmRating = {
+                    userId: userId,
+                    filmId: parseInt(filmId),
+                    rating: rating,
+                };
+                return fetch(
+                    `${remoteURL}/userFilmRating?userId=${userId}&filmId=${filmId}`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(userFilmRating),
+                    }
+                ).then((res) => res.json());
+            }
+        });
     };
 }

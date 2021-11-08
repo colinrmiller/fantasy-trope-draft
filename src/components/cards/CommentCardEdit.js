@@ -76,10 +76,18 @@ export const CommentCardEdit = ({ comment, handleSubmitEdit, cancelEdit }) => {
         });
     };
 
+    const modifyOptionList = (optionObjList) => {
+        return optionObjList.map((obj) => {
+            const copy = { ...obj };
+            copy["label"] = obj["name"];
+            return copy;
+        });
+    };
+
     return (
         <div className="commentCardEdit" sx={{ display: "flex !important" }}>
             <TagAutocompleteHook
-                optionList={tagList}
+                optionList={modifyOptionList(tagList)}
                 className="commentCardEdit__tagInput"
                 initialValue={inputTagList}
                 setValue={setInputTagList}

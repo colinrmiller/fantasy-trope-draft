@@ -19,8 +19,8 @@ export const Home = () => {
     return (
         <div className="home">
             {" "}
-            <div className="home__welcomeMessage">Welcome</div>
-            <hr />
+            {/* <div className="home__welcomeMessage">Welcome</div> */}
+            {/* <hr /> */}
             <CompareTwo />
             <hr />
             <div className="home__tagActivity">
