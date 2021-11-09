@@ -6,38 +6,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { FTD } from "./components/FTD";
 
 // import React from "react";
-import firebase from "firebase/compat/app";
 
 // import logo from "./logo.svg";
 // import "./App.css";
 
-import "firebase/auth";
-import "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-
-import { initializeApp } from "firebase/app";
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    addDoc,
-} from "firebase/firestore/lite";
-
-// Initialize Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyCWzgfdRPNUopHmO-hUbC1ly7XrLGz0PxI",
-    authDomain: "screendraft-ce527.firebaseapp.com",
-    projectId: "screendraft-ce527",
-    storageBucket: "screendraft-ce527.appspot.com",
-    messagingSenderId: "236042260388",
-    appId: "1:236042260388:web:a5e1318e0c884cfe95fb31",
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-export const dbContext = createContext(db);
 ReactDOM.render(
     <React.StrictMode>
         <Router>

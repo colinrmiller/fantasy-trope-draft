@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { APIManager } from "../../modules/APIManager";
 import { useState, useEffect } from "react";
 import "../cards/Cards.css";
 
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
 

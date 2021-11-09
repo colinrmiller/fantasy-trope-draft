@@ -5,6 +5,7 @@ import { NavBar } from "./nav/NavBar";
 import { Footer } from "./footer/Footer";
 import { Login } from "./auth/LoginMUI";
 import { Search } from "./utilities/Search";
+import { Register } from "./auth/RegisterMUI";
 
 export const FTD = () => {
     return (
@@ -39,4 +40,3 @@ export const FTD = () => {
         </>
     );
 };
-

@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { SearchBarComp } from "../utilities/SearchBarComp";
-import { useContext } from "react";
 // import { AuthContext } from "../FTD";
-import { TimeUntil } from "../utilities/TimeUntil";
 import { UserCardNav } from "./UserCardNav";
 import { useState, useEffect } from "react";
 import { APIManager } from "../../modules/APIManager";

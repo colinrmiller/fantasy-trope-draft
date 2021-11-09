@@ -1,70 +1,41 @@
-.dialog {
-  min-width: 15rem;
-  min-height: 5rem;
+.login {
+    height: 700px;
 }
 
-.loginPage {
-  width: 40%;
-  margin: auto;
-  height: 400px;
-  margin-top: 30px;
+.login__main {
+    background-color: white;
+
+    /* margin-top: 100px; */
+    position: relative;
+    top: 45px;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 0px;
 }
 
-.loginPage>h2 {
-  margin-top: 106px;
-
+.MuiBox-root {
+    margin-top: 0px;
+    padding-bottom: 5px;
 }
 
-/* .loginPage>fieldset {background-color: #edeff1;
-display: flex;
-justify-content: flex-end;
+.css-binzgt {
 
-} */
-
-.form--login {
-  width: 40%;
-  margin: auto;
-  margin-top: 20%;
+    margin-top: unset;
+    margin-top: 38px;
 }
 
-.loginPage__fieldset {
-  background-color: #edeff1;
-  display: flex;
-  justify-content: flex-end;
-  border: 0;
-  padding-top: 10px;
+.login__notFound {
+    color: #f44336;
 }
 
-.login__label {
-  margin-right: auto;
+.login__signUp {
+    color: #1976d2
 }
 
-.login__form--submit {
-  float: right;
+.login__signup a:visited {
+    color: green;
 }
 
-.login__orDivider {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 28px 0;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.login__orDivider--line {
-  border-top: 1px solid #edeff1;
-  width: 40%;
-}
-
-.login__orDivider--text {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  color: #878a8c;
-  text-transform: uppercase;
+.login__signup a:link {
+    color: green;
 }

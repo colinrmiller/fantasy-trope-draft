@@ -17,18 +17,20 @@ export const FilmRanking = (comparisonList) => {
     const filmRankPairs = [...filmIds].map((filmId) => [filmId, 1]);
     const rankedFilmsMap = new Map(filmRankPairs);
 
-    // apply Bradley-Terry Algorithm to update the rank of each film for each comparison
+    // apply Bradley-Terry Algorithm to update film valuations for each comparison
     comparisonList.forEach((filmPair) => {
         const plusEvaluation =
             rankedFilmsMap.get(filmPair.plusFilmId) +
             Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) /
                 (Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) +
                     Math.exp(rankedFilmsMap.get(filmPair.minusFilmId)));
+
         const minusEvaluation =
             rankedFilmsMap.get(filmPair.plusFilmId) -
             Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) /
                 (Math.exp(rankedFilmsMap.get(filmPair.plusFilmId)) +
                     Math.exp(rankedFilmsMap.get(filmPair.minusFilmId)));
+
         rankedFilmsMap.set(filmPair.plusFilmId, plusEvaluation);
         rankedFilmsMap.set(filmPair.minusFilmId, minusEvaluation);
     });
