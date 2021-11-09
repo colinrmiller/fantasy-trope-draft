@@ -46,8 +46,6 @@ export class APIManager {
                     return bool;
                 });
             });
-        // const apiString = `https://api.themoviedb.org/3/movie/popular?api_key=${tmdb}`;
-        // return fetch(apiString).then((res) => res.json());
     };
 
     getInTheaters = () => {
