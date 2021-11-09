@@ -62,88 +62,94 @@ export const Login = () => {
     // };
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" className="login__main">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: "20px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
+        <div className="login">
+            <ThemeProvider theme={theme}>
+                <Container
+                    component="main"
+                    maxWidth="xs"
+                    className="login__main"
                 >
-                    <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
+                    <CssBaseline />
                     <Box
-                        component="form"
-                        onSubmit={handleSubmit}
-                        noValidate
-                        sx={{ mt: 1 }}
+                        sx={{
+                            marginTop: "20px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}
                     >
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        {/* <FormControlLabel
+                        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <Box
+                            component="form"
+                            onSubmit={handleSubmit}
+                            noValidate
+                            sx={{ mt: 1 }}
+                        >
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                            {/* <FormControlLabel
                             control={
                                 <Checkbox value="remember" color="primary" />
                             }
                             label="Remember me"
                         /> */}
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            Sign In
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <div
-                                    variant="body2"
-                                    className="login__notFound"
-                                >
-                                    {doesntExistDialog
-                                        ? "Email Or Password Incorrect"
-                                        : null}
-                                </div>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign In
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <div
+                                        variant="body2"
+                                        className="login__notFound"
+                                    >
+                                        {doesntExistDialog
+                                            ? "Email Or Password Incorrect"
+                                            : null}
+                                    </div>
+                                </Grid>
+                                <Grid item>
+                                    <Link
+                                        href="#"
+                                        variant="body2"
+                                        // className="login__signUp"
+                                        to="/register"
+                                    >
+                                        Sign Up
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Link
-                                    href="#"
-                                    variant="body2"
-                                    // className="login__signUp"
-                                    to="/register"
-                                >
-                                    Sign Up
-                                </Link>
-                            </Grid>
-                        </Grid>
+                        </Box>
                     </Box>
-                </Box>
-            </Container>
-        </ThemeProvider>
+                </Container>
+            </ThemeProvider>
+        </div>
     );
 };

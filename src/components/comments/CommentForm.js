@@ -56,11 +56,9 @@ export const CommentForm = ({
     // };
 
     const handleSubmit = (event) => {
-        debugger;
         if (commentInput !== "") {
             event.preventDefault();
             handleSubmitComment(commentInput).then((res) => {
-                debugger;
                 const commentId = res.id;
                 const tagIdArray = selectedTagIds.map((tag) => tag.id);
                 CommentAPI.addCommentTags(commentId, tagIdArray);
@@ -112,7 +110,6 @@ export const CommentForm = ({
                     backgroundColor: "white",
                     padding: "7px !important",
                     margin: "auto",
-                    width: "60%",
                     marginInline: "10px",
                 }}
             />
@@ -128,6 +125,7 @@ export const CommentForm = ({
                     color: "white",
                     marginTop: "10px",
                     "&:hover": { backgroundColor: "darkGreen" },
+                    marginLeft: "auto !important",
                 }}
                 onClick={handleSubmit}
             >

@@ -1,23 +1,28 @@
 .starRating {
-    margin:auto;
-    /* background-color: #c8c8c8; */
-    border-radius: 3px;
+  margin: auto;
+  /* background-color: #c8c8c8; */
+  border-radius: 3px;
+  position: relative;
+  margin-inline: 63px;
+
 }
 
 .starRating__button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  .starRating__button--on {
-    color: #d3bd25;
-  }
-  .starRating__button--off {
-    color: #ccc;
-  }
-  
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.starRating__button--on {
+  color: #d3bd25;
+}
+
+.starRating__button--off {
+  color: #ccc;
+}
+
 .MuiRating-decimal {
   /* border-right: 1px solid #1c2229; */
 }

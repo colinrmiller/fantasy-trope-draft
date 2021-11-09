@@ -48,7 +48,6 @@ export const NewTagInput = ({ onSubmit }) => {
                     action="/"
                     method="get"
                     onSubmit={(event) => {
-                        debugger;
                         event.preventDefault();
                         setCreateNewTag(false);
                         onSubmit(event, input, type);

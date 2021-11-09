@@ -5,6 +5,7 @@ import "./NavBar.js";
 import { Link } from "react-router-dom";
 
 export const UserCardNav = ({ user, size = "small" }) => {
+    const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const fbId = sessionStorage.getItem("FB_Id");
     const fbPicture = sessionStorage.getItem("FB_Picture");
     // const [state, setstate] = useState(initialState)
@@ -12,7 +13,7 @@ export const UserCardNav = ({ user, size = "small" }) => {
         sessionStorage.setItem("active_user", null);
     };
 
-    return (
+    return currentUser ? (
         <Link className="userCard userCardNav" to={`/user/${user?.id}`}>
             <div className="userCard__avatar">
                 {/* <Avatar
@@ -36,9 +37,9 @@ export const UserCardNav = ({ user, size = "small" }) => {
             <div className="userCardNav__body">
                 <h4 className="userCard__username">{user?.username}</h4>
                 <Link className="nav-link" onClick={handleLogout} to="/login">
-                    <p className="logout">logsdfsdfout</p>
+                    <p className="logout">Log out</p>
                 </Link>
             </div>
         </Link>
-    );
+    ) : null;
 };

@@ -13,6 +13,10 @@ import { FilmFeed } from "../home/FilmFeed";
 // import { FBLogin } from "../utilities/FBLogin";
 import { FaceBookLogin } from "../auth/FaceBookLogin";
 import { AddRemoveFilm } from "../utilities/AddRemoveFilm";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { FilmRating } from "../utilities/FilmRating.js";
+import { FilmTotalRating } from "../utilities/FilmTotalRating.js";
 // import {}
 
 // import { GithubLogin } from "../auth/GithubLogin";
@@ -23,7 +27,11 @@ export const FilmDetails = () => {
     const [filmBackground, setFilmBackground] = useState("");
     const [filmLoaded, setFilmLoaded] = useState(false);
 
+    const [filmVideos, setFilmVideos] = useState([]);
+    const [videoIndex, setVideoIndex] = useState(0);
+
     const [userRating, setUserRating] = useState(null);
+    const [totalRating, setTotalRating] = useState(null);
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const { filmId } = useParams();
     const API = new APIManager();
@@ -43,6 +51,21 @@ export const FilmDetails = () => {
             }
         });
     };
+    const getTotalRating = () => {
+        API.getTotalFilmRating(filmId).then((res) => {
+            if (res.length > 0) {
+                let totalScore = 0;
+                res.forEach((resObj) => {
+                    totalScore += resObj.rating;
+                });
+                const totalRatingsObj = {
+                    rating: totalScore / res.length,
+                    numberOfRatings: res.length,
+                };
+                setTotalRating(totalRatingsObj);
+            }
+        });
+    };
 
     const putUserRating = (newRating) => {
         API.setUserFilmRating(currentUser, filmId, newRating).then(() => {
@@ -53,6 +76,7 @@ export const FilmDetails = () => {
     // const getUserRating
     useEffect(() => {
         getUserRating();
+        getTotalRating();
         setFilmLoaded(false);
     }, []);
 
@@ -81,14 +105,40 @@ export const FilmDetails = () => {
     // State Handeling for Video-Embed
     const [videoId, setVideoId] = useState("");
     const getVideo = () => {
-        API.getVideo(filmId).then((res) => setVideoId(res));
+        API.getVideo(filmId, videoIndex).then((res) => setVideoId(res));
     };
 
-    useEffect(() => {}, [film]);
+    const getVideos = () => {
+        API.getVideos(filmId).then((res) => setFilmVideos(res));
+    };
 
     useEffect(() => {
-        getVideo();
+        getVideos();
     }, [film]);
+
+    useEffect(() => {
+        getVideo(videoIndex);
+    }, [film, videoIndex]);
+
+    const handleVideoSwitch = (direction) => {
+        const videoArrayLength = filmVideos.length;
+        let newIndex;
+        switch (direction) {
+            case "forward":
+                newIndex =
+                    (videoArrayLength + videoIndex + 1) % videoArrayLength;
+                setVideoIndex(newIndex);
+                break;
+            case "backward":
+                newIndex =
+                    (videoArrayLength + videoIndex - 1) % videoArrayLength;
+                setVideoIndex(newIndex);
+
+                break;
+            default:
+                break;
+        }
+    };
 
     // State Handeling for Film Recomendations
     const [similarFilmList, setSimilarFilmList] = useState([]);
@@ -112,12 +162,21 @@ export const FilmDetails = () => {
                             className="img"
                         /> */}
                         <FilmCardDetails film={film} expand />
+                        <div className="filmCardDetails__holder">
+                            <StarRating
+                                userRating={userRating}
+                                handleRating={(newValue) =>
+                                    putUserRating(newValue)
+                                }
+                            />
+                            <AddRemoveFilm film={film} />
+                            <FilmTotalRating film={film} />
+                            <FilmRating
+                                rating={totalRating?.rating}
+                                numberOfRatings={totalRating?.numberOfRatings}
+                            />
+                        </div>
 
-                        <StarRating
-                            userRating={userRating}
-                            handleRating={(newValue) => putUserRating(newValue)}
-                        />
-                        <AddRemoveFilm film={film} />
                         {/* <div className="img__addButton">
                             <p className="addButton__container">Add Film</p>
                             <AddIcon />
@@ -150,6 +209,10 @@ export const FilmDetails = () => {
                 <>
                     <hr />
                     <div className="filmDetails__video">
+                        <ArrowBackIosNewIcon
+                            className="filmDetails__video--arrow"
+                            onClick={() => handleVideoSwitch("backward")}
+                        />
                         <iframe
                             width="400"
                             height="225"
@@ -159,6 +222,10 @@ export const FilmDetails = () => {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
+                        <ArrowForwardIosIcon
+                            className="filmDetails__video--arrow"
+                            onClick={() => handleVideoSwitch("forward")}
+                        />
                     </div>
                     {/* <hr /> */}
                 </>

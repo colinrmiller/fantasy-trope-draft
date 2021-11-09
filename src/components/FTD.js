@@ -32,7 +32,10 @@ export const FTD = () => {
             > */}
             <Route
                 render={() => {
-                    if (sessionStorage.getItem("active_user")) {
+                    if (
+                        sessionStorage.getItem("active_user") &&
+                        sessionStorage.getItem("active_user") != "null"
+                    ) {
                         return (
                             <>
                                 <NavBar />

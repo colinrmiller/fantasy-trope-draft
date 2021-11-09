@@ -17,12 +17,12 @@ export const CompareTwo = () => {
     const [isStarred, setIsStarred] = useState(false);
 
     const getRatedFilmPairs = () => {
-        API.getRatedFilmPairs(currentUser).then((res) => {
+        API.getUserRatedFilmPairs(currentUser).then((res) => {
             setRatedFilmPairs(res);
         });
     };
 
-    const filterForAlreadyRated = (filmIdA, filmIdB) => {
+    const filterForAlreadyRated = (filmIdA, filmIdB, userId) => {
         let alreadyRated = false;
         if (filmIdA && filmIdB) {
             ratedFilmPairs.forEach((filmPair) => {
@@ -33,6 +33,7 @@ export const CompareTwo = () => {
                     (filmPair.plusFilmId === filmIdB &&
                         filmPair.minusFilmId === filmIdA)
                 ) {
+                    console.log("skipping: already rated");
                     alreadyRated = true;
                 }
             });

@@ -78,7 +78,32 @@ export const CommentCardBody = ({
                         </div> */}
                     </div>
                 </>
-            ) : null}
+            ) : (
+                <>
+                    {" "}
+                    <div className="commentCard__tagList">
+                        {tagList.map((tag) => (
+                            <CommentTagCard
+                                tag={tag}
+                                filmId={comment.filmId}
+                                key={tag.id}
+                            />
+                        ))}
+                    </div>
+                    {/* <div
+                className="commentCard__button"
+                onClick={() => setIsEditing(true)}
+            >
+                Edit
+            </div> */}
+                    {/* <div
+                className="commentCard__button"
+                onClick={() => handleDelete(comment.id)}
+            >
+                Remove
+            </div> */}
+                </>
+            )}
         </>
     );
 };

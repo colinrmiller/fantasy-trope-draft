@@ -1,0 +1,46 @@
+.filmRating {
+    position: relative;
+    top: -33px;
+    left: 19px;
+    color: rgba(255, 215, 0, .8);
+    width: 32px;
+
+}
+
+.filmRating--top {
+    position: relative;
+    top: 11px;
+    left: -11px;
+}
+
+
+.filmRating--slash {
+    position: relative;
+    /* background-color: red; */
+    background-image: repeating-linear-gradient(147deg, transparent 0%, transparent 48%, #FFD700 50%, transparent 56%, transparent 100%);
+    width: 28px;
+    height: 19px;
+}
+
+.filmRating--bottom {
+    position: relative;
+    top: -12px;
+    left: 16px;
+}
+
+.filmRating--ratings {
+    position: relative;
+    top: -16px;
+    font-size: 10px;
+    color: #cfcfd0;
+    left: -4px;
+}
+
+.filmTotalRating {
+    margin-left: auto;
+    margin-right: 14px;
+    position: relative;
+    top: 3px;
+    max-width: 143px;
+
+}

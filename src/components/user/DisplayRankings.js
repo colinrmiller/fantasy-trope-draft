@@ -22,7 +22,7 @@ export const DisplayRankings = () => {
     };
 
     const getUserComparisons = () => {
-        return API.getRatedFilmPairs(currentUser).then((res) =>
+        return API.getUserRatedFilmPairs(currentUser).then((res) =>
             setUserComparisons(res)
         );
     };

@@ -1,5 +1,5 @@
 .filmDetails__head {
-    height: 608px;
+    height: 620px;
     background-position: center top;
 
 }
@@ -7,7 +7,7 @@
 .img-container {
     height: 416px;
     position: relative;
-    top: 80px;
+    top: 106px;
     left: 217px;
     width: 247px;
     border-radius: 5px;
@@ -97,8 +97,17 @@
 }
 
 .filmDetails__video {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     margin-top: 10px;
+}
+
+.filmDetails__video--arrow {
+    transform: scale(2);
+    margin-top: 94px;
+    margin-inline: 40px;
+    cursor: pointer;
 }
 
 .filmDetails__tagline {

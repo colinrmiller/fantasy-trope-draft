@@ -14,7 +14,7 @@ const hoverAddFilm = ({ handleMouseOver, handleMouseOut }) => {
     );
 };
 
-export const SearchFilmCard = ({ film, expand }) => {
+export const SearchFilmCard = ({ film, expand, handleSelect }) => {
     const currentUser = parseInt(sessionStorage.getItem("active_user"));
     const API = new APIManager();
     const [inList, setInList] = useState(false);
@@ -87,7 +87,7 @@ export const SearchFilmCard = ({ film, expand }) => {
             onMouseLeave={handleMouseOut}
         >
             {/* <BrowserRouter basename="/calendar"> */}
-            <Link to={"/film-details/" + film.id}>
+            <Link to={"/film-details/" + film.id} onClick={handleSelect}>
                 <img
                     src={
                         "https://image.tmdb.org/t/p/original" + film.poster_path
@@ -96,40 +96,6 @@ export const SearchFilmCard = ({ film, expand }) => {
                     className="filmCard__img"
                 />
             </Link>
-            {isHovering && <FilmCardInteraction inList={inList} />}
-            <div className="SearchFilmCard__text">
-                <div className="SearchFilmCard__title">{film.title}</div>
-                <div className="SearchFilmCard__year">
-                    {film.release_date?.slice(0, 4)}
-                </div>
-            </div>
-
-            {/* {inList ? (
-                <div
-                    className="filmCard__interaction"
-                    onClick={() =>
-                        API.deleteFilm(currentUser, film.id).then(() =>
-                            setInList(false)
-                        )
-                    }
-                >
-                    <div className="filmCard__deleteFilm">
-                        <p className="filmCard__deleteFilm--text">Watching</p>
-                        <RemoveIcon className="cardIcon" />
-                    </div>
-                </div>
-            ) : (
-                <div
-                    className="filmCard__interaction"
-                    onClick={() =>
-                        API.addFilm(currentUser, film.id).then((res) => {
-                            console.log(res);
-                            setInList(true);
-                        })
-                    }
-                ></div>
-            )} */}
-            {/* </BrowserRouter> */}
         </div>
     );
 };

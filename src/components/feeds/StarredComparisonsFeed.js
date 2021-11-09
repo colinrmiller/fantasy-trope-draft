@@ -20,13 +20,15 @@ export const StarredComparisonsFeed = () => {
 
     return (
         <div className="StarredComparisonsFeed">
-            <h3 className="StarredComparisonsFeed__header">Recent Decisions</h3>
+            <h3 className="StarredComparisonsFeed__header">
+                Recent Comparisons
+            </h3>
             {/* <hr /> */}
             <div className="StarredComparisonsFeed__feed">
                 {starredComparisons
                     .filter((tag, index) => index < fetchLimit)
-                    .map((pair) => {
-                        return <FilmComparisonCard pair={pair} />;
+                    .map((pair, index) => {
+                        return <FilmComparisonCard pair={pair} key={index} />;
                     })}
             </div>
         </div>

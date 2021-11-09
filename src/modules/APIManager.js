@@ -150,13 +150,22 @@ export class APIManager {
         ).then((res) => res.json());
     };
 
-    getVideo = (filmId) => {
+    getVideo = (filmId, index = 0) => {
         return fetch(
             `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${tmdb}&language=en-US
             `
         )
             .then((res) => res.json())
-            .then((res) => res?.results[0]?.key);
+            .then((res) => res?.results[index]?.key);
+    };
+
+    getVideos = (filmId) => {
+        return fetch(
+            `https://api.themoviedb.org/3/movie/${filmId}/videos?api_key=${tmdb}&language=en-US
+            `
+        )
+            .then((res) => res.json())
+            .then((res) => res?.results);
     };
 
     getSimilar = (filmId) => {
@@ -307,10 +316,14 @@ export class APIManager {
         });
     };
 
-    getRatedFilmPairs = (userId) => {
+    getUserRatedFilmPairs = (userId) => {
         return fetch(`${remoteURL}/userComparisons?userId=${userId}`).then(
             (res) => res.json()
         );
+    };
+
+    getAllRatedFilmPairs = () => {
+        return fetch(`${remoteURL}/userComparisons`).then((res) => res.json());
     };
 
     getStarredFilmComparisons = () => {
@@ -350,6 +363,12 @@ export class APIManager {
         return fetch(
             `${remoteURL}/userFilmRating?userId=${userId}&filmId=${filmId}`
         ).then((res) => res.json());
+    };
+
+    getTotalFilmRating = (filmId) => {
+        return fetch(`${remoteURL}/userFilmRating?filmId=${filmId}`).then(
+            (res) => res.json()
+        );
     };
 
     setUserFilmRating = (userId, filmId, rating) => {

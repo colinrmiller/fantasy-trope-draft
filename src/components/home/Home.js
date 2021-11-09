@@ -30,9 +30,9 @@ export const Home = () => {
             <div className="home__FilmFeedDiscover">
                 <FilmFeedDiscover />
             </div>
-            {/* <div className="home__FilmFeedDiscover">
+            <div className="home__FilmFeedDiscover">
                 <FilmFeedInTheaters />
-            </div> */}
+            </div>
             {/* <div className="home__FilmFeedDiscover">
                 <FilmFeedInTheaters />
             </div> */}

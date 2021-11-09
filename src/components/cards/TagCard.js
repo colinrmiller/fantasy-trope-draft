@@ -46,6 +46,7 @@ export const TagCard = ({ tag, filmId }) => {
                         filmId: filmId,
                         tagId: tag.id,
                         userId: currentUser,
+                        dateTime: Date.now(),
                     };
                     newTag["rating"] = rating === "plus" ? 1 : -1;
                     return API.addUserTag(newTag);

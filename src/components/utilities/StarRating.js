@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import StarIcon from "@mui/icons-material/Star";
 
 export const StarRating = ({ userRating, handleRating }) => {
-    const [rating, setRating] = useState(3);
+    const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const [loaded, setLoaded] = useState(false);
 
