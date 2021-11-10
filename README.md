@@ -1,7 +1,7 @@
 # Screen Draft
 
-<!-- ![RV Anamtion](	./public/img/Logo.png) -->
-![Screen Shot](./public/img/Screenshot.png)
+![RV Anamtion](	./public/img/Logo.png)
+<!-- ![Screen Shot](./public/img/Screenshot.png) -->
 
 **ScreenDraft** is a social film discovery platform, centered on allowing users to explore films by genre and by their favorite plot conventions (aka. tropes). Users can tag their films with their favorite tropes and discuss their individual validities. **ScreenDraft** 
 
