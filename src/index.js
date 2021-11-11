@@ -4,6 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { FTD } from "./components/FTD";
+// require("dotenv").config();
 
 // import React from "react";
 

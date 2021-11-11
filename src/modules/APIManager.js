@@ -1,7 +1,7 @@
 // import { tmdb } from "./keys.js";
 import { CommentAPIManager } from "./CommentAPIManager.js";
 const remoteURL = "http://localhost:8088";
-const tmdb = process.eng.tmdb_key;
+const tmdb = process.env.tmdb_key;
 export class APIManager {
     getFriends = () => {
         const currentUserId = parseInt(sessionStorage.getItem("active_user"));

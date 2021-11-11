@@ -8,6 +8,8 @@ import "./FilmFeed.css";
 export const FilmFeedInTheaters = () => {
     const [mainFilmList, setMainFilmList] = useState([]);
     const [filter, setfilter] = useState("New Releases");
+    debugger;
+    const tmdb = process.env.tmdb_key;
 
     const API = new APIManager();
     useEffect(() => {
