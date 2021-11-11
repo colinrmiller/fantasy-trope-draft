@@ -9,7 +9,6 @@
 ### Highlights
 
  - ScreenDraft [offers a user on login with a continue series of randomized film comparison questions](./src/components/pairwiseComparison/CompareTwo.js)(eg. 'Lord of the Rings' or 'The Matrix').  Each selection improves the confidence and updates [a total film ranking algorithm implementing the Bradley-Terry model of paired comparisons](./src/components/utilities/FilmRanking.js). 
-  -  
 
 ## Setup
 ### Local Server
